@@ -1,0 +1,14 @@
+.DS_Store
+.node-version
+
+.firebase
+.vscode
+
+.next
+.env
+.env.build
+
+node_modules
+report
+
+npm-debug.log*
