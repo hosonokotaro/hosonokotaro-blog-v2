@@ -5,8 +5,7 @@
 .vscode
 
 .next
-.env
-.env.build
+.env.local
 
 node_modules
 report
