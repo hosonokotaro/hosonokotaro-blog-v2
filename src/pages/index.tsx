@@ -1,7 +1,9 @@
+import Text from '@/atoms/Text';
+
 const HomePage = () => {
   return (
     <div>
-      <div>Welcome to Next.js!</div>
+      <Text text="Welcome to Next.js!" />
     </div>
   );
 };
