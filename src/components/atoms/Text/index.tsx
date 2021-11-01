@@ -1,8 +1,8 @@
 import { VFC } from 'react';
 
-type Props = { text: string };
+type Props = { text?: string };
 
-const Text: VFC<Props> = ({ text }) => {
+const Text: VFC<Props> = ({ text = 'Welcome to Next.js !' }) => {
   return <p>{text}</p>;
 };
 
