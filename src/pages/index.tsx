@@ -1,7 +1,8 @@
 import { InferGetStaticPropsType } from 'next';
 import { VFC } from 'react';
 
-import Text from '@/atoms/Text';
+import TextItem from '@/atoms/TextItem';
+import TextList from '@/atoms/TextList';
 
 type PostTitleDate = {
   id: string;
@@ -25,11 +26,11 @@ const Top: VFC<InferGetStaticPropsType<typeof getStaticProps>> = ({
   posts,
 }) => {
   return (
-    <div>
-      {posts.map((post) => (
-        <Text key={post.id} text={post.title} />
+    <TextList>
+      {posts.map(({ id, title }) => (
+        <TextItem key={id} text={title} />
       ))}
-    </div>
+    </TextList>
   );
 };
 

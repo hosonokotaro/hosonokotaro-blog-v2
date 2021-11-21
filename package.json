@@ -21,7 +21,9 @@
   "dependencies": {
     "next": "^11.1.2",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-markdown": "^7.1.0",
+    "styled-components": "^5.3.3"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
@@ -31,6 +33,9 @@
     "@storybook/addon-links": "^6.3.12",
     "@storybook/react": "^6.3.12",
     "@types/react": "^17.0.33",
+    "@types/styled-components": "^5.1.15",
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/parser": "^5.4.0",
     "babel-loader": "^8.2.3",
     "cross-env": "^7.0.3",
     "eslint": "7.32.0",
@@ -40,6 +45,7 @@
     "husky": "^7.0.4",
     "next-compose-plugins": "^2.2.1",
     "prettier": "2.4.1",
+    "pretty-quick": "^3.1.2",
     "typescript": "^4.4.4"
   }
 }
