@@ -1,5 +1,5 @@
 import styled from 'styled-components';
 
-export const StyledImage = styled.img`
+export const StyledWrappedImage = styled.img`
   max-width: 100%;
 `;

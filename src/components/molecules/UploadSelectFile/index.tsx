@@ -2,8 +2,8 @@ import React, { Dispatch, SetStateAction } from 'react';
 
 import Button from '@/atoms/Button';
 import ContentBox from '@/atoms/ContentBox';
-import Image from '@/atoms/Image';
 import TextBox from '@/atoms/TextBox';
+import WrappedImage from '@/atoms/WrappedImage';
 
 interface Props {
   image: File | null;
@@ -26,7 +26,7 @@ const UploadSelectFile: React.FC<Props> = ({
         }}
       />
       <ContentBox marginTopSize="10px">
-        {image && <Image src={window.URL.createObjectURL(image)} />}
+        {image && <WrappedImage src={window.URL.createObjectURL(image)} />}
         {!image && (
           <TextBox>
             画像を選択してください ※アップロードするとページがリロードされます
