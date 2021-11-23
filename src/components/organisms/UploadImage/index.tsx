@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, VFC } from 'react';
 
 import Title from '@/atoms/Title';
 import UploadFileList from '@/molecules/UploadFileList';
@@ -17,7 +17,7 @@ interface Props {
   handleUpload: () => void;
 }
 
-const UploadImage: React.FC<Props> = ({
+const UploadImage: VFC<Props> = ({
   imagePathList,
   deleteImage,
   image,

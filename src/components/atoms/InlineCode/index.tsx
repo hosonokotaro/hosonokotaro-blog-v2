@@ -1,4 +1,4 @@
-import React from 'react';
+import { VFC } from 'react';
 
 import { StyledInlineCode } from './styledIndex';
 
@@ -6,7 +6,7 @@ interface Props {
   text: string;
 }
 
-const InlineCode: React.FC<Props> = ({ text }) => {
+const InlineCode: VFC<Props> = ({ text }) => {
   return <StyledInlineCode>{text}</StyledInlineCode>;
 };
 

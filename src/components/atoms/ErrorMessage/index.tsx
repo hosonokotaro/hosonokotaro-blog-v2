@@ -1,4 +1,4 @@
-import React from 'react';
+import { VFC } from 'react';
 
 import { StyledErrorMessage } from './styledIndex';
 
@@ -6,7 +6,7 @@ interface Props {
   text: string;
 }
 
-const ErrorMessage: React.FC<Partial<Props>> = ({
+const ErrorMessage: VFC<Partial<Props>> = ({
   text = 'Something went wrong. Please try again.',
 }) => {
   return <StyledErrorMessage>{text}</StyledErrorMessage>;

@@ -1,4 +1,4 @@
-import React from 'react';
+import { VFC } from 'react';
 
 import { Li } from './styledIndex';
 
@@ -6,7 +6,7 @@ interface Props {
   text: string;
 }
 
-const TextItem: React.VFC<Props> = ({ text }) => {
+const TextItem: VFC<Props> = ({ text }) => {
   return <Li>{text}</Li>;
 };
 

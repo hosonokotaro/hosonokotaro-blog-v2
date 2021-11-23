@@ -1,10 +1,10 @@
-import React from 'react';
+import { ReactNode, VFC } from 'react';
 
 interface Props {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
-const TextList: React.VFC<Props> = ({ children }) => {
+const TextList: VFC<Props> = ({ children }) => {
   return <ul>{children}</ul>;
 };
 

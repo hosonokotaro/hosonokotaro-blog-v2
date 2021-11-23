@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState, VFC } from 'react';
 
 import Spinner from '@/atoms/Spinner';
 import WrappedImage from '@/atoms/WrappedImage';
@@ -8,7 +8,7 @@ interface Props {
   alt?: string;
 }
 
-const LoadingImage: React.VFC<Props> = ({ src, alt = 'image' }) => {
+const LoadingImage: VFC<Props> = ({ src, alt = 'image' }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   return (

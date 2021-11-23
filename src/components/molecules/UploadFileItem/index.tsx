@@ -1,4 +1,4 @@
-import React from 'react';
+import { VFC } from 'react';
 
 import Button from '@/atoms/Button';
 import ContentBox from '@/atoms/ContentBox';
@@ -16,7 +16,7 @@ interface Props {
   deleteImage: (fileName: string) => void;
 }
 
-const UploadFileItem: React.FC<Props> = ({ item, deleteImage }) => {
+const UploadFileItem: VFC<Props> = ({ item, deleteImage }) => {
   // NOTE: この DOM 操作は、自身の component 内で完結する
   const { copyClipboard, inputRef } = useUploadFileItem();
 

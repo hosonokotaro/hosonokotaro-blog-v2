@@ -1,4 +1,4 @@
-import React, { ChangeEvent, RefObject } from 'react';
+import { ChangeEvent, RefObject, VFC } from 'react';
 
 import { StyledInputTextInline } from './styledIndex';
 
@@ -11,7 +11,7 @@ interface Props {
 }
 
 // FIXME: handle change を input する度に実行するロジックを見直したい
-const InputTextInline: React.VFC<Partial<Props>> = ({
+const InputTextInline: VFC<Partial<Props>> = ({
   id = '',
   name = '',
   defaultValue = '',

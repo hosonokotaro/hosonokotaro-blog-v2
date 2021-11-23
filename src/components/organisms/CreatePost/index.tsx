@@ -1,4 +1,5 @@
-import React, { ChangeEvent } from 'react';
+import { VFC } from 'react';
+import { ChangeEvent } from 'react';
 
 import Button from '@/atoms/Button';
 import ContentBox from '@/atoms/ContentBox';
@@ -15,7 +16,7 @@ interface Props {
 
 const groupName = 'postTitle';
 
-const CreatePost: React.FC<Props> = ({
+const CreatePost: VFC<Props> = ({
   title,
   handleSubmit,
   onTitleChanged,

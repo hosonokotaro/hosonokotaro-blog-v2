@@ -1,4 +1,4 @@
-import React from 'react';
+import { VFC } from 'react';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import tsx from 'react-syntax-highlighter/dist/cjs/languages/prism/tsx';
 import syntaxStyle from 'react-syntax-highlighter/dist/cjs/styles/prism/tomorrow';
@@ -11,7 +11,7 @@ interface Props {
   language: string;
 }
 
-const CodeBlock: React.FC<Props> = ({ value, language }) => {
+const CodeBlock: VFC<Props> = ({ value, language }) => {
   return (
     <SyntaxHighlighter
       language={language}

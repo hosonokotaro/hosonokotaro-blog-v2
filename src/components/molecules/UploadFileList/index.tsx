@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState, VFC } from 'react';
 
 import ContentBox from '@/atoms/ContentBox';
 import UploadFileItem from '@/molecules/UploadFileItem';
@@ -15,7 +15,7 @@ interface Props {
   deleteImage: (fileName: string) => void;
 }
 
-const UploadFileList: React.FC<Props> = ({ imagePathList, deleteImage }) => {
+const UploadFileList: VFC<Props> = ({ imagePathList, deleteImage }) => {
   const [isShow, setIsShow] = useState(false);
 
   // HACK: imagePathList が取得できているのにも関わらずレンダリングがされないので、仕方なく wait をかけてレンダリングを遅らせている

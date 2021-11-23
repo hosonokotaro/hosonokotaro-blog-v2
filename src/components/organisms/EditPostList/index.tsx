@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import React from 'react';
+import { VFC } from 'react';
 
 import ContentBox from '@/atoms/ContentBox';
 import Spinner from '@/atoms/Spinner';
@@ -16,7 +16,7 @@ interface Props {
   postList?: Post[];
 }
 
-const EditPostList: React.FC<Props> = ({ postList }) => {
+const EditPostList: VFC<Props> = ({ postList }) => {
   return (
     <section>
       <Title text="投稿された記事一覧" />

@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react';
+import { ChangeEvent, VFC } from 'react';
 
 import { StyledInputTextArea } from './styledIndex';
 
@@ -9,7 +9,7 @@ interface Props {
   handleChange: (event: ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
-const InputTextArea: React.VFC<Partial<Props>> = ({
+const InputTextArea: VFC<Partial<Props>> = ({
   id = '',
   name = '',
   defaultValue = '',

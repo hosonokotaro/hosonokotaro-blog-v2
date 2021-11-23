@@ -1,4 +1,4 @@
-import React from 'react';
+import { VFC } from 'react';
 
 import { StyledTitle } from './styledIndex';
 
@@ -9,7 +9,7 @@ interface Props {
   rank?: TagName;
 }
 
-const Title: React.FC<Props> = ({ text, rank = 'h2' }) => {
+const Title: VFC<Props> = ({ text, rank = 'h2' }) => {
   return (
     <StyledTitle rankStyle={rank} as={rank}>
       {text}

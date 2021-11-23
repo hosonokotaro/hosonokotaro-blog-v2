@@ -1,4 +1,4 @@
-import React from 'react';
+import { ReactNode, VFC } from 'react';
 
 import { StyledTextBox } from './styledIndex';
 
@@ -6,10 +6,10 @@ type TagName = 'div' | 'p';
 
 interface Props {
   tagName?: TagName;
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
-const TextBox: React.VFC<Props> = ({ tagName = 'div', children }) => {
+const TextBox: VFC<Props> = ({ tagName = 'div', children }) => {
   return <StyledTextBox as={tagName}>{children}</StyledTextBox>;
 };
 

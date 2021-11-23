@@ -1,6 +1,6 @@
 import { action } from '@storybook/addon-actions';
 import { Meta, Story } from '@storybook/react';
-import React, { ChangeEvent, ComponentProps, useState } from 'react';
+import { ChangeEvent, ComponentProps, useState } from 'react';
 
 import CreatePost from './';
 

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useEffect } from 'react';
+import { useEffect, VFC } from 'react';
 
 import SiteTitle from '@/atoms/SiteTitle';
 
@@ -10,7 +10,7 @@ interface Props {
   linkPath?: string;
 }
 
-const Header: React.FC<Props> = ({ linkPath = '/' }) => {
+const Header: VFC<Props> = ({ linkPath = '/' }) => {
   const router = useRouter();
 
   useEffect(() => {

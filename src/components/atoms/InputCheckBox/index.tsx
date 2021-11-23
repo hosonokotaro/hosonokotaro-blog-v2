@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react';
+import { ChangeEvent, VFC } from 'react';
 
 import { StyledInputCheckBox } from './styledIndex';
 
@@ -9,7 +9,7 @@ interface Props {
   handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const InputCheckBox: React.VFC<Partial<Props>> = ({
+const InputCheckBox: VFC<Partial<Props>> = ({
   id = '',
   name = '',
   checked = false,

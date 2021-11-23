@@ -1,4 +1,4 @@
-import React from 'react';
+import { VFC } from 'react';
 
 type TagName = 'label' | 'span';
 
@@ -8,11 +8,7 @@ interface Props {
   htmlFor?: string;
 }
 
-const TextLabel: React.VFC<Props> = ({
-  text,
-  tagName = 'label',
-  htmlFor = '',
-}) => {
+const TextLabel: VFC<Props> = ({ text, tagName = 'label', htmlFor = '' }) => {
   switch (tagName) {
     case 'span':
       return <span>{text}</span>;
