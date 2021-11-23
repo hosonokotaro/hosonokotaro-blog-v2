@@ -1,14 +1,13 @@
 import { InferGetStaticPropsType } from 'next';
 import Link from 'next/link';
 import { VFC } from 'react';
-import styled from 'styled-components';
 
 import ContentBox from '@/atoms/ContentBox';
-import Footer from '@/atoms/Footer';
 import PageLayout from '@/atoms/PageLayout';
 import Title from '@/atoms/Title';
-import Header from '@/organisms/Header';
-import getDate from '~/utility/getDate';
+import Layout from '@/layout';
+
+import { Date } from './StyledIndex';
 
 type TitleDate = {
   id: string;
@@ -32,8 +31,7 @@ const Top: VFC<InferGetStaticPropsType<typeof getStaticProps>> = ({
   titleDateList,
 }) => {
   return (
-    <>
-      <Header />
+    <Layout>
       <PageLayout tagName="article">
         <Title text="記事一覧" />
         {titleDateList.map(({ id, title, createDate }) => (
@@ -47,14 +45,8 @@ const Top: VFC<InferGetStaticPropsType<typeof getStaticProps>> = ({
           </ContentBox>
         ))}
       </PageLayout>
-      <Footer year={getDate('year')} />
-    </>
+    </Layout>
   );
 };
 
 export default Top;
-
-const Date = styled.div`
-  margin-top: 12px;
-  font-size: 1rem;
-`;
