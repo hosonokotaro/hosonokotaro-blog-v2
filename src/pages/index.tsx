@@ -3,11 +3,10 @@ import Link from 'next/link';
 import { VFC } from 'react';
 
 import ContentBox from '@/atoms/ContentBox';
+import Date from '@/atoms/Date';
 import PageLayout from '@/atoms/PageLayout';
 import Title from '@/atoms/Title';
 import Layout from '@/layout';
-
-import { Date } from './StyledIndex';
 
 type TitleDate = {
   id: string;
@@ -41,7 +40,7 @@ const Top: VFC<InferGetStaticPropsType<typeof getStaticProps>> = ({
                 <Title rank="span" text={title} />
               </a>
             </Link>
-            <Date>{createDate}</Date>
+            <Date text={createDate} />
           </ContentBox>
         ))}
       </PageLayout>
