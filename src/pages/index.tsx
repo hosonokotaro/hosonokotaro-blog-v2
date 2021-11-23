@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import ContentBox from '@/atoms/ContentBox';
 import Footer from '@/atoms/Footer';
-import Layout from '@/atoms/Layout';
+import PageLayout from '@/atoms/PageLayout';
 import Title from '@/atoms/Title';
 import Header from '@/organisms/Header';
 import getDate from '~/utility/getDate';
@@ -34,7 +34,7 @@ const Top: VFC<InferGetStaticPropsType<typeof getStaticProps>> = ({
   return (
     <>
       <Header />
-      <Layout tagName="article">
+      <PageLayout tagName="article">
         <Title text="記事一覧" />
         {titleDateList.map(({ id, title, createDate }) => (
           <ContentBox key={id} marginTopSize="40px">
@@ -46,7 +46,7 @@ const Top: VFC<InferGetStaticPropsType<typeof getStaticProps>> = ({
             <Date>{createDate}</Date>
           </ContentBox>
         ))}
-      </Layout>
+      </PageLayout>
       <Footer year={getDate('year')} />
     </>
   );

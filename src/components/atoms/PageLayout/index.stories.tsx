@@ -1,11 +1,11 @@
 import { Meta, Story } from '@storybook/react';
 import React, { ComponentProps } from 'react';
 
-import Layout from './';
+import PageLayout from './';
 
 export default {
-  component: Layout,
-  title: 'components/atoms/Layout',
+  component: PageLayout,
+  title: 'components/atoms/PageLayout',
   argTypes: {
     tagName: {
       options: ['div', 'article', 'section'],
@@ -14,9 +14,9 @@ export default {
   },
 } as Meta;
 
-type Props = ComponentProps<typeof Layout>;
+type Props = ComponentProps<typeof PageLayout>;
 
-const Template: Story<Props> = (args) => <Layout {...args} />;
+const Template: Story<Props> = (args) => <PageLayout {...args} />;
 
 export const Default = Template.bind({});
 
