@@ -1,10 +1,16 @@
 import { InferGetStaticPropsType } from 'next';
+import Link from 'next/link';
 import { VFC } from 'react';
+import styled from 'styled-components';
 
-import TextItem from '@/atoms/TextItem';
-import TextList from '@/atoms/TextList';
+import ContentBox from '@/atoms/ContentBox';
+import Footer from '@/atoms/Footer';
+import Layout from '@/atoms/Layout';
+import Title from '@/atoms/Title';
+import Header from '@/organisms/Header';
+import getDate from '~/utility/getDate';
 
-type PostTitleDate = {
+type TitleDate = {
   id: string;
   title: string;
   release: boolean;
@@ -13,25 +19,42 @@ type PostTitleDate = {
 
 export const getStaticProps = async () => {
   const response = await fetch(`${process.env.API_ENDPOINT}/get/titlelist`);
-  const posts: PostTitleDate[] = await response.json();
+  const titleDateList: TitleDate[] = await response.json();
 
   return {
     props: {
-      posts,
+      titleDateList,
     },
   };
 };
 
 const Top: VFC<InferGetStaticPropsType<typeof getStaticProps>> = ({
-  posts,
+  titleDateList,
 }) => {
   return (
-    <TextList>
-      {posts.map(({ id, title }) => (
-        <TextItem key={id} text={title} />
-      ))}
-    </TextList>
+    <>
+      <Header />
+      <Layout tagName="article">
+        <Title text="記事一覧" />
+        {titleDateList.map(({ id, title, createDate }) => (
+          <ContentBox key={id} marginTopSize="40px">
+            <Link href={`/${id}`}>
+              <a>
+                <Title rank="span" text={title} />
+              </a>
+            </Link>
+            <Date>{createDate}</Date>
+          </ContentBox>
+        ))}
+      </Layout>
+      <Footer year={getDate('year')} />
+    </>
   );
 };
 
 export default Top;
+
+const Date = styled.div`
+  margin-top: 12px;
+  font-size: 1rem;
+`;
