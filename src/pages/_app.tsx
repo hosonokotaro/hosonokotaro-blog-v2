@@ -1,3 +1,6 @@
+import 'normalize.css';
+import '~/style/global.css';
+
 import { AppProps } from 'next/app';
 import { VFC } from 'react';
 

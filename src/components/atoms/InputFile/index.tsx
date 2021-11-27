@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react';
+import { ChangeEvent, VFC } from 'react';
 
 import { StyledInputFile } from './styledIndex';
 
@@ -6,7 +6,7 @@ interface Props {
   handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const InputFile: React.VFC<Partial<Props>> = ({ handleChange }) => {
+const InputFile: VFC<Partial<Props>> = ({ handleChange }) => {
   return <StyledInputFile onChange={handleChange} />;
 };
 

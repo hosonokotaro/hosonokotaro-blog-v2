@@ -1,4 +1,4 @@
-import React from 'react';
+import { ReactNode, VFC } from 'react';
 
 import { MarginTopSize, StyledContentArea } from './styledIndex';
 
@@ -7,10 +7,10 @@ type TagName = 'div' | 'article' | 'section';
 interface Props {
   tagName?: TagName;
   marginTopSize?: MarginTopSize;
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
-const ContentArea: React.VFC<Props> = ({
+const ContentArea: VFC<Props> = ({
   tagName = 'div',
   marginTopSize = '0px',
   children,

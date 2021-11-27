@@ -1,4 +1,4 @@
-import React from 'react';
+import { VFC } from 'react';
 
 import { StyledButton } from './styledIndex';
 
@@ -9,7 +9,7 @@ interface Props {
   attention?: boolean;
 }
 
-const Button: React.FC<Props> = ({
+const Button: VFC<Props> = ({
   text,
   handleClick,
   disabled = false,

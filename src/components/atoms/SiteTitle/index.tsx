@@ -1,4 +1,4 @@
-import React from 'react';
+import { VFC } from 'react';
 
 import { StyledInlineBlock } from './styledIndex';
 
@@ -8,7 +8,7 @@ interface Props {
   text3: string;
 }
 
-const SiteTitle: React.FC<Partial<Props>> = ({
+const SiteTitle: VFC<Partial<Props>> = ({
   text1 = 'HOSONO',
   text2 = 'KOTARO',
   text3 = 'Tech Blog',

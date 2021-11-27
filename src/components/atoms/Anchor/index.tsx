@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import React, { ReactNode, VFC } from 'react';
+import { ReactNode, VFC } from 'react';
 
 import { StyledAnchor, StyledLink } from './styledIndex';
 

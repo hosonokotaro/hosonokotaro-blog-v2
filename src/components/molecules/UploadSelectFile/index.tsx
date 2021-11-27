@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, VFC } from 'react';
 
 import Button from '@/atoms/Button';
 import ContentBox from '@/atoms/ContentBox';
@@ -11,7 +11,7 @@ interface Props {
   handleUpload: () => void;
 }
 
-const UploadSelectFile: React.FC<Props> = ({
+const UploadSelectFile: VFC<Props> = ({
   image,
   callbackSetImage,
   handleUpload,

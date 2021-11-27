@@ -1,10 +1,14 @@
 import { InferGetStaticPropsType } from 'next';
+import Link from 'next/link';
 import { VFC } from 'react';
 
-import TextItem from '@/atoms/TextItem';
-import TextList from '@/atoms/TextList';
+import ContentBox from '@/atoms/ContentBox';
+import Date from '@/atoms/Date';
+import PageLayout from '@/atoms/PageLayout';
+import Title from '@/atoms/Title';
+import Layout from '@/layout';
 
-type PostTitleDate = {
+type TitleDate = {
   id: string;
   title: string;
   release: boolean;
@@ -13,24 +17,34 @@ type PostTitleDate = {
 
 export const getStaticProps = async () => {
   const response = await fetch(`${process.env.API_ENDPOINT}/get/titlelist`);
-  const posts: PostTitleDate[] = await response.json();
+  const titleDateList: TitleDate[] = await response.json();
 
   return {
     props: {
-      posts,
+      titleDateList,
     },
   };
 };
 
 const Top: VFC<InferGetStaticPropsType<typeof getStaticProps>> = ({
-  posts,
+  titleDateList,
 }) => {
   return (
-    <TextList>
-      {posts.map(({ id, title }) => (
-        <TextItem key={id} text={title} />
-      ))}
-    </TextList>
+    <Layout>
+      <PageLayout tagName="article">
+        <Title text="記事一覧" />
+        {titleDateList.map(({ id, title, createDate }) => (
+          <ContentBox key={id} marginTopSize="40px">
+            <Link href={`/${id}`}>
+              <a>
+                <Title rank="span" text={title} />
+              </a>
+            </Link>
+            <Date text={createDate} />
+          </ContentBox>
+        ))}
+      </PageLayout>
+    </Layout>
   );
 };
 

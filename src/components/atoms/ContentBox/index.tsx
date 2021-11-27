@@ -1,9 +1,9 @@
-import React from 'react';
+import { ReactNode, VFC } from 'react';
 
 import { MarginTopSize, StyledContentBox, TextAlign } from './styledIndex';
 
 interface Props {
-  children: React.ReactNode;
+  children: ReactNode;
   isBetween?: boolean;
   marginTopSize?: MarginTopSize;
   textAlign?: TextAlign;
@@ -11,7 +11,7 @@ interface Props {
   isCard?: boolean;
 }
 
-const ContentBox: React.VFC<Props> = ({
+const ContentBox: VFC<Props> = ({
   children,
   isBetween = false,
   marginTopSize = '0px',

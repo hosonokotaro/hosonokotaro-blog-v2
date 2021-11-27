@@ -1,4 +1,4 @@
-import React from 'react';
+import { VFC } from 'react';
 import ReactMarkdown from 'react-markdown';
 
 import Anchor from '@/atoms/Anchor';
@@ -15,7 +15,7 @@ interface Props {
   content: string;
 }
 
-const Markdown: React.FC<Props> = ({ content }) => {
+const Markdown: VFC<Props> = ({ content }) => {
   return (
     <ReactMarkdown
       components={{
