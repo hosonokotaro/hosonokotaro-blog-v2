@@ -1,4 +1,4 @@
-import { useState, VFC } from 'react';
+import { useEffect, useState, VFC } from 'react';
 
 import Spinner from '@/atoms/Spinner';
 import WrappedImage from '@/atoms/WrappedImage';
@@ -10,6 +10,17 @@ interface Props {
 
 const LoadingImage: VFC<Props> = ({ src, alt = 'image' }) => {
   const [isLoading, setIsLoading] = useState(true);
+
+  // NOTE: image が cache から取得した場合には、load イベントが発生しないため実装する
+  useEffect(() => {
+    const timeLimit = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+
+    return () => {
+      clearTimeout(timeLimit);
+    };
+  }, []);
 
   return (
     <>
