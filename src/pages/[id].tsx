@@ -1,4 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
+import Script from 'next/script';
 import { VFC } from 'react';
 
 import Anchor from '@/atoms/Anchor';
@@ -47,21 +48,53 @@ export const getStaticProps: GetStaticProps = async (context) => {
   };
 };
 
-const Post: VFC<Post> = ({ title, createDate, content }) => {
+const Post: VFC<Post> = ({ id, title, createDate, content }) => {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://techblog.hosonokotaro.jp/${id}`,
+    },
+    headline: `${title}`,
+    image: {
+      '@type': 'ImageObject',
+      url: 'https://techblog.hosonokotaro.jp/static/media/og.png',
+    },
+    author: {
+      '@type': 'Person',
+      name: 'Hosono Kotaro',
+      url: 'https://hosonokotaro.jp/',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'HOSONOKOTARO Tech Blog',
+      logo: {
+        '@type': 'ImageObject',
+        url: '',
+      },
+    },
+    datePublished: createDate,
+  };
+
   return (
-    <Layout title={title}>
-      <PageLayout tagName="section">
-        {/* TODO: JsonLD を実装するか検討する */}
-        <Title text={title} />
-        <ContentBox marginTopSize="20px">{createDate}</ContentBox>
-        <ContentBox marginTopSize="80px">
-          <Markdown content={content} />
-        </ContentBox>
-        <ContentBox marginTopSize="80px">
-          <Anchor linkPath="/">記事一覧へ</Anchor>
-        </ContentBox>
-      </PageLayout>
-    </Layout>
+    <>
+      <Script id="json-ld" type="application/ld+json">
+        {JSON.stringify(jsonLd)}
+      </Script>
+      <Layout title={title}>
+        <PageLayout tagName="section">
+          <Title text={title} />
+          <ContentBox marginTopSize="20px">{createDate}</ContentBox>
+          <ContentBox marginTopSize="80px">
+            <Markdown content={content} />
+          </ContentBox>
+          <ContentBox marginTopSize="80px">
+            <Anchor linkPath="/">記事一覧へ</Anchor>
+          </ContentBox>
+        </PageLayout>
+      </Layout>
+    </>
   );
 };
 
