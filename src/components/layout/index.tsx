@@ -7,6 +7,7 @@ import getDate from '~/utility/getDate';
 
 type Props = {
   title?: string;
+  isPrivate?: boolean;
   children: ReactNode;
 };
 
@@ -15,7 +16,7 @@ const siteName = 'Tech Blog | WEB DEVELOPER HOSONO KOTARO';
 const description =
   '都内で活動するフロントエンドエンジニア。技術の知見を掲載しています';
 
-const Layout: VFC<Props> = ({ title = '', children }) => {
+const Layout: VFC<Props> = ({ title = '', isPrivate = false, children }) => {
   return (
     <>
       <Head>
@@ -32,6 +33,9 @@ const Layout: VFC<Props> = ({ title = '', children }) => {
         <meta content={`${domain}/static/media/og.png`} property="og:image" />
         <meta content={description} property="og:description" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        {isPrivate && <meta name="robots" content="noindex" />}
+
         <title>
           {title && `${title} | `}
           {siteName}
