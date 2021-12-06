@@ -1,10 +1,10 @@
-import { InferGetStaticPropsType } from 'next';
 import Link from 'next/link';
 import { VFC } from 'react';
 
 import Button from '@/atoms/Button';
 import ContentBox from '@/atoms/ContentBox';
 import Date from '@/atoms/Date';
+import ErrorMessage from '@/atoms/ErrorMessage';
 import PageLayout from '@/atoms/PageLayout';
 import TextBox from '@/atoms/TextBox';
 import Title from '@/atoms/Title';
@@ -18,21 +18,11 @@ type TitleDate = {
   createDate: string;
 };
 
-export const getStaticProps = async () => {
-  const response = await fetch(`${process.env.API_ENDPOINT}/get/titlelist`);
-  const titleDateList: TitleDate[] = await response.json();
-
-  return {
-    props: {
-      titleDateList,
-    },
-  };
-};
-
-const Edit: VFC<InferGetStaticPropsType<typeof getStaticProps>> = ({
-  titleDateList,
-}) => {
+const Edit: VFC = () => {
   const { userId, login, logout } = useSession();
+
+  // TODO: CSR にする為に、useEditTop を実装する
+  const titleDateList: TitleDate[] = [];
 
   return (
     <Layout title="Edit" isPrivate>
@@ -48,6 +38,11 @@ const Edit: VFC<InferGetStaticPropsType<typeof getStaticProps>> = ({
             <Date text={createDate} />
           </ContentBox>
         ))}
+        {!titleDateList.length && (
+          <ContentBox marginTopSize="40px">
+            <ErrorMessage text="記事一覧が取得できません" />
+          </ContentBox>
+        )}
       </PageLayout>
       <ContentBox textAlign="center">
         {userId && <Button text="ログアウトする" handleClick={logout} />}
