@@ -7,17 +7,10 @@ import Date from '@/atoms/Date';
 import PageLayout from '@/atoms/PageLayout';
 import Title from '@/atoms/Title';
 import Layout from '@/layout';
-
-type TitleDate = {
-  id: string;
-  title: string;
-  release: boolean;
-  createDate: string;
-};
+import getTitleList from '~/services/getTitleList';
 
 export const getStaticProps = async () => {
-  const response = await fetch(`${process.env.API_ENDPOINT}/get/titlelist`);
-  const titleDateList: TitleDate[] = await response.json();
+  const titleDateList = await getTitleList();
 
   return {
     props: {
