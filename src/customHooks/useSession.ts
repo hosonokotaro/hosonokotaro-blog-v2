@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useState } from 'react';
 
 import {
+  getIdToken,
   getUid,
+  IdToken,
   login as loginFromService,
   logout as logoutFromService,
   stateChanged,
@@ -9,6 +11,7 @@ import {
 
 const useSession = () => {
   const [userId, setUserId] = useState<string>('');
+  const [idToken, setIdToken] = useState<IdToken>('');
 
   const login = useCallback(() => {
     loginFromService();
@@ -20,7 +23,10 @@ const useSession = () => {
     window.location.href = '/edit';
   }, []);
 
-  // TODO: Bearer Token を取得して、useState に格納する
+  const getIdTokenCallback = useCallback(async () => {
+    const response = await getIdToken();
+    response && setIdToken(response);
+  }, []);
 
   const getUserIdCallback = useCallback(() => {
     const uid = getUid();
@@ -35,10 +41,19 @@ const useSession = () => {
     };
   }, [getUserIdCallback]);
 
+  useEffect(() => {
+    const unsubscribe = stateChanged(getIdTokenCallback);
+
+    return () => {
+      unsubscribe;
+    };
+  }, [getIdTokenCallback]);
+
   return {
-    userId,
+    idToken,
     login,
     logout,
+    userId,
   };
 };
 
