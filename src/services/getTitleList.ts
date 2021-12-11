@@ -25,6 +25,7 @@ const getTitleList = async (target: Target = 'default', idToken?: string) => {
     const { data } = await axios.get<TitleDate[]>(endpoint[target], {
       headers,
     });
+
     return data;
   } catch (error) {
     console.log(error);
