@@ -13,10 +13,10 @@ import getTitleList from '~/services/getTitleList';
 
 // NOTE: Page list を取得して、build 時に静的ファイルを生成する
 export const getStaticPaths: GetStaticPaths = async () => {
-  const titleDateList = await getTitleList();
+  const titleList = await getTitleList();
 
   return {
-    paths: titleDateList.map(({ id }) => ({ params: { id } })),
+    paths: titleList.map(({ id }) => ({ params: { id } })),
     // TODO: ISR をするなら fallback の設定が必要
     fallback: false,
   };
