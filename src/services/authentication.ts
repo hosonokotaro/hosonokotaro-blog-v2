@@ -1,11 +1,12 @@
 import {
   getAuth,
-  getIdToken,
+  getIdToken as getIdTokenFromAuth,
   GoogleAuthProvider,
   onAuthStateChanged,
   signInWithRedirect,
   signOut,
 } from 'firebase/auth';
+import { PromiseType } from 'utility-types';
 
 import firebaseApp from '~/adapter/firebase';
 
@@ -20,22 +21,16 @@ export const logout = () => {
   signOut(auth);
 };
 
-export const getCurrentUser = async () => {
-  if (!auth.currentUser) {
-    return {
-      authHeader: {
-        idToken: '',
-      },
-    };
-  }
+export const getIdToken = async () => {
+  if (!auth.currentUser) return;
 
   // NOTE: ここで言う idToken とは、Firebase クライアント SDK で取得できる ID トークンを指す
-  const idToken = await getIdToken(auth.currentUser);
+  const idToken = await getIdTokenFromAuth(auth.currentUser);
 
-  return {
-    authHeader: { idToken },
-  };
+  return idToken;
 };
+
+export type IdToken = PromiseType<ReturnType<typeof getIdToken>>;
 
 export const getUid = () => {
   if (auth.currentUser && auth.currentUser.uid) {
