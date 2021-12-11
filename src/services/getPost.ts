@@ -2,8 +2,8 @@ import axios from '~/adapter/axios';
 
 const endpoint = (id: string) => {
   return {
-    default: `${process.env.API_ENDPOINT}/get/post/${id}`,
-    private: `${process.env.API_ENDPOINT}/get/post/${id}?private=enabled`,
+    default: `/get/post/${id}`,
+    private: `/get/post/${id}?private=enabled`,
   };
 };
 

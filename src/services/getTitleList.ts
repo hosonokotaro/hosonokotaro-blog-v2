@@ -1,8 +1,8 @@
 import axios from '~/adapter/axios';
 
 const endpoint = {
-  default: `${process.env.API_ENDPOINT}/get/titlelist`,
-  private: `${process.env.API_ENDPOINT}/get/titlelist?private=enabled`,
+  default: `/get/titlelist`,
+  private: `/get/titlelist?private=enabled`,
 };
 
 export type TitleDate = {
