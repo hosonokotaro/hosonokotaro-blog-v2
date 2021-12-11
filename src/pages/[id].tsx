@@ -8,38 +8,24 @@ import PageLayout from '@/atoms/PageLayout';
 import Title from '@/atoms/Title';
 import Layout from '@/layout';
 import Markdown from '@/organisms/Markdown';
-
-type TitleDate = {
-  id: string;
-  title: string;
-  release: boolean;
-  createDate: string;
-};
+import getPost, { Post as PostType } from '~/services/getPost';
+import getTitleList from '~/services/getTitleList';
 
 // NOTE: Page list を取得して、build 時に静的ファイルを生成する
 export const getStaticPaths: GetStaticPaths = async () => {
-  const response = await fetch(`${process.env.API_ENDPOINT}/get/titlelist`);
-  const titleDateList: TitleDate[] = await response.json();
+  const titleList = await getTitleList();
 
   return {
-    paths: titleDateList.map(({ id }) => ({ params: { id } })),
+    paths: titleList.map(({ id }) => ({ params: { id } })),
+    // TODO: ISR をするなら fallback の設定が必要
     fallback: false,
   };
 };
 
-type Post = {
-  id: string;
-  title: string;
-  content: string;
-  release: boolean;
-  createDate: string;
-};
-
 // NOTE: Page を取得して、build 時に静的ファイルを生成する
 export const getStaticProps: GetStaticProps = async (context) => {
-  const { id } = context.params as unknown as Post;
-  const response = await fetch(`${process.env.API_ENDPOINT}/get/post/${id}`);
-  const post: Post = await response.json();
+  const { id } = context.params as unknown as PostType;
+  const post = await getPost(id);
 
   return {
     props: {
@@ -48,7 +34,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   };
 };
 
-const Post: VFC<Post> = ({ id, title, createDate, content }) => {
+const Post: VFC<PostType> = ({ id, title, createDate, content }) => {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
