@@ -11,16 +11,16 @@ import firebaseApp from '~/adapter/firebase';
 
 const auth = getAuth(firebaseApp);
 
-const login = () => {
+export const login = () => {
   const googleAuthProvider = new GoogleAuthProvider();
   signInWithRedirect(auth, googleAuthProvider);
 };
 
-const logout = () => {
+export const logout = () => {
   signOut(auth);
 };
 
-const getCurrentUser = async () => {
+export const getCurrentUser = async () => {
   if (!auth.currentUser) {
     return {
       authHeader: {
@@ -37,14 +37,12 @@ const getCurrentUser = async () => {
   };
 };
 
-const getUid = () => {
+export const getUid = () => {
   if (auth.currentUser && auth.currentUser.uid) {
     return auth.currentUser.uid;
   }
 };
 
-const stateChanged = (event: () => void) => {
+export const stateChanged = (event: () => void) => {
   onAuthStateChanged(auth, () => event());
 };
-
-export { getCurrentUser, getUid, login, logout, stateChanged };

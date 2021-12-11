@@ -20,18 +20,20 @@ const useSession = () => {
     window.location.href = '/edit';
   }, []);
 
-  const getCurrentUser = useCallback(() => {
+  // TODO: Bearer Token を取得して、useState に格納する
+
+  const getUserIdCallback = useCallback(() => {
     const uid = getUid();
     uid && setUserId(uid);
   }, []);
 
   useEffect(() => {
-    const unsubscribe = stateChanged(getCurrentUser);
+    const unsubscribe = stateChanged(getUserIdCallback);
 
     return () => {
       unsubscribe;
     };
-  }, [getCurrentUser]);
+  }, [getUserIdCallback]);
 
   return {
     userId,
