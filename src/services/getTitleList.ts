@@ -14,17 +14,12 @@ export type TitleDate = {
 
 export type Target = keyof typeof endpoint;
 
-const getTitleList = async (target: Target = 'default', idToken?: string) => {
-  let headers: { Authorization?: string } = {};
-
-  if (target === 'private' && idToken) {
-    headers = { Authorization: `Bearer ${idToken}` };
-  }
-
+const getTitleList = async (idToken?: string) => {
   try {
-    const { data } = await axios.get<TitleDate[]>(endpoint[target], {
-      headers,
-    });
+    const { data } = await axios.get<TitleDate[]>(
+      endpoint[idToken ? 'private' : 'default'],
+      idToken ? { headers: { Authorization: `Bearer ${idToken}` } } : {}
+    );
 
     return data;
   } catch (error) {
