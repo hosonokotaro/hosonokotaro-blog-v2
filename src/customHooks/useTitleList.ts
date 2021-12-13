@@ -1,23 +1,13 @@
-import { useCallback, useEffect, useState } from 'react';
+import useSWR from 'swr';
 
 import { IdToken } from '~/services/authentication';
-import getTitleList, { TitleDate } from '~/services/getTitleList';
+import getTitleList from '~/services/getTitleList';
 
 const useTitleList = (idToken: IdToken) => {
-  const [titleList, setTitleList] = useState<TitleDate[]>([]);
+  // TODO: fetch 頻度を設定する
+  const { data, error } = useSWR(idToken, getTitleList);
 
-  const getTitleListCallback = useCallback(async () => {
-    const titleList = await getTitleList('private', idToken);
-    setTitleList(titleList);
-  }, [idToken]);
-
-  useEffect(() => {
-    if (!idToken) return;
-
-    getTitleListCallback();
-  }, [getTitleListCallback, idToken]);
-
-  return titleList;
+  return { titleList: data, isLoading: !error && !data, isError: error };
 };
 
 export default useTitleList;
