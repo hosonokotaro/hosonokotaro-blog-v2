@@ -29,7 +29,7 @@ const Edit: VFC = () => {
                   <a>
                     <Title
                       rank="span"
-                      text={`${!release && '【非公開】'}` + title}
+                      text={`${release ? '' : '【非公開】'}` + title}
                     />
                   </a>
                 </Link>
