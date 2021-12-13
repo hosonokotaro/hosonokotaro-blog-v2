@@ -17,21 +17,12 @@ export type Post = {
 
 export type Target = keyof ReturnType<typeof endpoint>;
 
-const getPost = async (
-  id: string,
-  target: Target = 'default',
-  idToken?: string
-) => {
-  let headers: { Authorization?: string } = {};
-
-  if (target === 'private' && idToken) {
-    headers = { Authorization: `Bearer ${idToken}` };
-  }
-
+const getPost = async (id: string, idToken?: string) => {
   try {
-    const { data } = await axios.get<Post>(endpoint(id)[target], {
-      headers,
-    });
+    const { data } = await axios.get<Post>(
+      endpoint(id)[idToken ? 'private' : 'default'],
+      idToken ? { headers: { Authorization: `Bearer ${idToken}` } } : {}
+    );
 
     return data;
   } catch (error) {
