@@ -6,6 +6,7 @@ import ContentBox from '@/atoms/ContentBox';
 import Date from '@/atoms/Date';
 import ErrorMessage from '@/atoms/ErrorMessage';
 import PageLayout from '@/atoms/PageLayout';
+import Spinner from '@/atoms/Spinner';
 import TextBox from '@/atoms/TextBox';
 import Title from '@/atoms/Title';
 import Layout from '@/layout';
@@ -14,24 +15,33 @@ import useTitleList from '~/customHooks/useTitleList';
 
 const Edit: VFC = () => {
   const { idToken, login, logout, userId } = useSession();
-  const titleList = useTitleList(idToken);
+  const { titleList, isLoading, isError } = useTitleList(idToken);
 
   return (
     <>
       <Layout title="Edit" isPrivate>
         <PageLayout tagName="article">
           <Title text="全記事一覧" />
-          {titleList.map(({ id, title, createDate }) => (
-            <ContentBox key={id} marginTopSize="40px">
-              <Link href={`/${id}`}>
-                <a>
-                  <Title rank="span" text={title} />
-                </a>
-              </Link>
-              <Date text={createDate} />
+          {titleList &&
+            titleList.map(({ id, title, createDate, release }) => (
+              <ContentBox key={id} marginTopSize="40px">
+                <Link href={`/edit/${id}`}>
+                  <a>
+                    <Title
+                      rank="span"
+                      text={`${!release && '【非公開】'}` + title}
+                    />
+                  </a>
+                </Link>
+                <Date text={createDate} />
+              </ContentBox>
+            ))}
+          {isLoading && (
+            <ContentBox marginTopSize="40px">
+              <Spinner />
             </ContentBox>
-          ))}
-          {!titleList.length && (
+          )}
+          {isError && (
             <ContentBox marginTopSize="40px">
               <ErrorMessage text="記事一覧が取得できません" />
             </ContentBox>
