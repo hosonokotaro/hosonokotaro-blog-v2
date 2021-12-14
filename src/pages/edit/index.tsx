@@ -19,7 +19,7 @@ const Edit: VFC = () => {
 
   return (
     <>
-      <Layout title="Edit" isPrivate>
+      <Layout title="全記事一覧" isPrivate>
         <PageLayout tagName="article">
           <Title text="全記事一覧" />
           {titleList &&
