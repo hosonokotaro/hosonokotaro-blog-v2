@@ -13,3 +13,5 @@ report
 storybook-static
 
 npm-debug.log*
+
+public/mockServiceWorker.js
