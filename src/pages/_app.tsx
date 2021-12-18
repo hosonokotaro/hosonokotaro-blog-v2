@@ -14,7 +14,9 @@ const setup = async () => {
   }
 };
 
-setup();
+if (process.env.NODE_ENV === 'development') {
+  setup();
+}
 
 // NOTE: App 全体を拡張するために利用します。
 const App: VFC<AppProps> = ({ Component, pageProps }) => {
