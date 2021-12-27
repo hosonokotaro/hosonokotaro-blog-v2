@@ -1,8 +1,8 @@
 import axios from '~/adapter/axios';
 
 const endpoint = {
-  default: `/get/titlelist`,
-  private: `/get/titlelist?private=enabled`,
+  default: `/get/titlelist?is_unixtime_format=enabled`,
+  private: `/get/titlelist?is_unixtime_format=enabled&private=enabled`,
 };
 
 export type TitleDate = {

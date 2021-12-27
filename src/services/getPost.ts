@@ -2,8 +2,8 @@ import axios from '~/adapter/axios';
 
 const endpoint = (id: string) => {
   return {
-    default: `/get/post/${id}`,
-    private: `/get/post/${id}?private=enabled`,
+    default: `/get/post/${id}?is_unixtime_format=enabled`,
+    private: `/get/post/${id}?is_unixtime_format=enabled&private=enabled`,
   };
 };
 
