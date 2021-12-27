@@ -12,6 +12,7 @@ import Title from '@/atoms/Title';
 import Layout from '@/layout';
 import useSession from '~/customHooks/useSession';
 import useTitleList from '~/customHooks/useTitleList';
+import formatDate from '~/utility/formatDate';
 
 const Edit: VFC = () => {
   const { idToken, login, logout, userId } = useSession();
@@ -33,7 +34,7 @@ const Edit: VFC = () => {
                     />
                   </a>
                 </Link>
-                <Date text={createDate} />
+                <Date text={formatDate(createDate)} />
               </ContentBox>
             ))}
           {isLoading && (

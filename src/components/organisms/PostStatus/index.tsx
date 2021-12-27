@@ -5,6 +5,7 @@ import ContentBox from '@/atoms/ContentBox';
 import InputCheckBox from '@/atoms/InputCheckBox';
 import TextBox from '@/atoms/TextBox';
 import TextLabel from '@/atoms/TextLabel';
+import formatDate from '~/utility/formatDate';
 
 type Props = {
   id: string;
@@ -42,7 +43,7 @@ const PostStatus: VFC<Props> = ({
       </ContentBox>
       <ContentBox marginTopSize="20px">
         <TextBox>
-          記事作成日時: {createDate}
+          記事作成日時: {formatDate(createDate)}
           <br />
           id: {id}
           <br />

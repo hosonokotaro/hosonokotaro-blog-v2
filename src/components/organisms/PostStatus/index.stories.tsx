@@ -22,6 +22,6 @@ export const Default = Template.bind({});
 
 Default.args = {
   id: 'testid',
-  createDate: '2020/01/01',
+  createDate: '1634656164684',
   released: false,
 };

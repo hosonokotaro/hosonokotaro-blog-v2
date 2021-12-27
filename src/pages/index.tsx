@@ -8,6 +8,7 @@ import PageLayout from '@/atoms/PageLayout';
 import Title from '@/atoms/Title';
 import Layout from '@/layout';
 import getTitleList from '~/services/getTitleList';
+import formatDate from '~/utility/formatDate';
 
 export const getStaticProps = async () => {
   const titleList = await getTitleList();
@@ -33,7 +34,7 @@ const Top: VFC<InferGetStaticPropsType<typeof getStaticProps>> = ({
                 <Title rank="span" text={title} />
               </a>
             </Link>
-            <Date text={createDate} />
+            <Date text={formatDate(createDate)} />
           </ContentBox>
         ))}
       </PageLayout>
