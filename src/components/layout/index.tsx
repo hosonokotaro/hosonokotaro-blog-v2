@@ -8,6 +8,7 @@ import getDate from '~/utility/getDate';
 type Props = {
   title?: string;
   isPrivate?: boolean;
+  linkPath?: string;
   children: ReactNode;
 };
 
@@ -16,7 +17,12 @@ const siteName = 'Tech Blog | WEB DEVELOPER HOSONO KOTARO';
 const description =
   '都内で活動するフロントエンドエンジニア。技術の知見を掲載しています';
 
-const Layout: VFC<Props> = ({ title = '', isPrivate = false, children }) => {
+const Layout: VFC<Props> = ({
+  title = '',
+  isPrivate = false,
+  linkPath = '/',
+  children,
+}) => {
   return (
     <>
       <Head>
@@ -41,7 +47,7 @@ const Layout: VFC<Props> = ({ title = '', isPrivate = false, children }) => {
           {siteName}
         </title>
       </Head>
-      <Header />
+      <Header linkPath={linkPath} />
       {children}
       <Footer year={getDate('year')} />
     </>
