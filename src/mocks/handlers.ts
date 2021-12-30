@@ -3,29 +3,51 @@ import { rest } from 'msw';
 const baseURL = process.env.NEXT_PUBLIC_API_ENDPOINT;
 
 export const handlers = [
-  rest.get(`${baseURL}/get/titlelist`, (_, res, ctx) => {
-    return res(
-      ctx.status(200),
-      ctx.json([
-        {
-          id: 'FynE3JpxYWPSqboszEA2',
-          title: 'SWR の useSWRImmutable を使う',
-          release: true,
-          createDate: '1634656164684',
-        },
-        {
-          id: 'YrtBam2iH0XUNB4ucQVU',
-          title: 'ブログをリリースしました',
-          release: true,
-          createDate: '1599910367482',
-        },
-      ])
-    );
+  rest.get(`${baseURL}/get/titlelist`, (req, res, ctx) => {
+    const data = [
+      {
+        id: 'PrivatePostData',
+        title: '準備中の記事',
+        release: false,
+        createDate: '1640872405123',
+      },
+      {
+        id: 'FynE3JpxYWPSqboszEA2',
+        title: 'SWR の useSWRImmutable を使う',
+        release: true,
+        createDate: '1634656164684',
+      },
+      {
+        id: 'YrtBam2iH0XUNB4ucQVU',
+        title: 'ブログをリリースしました',
+        release: true,
+        createDate: '1599910367482',
+      },
+    ];
+
+    if (req.url.searchParams.get('private') === 'enabled') {
+      return res(ctx.status(200), ctx.json(data));
+    }
+
+    return res(ctx.status(200), ctx.json(data.filter((item) => item.release)));
   }),
 
   // FIXME: /get/post って変な名前なので直すべき、言葉の使い方が曖昧。今後、API をバージョニングする時に名前を変更する
   rest.get(`${baseURL}/get/post/:postId`, (req, res, ctx) => {
     const { postId } = req.params;
+
+    if (postId === 'PrivatePostData') {
+      return res(
+        ctx.status(200),
+        ctx.json({
+          id: 'PrivatePostData',
+          title: '準備中の記事',
+          content: '準備中の記事です。',
+          release: false,
+          createDate: '1640872405123',
+        })
+      );
+    }
 
     if (postId === 'FynE3JpxYWPSqboszEA2') {
       return res(
