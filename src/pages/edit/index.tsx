@@ -1,17 +1,15 @@
-import Link from 'next/link';
 import { VFC } from 'react';
 
 import ContentBox from '@/atoms/ContentBox';
-import Date from '@/atoms/Date';
 import ErrorMessage from '@/atoms/ErrorMessage';
 import PageLayout from '@/atoms/PageLayout';
 import Spinner from '@/atoms/Spinner';
 import Title from '@/atoms/Title';
 import Layout from '@/layout';
 import Login from '@/organisms/Login';
+import TitleLink from '@/organisms/TitleLink';
 import useSession from '~/customHooks/useSession';
 import useTitleList from '~/customHooks/useTitleList';
-import formatDate from '~/utility/formatDate';
 
 const Edit: VFC = () => {
   const { idToken, login, logout, userId } = useSession();
@@ -23,18 +21,15 @@ const Edit: VFC = () => {
         <PageLayout tagName="article">
           <Title text="全記事一覧" />
           {titleList &&
-            titleList.map(({ id, title, createDate, release }) => (
-              <ContentBox key={id} marginTopSize="40px">
-                <Link href={`/edit/${id}`}>
-                  <a>
-                    <Title
-                      rank="span"
-                      text={`${release ? '' : '【非公開】'}` + title}
-                    />
-                  </a>
-                </Link>
-                <Date text={formatDate(createDate)} />
-              </ContentBox>
+            titleList.map(({ id, title, release, createDate }) => (
+              <TitleLink
+                key={id}
+                postId={id}
+                title={title}
+                release={release}
+                createDate={createDate}
+                isEditPost
+              />
             ))}
           {isLoading && (
             <ContentBox marginTopSize="40px">
