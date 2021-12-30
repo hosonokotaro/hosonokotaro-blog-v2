@@ -21,7 +21,7 @@ const Template: Story<Props> = (args) => {
 export const Default = Template.bind({});
 
 Default.args = {
-  id: 'testid',
+  postId: 'testid',
   createDate: '1634656164684',
   released: false,
 };
