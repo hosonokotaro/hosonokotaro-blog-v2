@@ -1,15 +1,14 @@
 import Link from 'next/link';
 import { VFC } from 'react';
 
-import Button from '@/atoms/Button';
 import ContentBox from '@/atoms/ContentBox';
 import Date from '@/atoms/Date';
 import ErrorMessage from '@/atoms/ErrorMessage';
 import PageLayout from '@/atoms/PageLayout';
 import Spinner from '@/atoms/Spinner';
-import TextBox from '@/atoms/TextBox';
 import Title from '@/atoms/Title';
 import Layout from '@/layout';
+import Login from '@/organisms/Login';
 import useSession from '~/customHooks/useSession';
 import useTitleList from '~/customHooks/useTitleList';
 import formatDate from '~/utility/formatDate';
@@ -49,13 +48,7 @@ const Edit: VFC = () => {
           )}
         </PageLayout>
       </Layout>
-      <ContentBox textAlign="center">
-        {userId && <Button text="ログアウトする" handleClick={logout} />}
-        {!userId && <Button text="ログインする" handleClick={login} />}
-        <ContentBox marginTopSize="20px" textAlign="center">
-          <TextBox>{userId ? `uid: ${userId}` : 'No login'}</TextBox>
-        </ContentBox>
-      </ContentBox>
+      <Login userId={userId} login={login} logout={logout} />
     </>
   );
 };
