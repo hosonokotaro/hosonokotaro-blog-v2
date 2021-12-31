@@ -1,5 +1,7 @@
 import { rest } from 'msw';
 
+import isObjectEmpty from '~/utility/isObjectEmpty';
+
 const baseURL = process.env.NEXT_PUBLIC_API_ENDPOINT;
 
 export const handlers = [
@@ -76,5 +78,27 @@ export const handlers = [
         })
       );
     }
+  }),
+
+  // NOTE: ここでは Token の有無は確認していないので、Request header を確認すること
+
+  rest.post(`${baseURL}/post/createpost`, (req, res, ctx) => {
+    if (isObjectEmpty(req.body)) {
+      return res(ctx.status(400), ctx.json({}));
+    }
+
+    return res(ctx.status(200), ctx.json(req.body));
+  }),
+
+  rest.post(`${baseURL}/post/updatepost/:documentPath`, (req, res, ctx) => {
+    if (isObjectEmpty(req.body)) {
+      return res(ctx.status(400), ctx.json({}));
+    }
+
+    return res(ctx.status(200), ctx.json(req.body));
+  }),
+
+  rest.post(`${baseURL}/post/deletepost/:documentPath`, (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json({}));
   }),
 ];
