@@ -31,7 +31,11 @@ const UploadFileList: VFC<Props> = ({ imagePathList, deleteImage }) => {
         imagePathList.map((item, index) => {
           return (
             <ItemWrapper key={index}>
-              <UploadFileItem item={item} deleteImage={deleteImage} />
+              <UploadFileItem
+                item={item}
+                marginTopSize="20px"
+                deleteImage={deleteImage}
+              />
             </ItemWrapper>
           );
         })}

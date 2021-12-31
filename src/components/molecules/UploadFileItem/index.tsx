@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { ComponentProps, VFC } from 'react';
 
 import Button from '@/atoms/Button';
 import ContentBox from '@/atoms/ContentBox';
@@ -13,10 +13,11 @@ type ImagePath = {
 
 interface Props {
   item: ImagePath;
+  marginTopSize: ComponentProps<typeof ContentBox>['marginTopSize'];
   deleteImage: (fileName: string) => void;
 }
 
-const UploadFileItem: VFC<Props> = ({ item, deleteImage }) => {
+const UploadFileItem: VFC<Props> = ({ item, marginTopSize, deleteImage }) => {
   // NOTE: この DOM 操作は、自身の component 内で完結する
   const { copyClipboard, inputRef } = useUploadFileItem();
 
@@ -37,7 +38,7 @@ const UploadFileItem: VFC<Props> = ({ item, deleteImage }) => {
           attention
         />
       </ContentBox>
-      <ContentBox marginTopSize="20px">
+      <ContentBox marginTopSize={marginTopSize}>
         <LoadingImage src={item.fullPath} />
       </ContentBox>
     </div>

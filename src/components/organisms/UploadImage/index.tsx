@@ -30,6 +30,8 @@ const UploadImage: VFC<Props> = ({
       <Title text="画像" rank="h3" />
       <UploadSelectFile
         image={image}
+        wrappedMarginTopSize="20px"
+        marginTopSize="10px"
         callbackSetImage={callbackSetImage}
         handleUpload={handleUpload}
       />
