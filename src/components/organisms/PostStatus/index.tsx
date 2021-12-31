@@ -5,11 +5,10 @@ import ContentBox from '@/atoms/ContentBox';
 import InputCheckBox from '@/atoms/InputCheckBox';
 import TextBox from '@/atoms/TextBox';
 import TextLabel from '@/atoms/TextLabel';
-import { PostId } from '~/services/getPost';
 import formatDate from '~/utility/formatDate';
 
 type Props = {
-  postId: PostId;
+  postId: string | undefined;
   createDate: string;
   released: boolean;
   releaseChanged: (event: ChangeEvent<HTMLInputElement>) => void;
@@ -27,7 +26,7 @@ const PostStatus: VFC<Props> = ({
 }) => {
   return (
     <ContentBox marginTopSize="40px" isBoxCenter isCard>
-      {postId && !Array.isArray(postId) && (
+      {postId && (
         <>
           <ContentBox>
             <TextLabel text="公開フラグ" htmlFor={`edit-release-${postId}`} />
