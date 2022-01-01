@@ -35,6 +35,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const { id } = context.params as unknown as PostType;
   const post = await getPost(id);
 
+  if (!post) {
+    return {
+      props: {},
+    };
+  }
+
   return {
     props: {
       ...post,
