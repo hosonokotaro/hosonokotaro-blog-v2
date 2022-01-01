@@ -9,7 +9,6 @@ import {
   uploadFile,
 } from '~/services/storage';
 
-// NOTE: isStorage = false の場合、fullPath は fileName を含んだものを入れることを想定している
 type ImagePath = {
   fullPath: string;
   fileName: string;
@@ -17,7 +16,6 @@ type ImagePath = {
 
 type PostId = string | string[] | undefined;
 
-// FIXME: 時々、ページ遷移後に画像が読み込まれない場合があるのを修正したい
 const useUploadFileList = (postId: PostId) => {
   const [imagePathList, setImagePathList] = useState<ImagePath[]>([]);
   const [imageFile, setImageFile] = useState<File | null>(null);

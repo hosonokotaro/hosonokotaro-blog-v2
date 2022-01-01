@@ -66,7 +66,7 @@ const useEditPost = (props: Post | undefined) => {
       release: draftPost.release,
     });
 
-    // NOTE: もしかしたら、Reload する必要があるかもしれない
+    // TODO: STG環境で確認する。もしかしたら、Reload する必要があるかもしれない
     router.push('/edit');
   }, [draftPost, router]);
 
@@ -78,14 +78,14 @@ const useEditPost = (props: Post | undefined) => {
 
     if (!idToken) return;
 
-    // FIXME: 記事を削除したときに画像を削除するためには、全ての画像を一つずつ全て削除しないといけない
+    // NOTE: 記事を削除したときに画像を削除するためには、全ての画像を一つずつ全て削除しないといけない
     const updateConfirm = confirm('削除します');
 
     if (!updateConfirm) return;
 
     await deletePostService(id, idToken);
 
-    // NOTE: もしかしたら、Reload する必要があるかもしれない
+    // TODO: STG環境で確認する。もしかしたら、Reload する必要があるかもしれない
     router.push('/edit');
   }, [draftPost, router]);
 
