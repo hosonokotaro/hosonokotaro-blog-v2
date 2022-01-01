@@ -82,7 +82,7 @@ export const handlers = [
 
   // NOTE: ここでは Token の有無は確認していないので、Request header を確認すること
 
-  rest.post(`${baseURL}/post/createpost`, (req, res, ctx) => {
+  rest.post(`${baseURL}/v2/post/createpost`, (req, res, ctx) => {
     if (isObjectEmpty(req.body)) {
       return res(ctx.status(400), ctx.json({}));
     }
