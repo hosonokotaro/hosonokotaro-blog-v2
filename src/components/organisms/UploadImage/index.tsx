@@ -35,7 +35,11 @@ const UploadImage: VFC<Props> = ({
         callbackSetImage={callbackSetImage}
         handleUpload={handleUpload}
       />
-      <UploadFileList imagePathList={imagePathList} deleteImage={deleteImage} />
+      <UploadFileList
+        imagePathList={imagePathList}
+        marginTopSize="20px"
+        deleteImage={deleteImage}
+      />
     </ContentBox>
   );
 };
