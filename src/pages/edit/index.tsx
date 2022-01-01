@@ -4,33 +4,30 @@ import ContentBox from '@/atoms/ContentBox';
 import ErrorMessage from '@/atoms/ErrorMessage';
 import PageLayout from '@/atoms/PageLayout';
 import Spinner from '@/atoms/Spinner';
-import Title from '@/atoms/Title';
 import Layout from '@/layout';
+import CreatePost from '@/organisms/CreatePost';
 import Login from '@/organisms/Login';
-import TitleLink from '@/organisms/TitleLink';
+import TitleList from '@/organisms/TitleList';
+import useCreatePost from '~/customHooks/useCreatePost';
 import useSession from '~/customHooks/useSession';
 import useTitleList from '~/customHooks/useTitleList';
 
 const Edit: VFC = () => {
   const { idToken, login, logout, userId } = useSession();
+  const { title, hasTitle, onTitleChanged, handleSubmit } = useCreatePost();
   const { titleList, isLoading, isError } = useTitleList(idToken);
 
   return (
     <>
       <Layout title="全記事一覧" linkPath="/edit" isPrivate>
         <PageLayout tagName="article">
-          <Title text="全記事一覧" />
-          {titleList &&
-            titleList.map(({ id, title, release, createDate }) => (
-              <TitleLink
-                key={id}
-                postId={id}
-                title={title}
-                release={release}
-                createDate={createDate}
-                isEditPost
-              />
-            ))}
+          <CreatePost
+            title={title}
+            hasTitle={hasTitle}
+            onTitleChanged={onTitleChanged}
+            handleSubmit={handleSubmit}
+          />
+          <TitleList titleList={titleList} isEditPost />
           {isLoading && (
             <ContentBox marginTopSize="40px">
               <Spinner />

@@ -9,21 +9,21 @@ import Title from '@/atoms/Title';
 
 type Props = {
   title: string;
-  handleSubmit: () => void;
+  hasTitle: boolean;
   onTitleChanged: (e: ChangeEvent<HTMLInputElement>) => void;
-  canSaveNewPost: boolean;
+  handleSubmit: () => void;
 };
 
 const CreatePost: VFC<Props> = ({
   title,
-  handleSubmit,
+  hasTitle,
   onTitleChanged,
-  canSaveNewPost,
+  handleSubmit,
 }) => {
   const groupName = 'postTitle';
 
   return (
-    <section>
+    <ContentBox tagName="section">
       <Title text="記事の新規作成" />
       <ContentBox marginTopSize="20px">
         <form onSubmit={(event) => event.preventDefault()}>
@@ -38,12 +38,12 @@ const CreatePost: VFC<Props> = ({
             <Button
               text="記事を準備する"
               handleClick={handleSubmit}
-              disabled={!canSaveNewPost}
+              disabled={!hasTitle}
             />
           </ContentBox>
         </form>
       </ContentBox>
-    </section>
+    </ContentBox>
   );
 };
 
