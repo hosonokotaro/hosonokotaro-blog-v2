@@ -5,7 +5,7 @@ import ContentBox from '@/atoms/ContentBox';
 import InputTextInline from '@/atoms/InputTextInline';
 import Spinner from '@/atoms/Spinner';
 import LoadingImage from '@/molecules/LoadingImage';
-import useUploadFileItem from '~/customHooks/useUploadFileItem';
+import useCopyClipboard from '~/customHooks/useCopyClipboard';
 
 import { ItemWrapper } from './styledIndex';
 
@@ -27,7 +27,7 @@ const UploadFileList: VFC<Props> = ({
 }) => {
   const [isShow, setIsShow] = useState(false);
 
-  const { copyClipboard, inputRef } = useUploadFileItem();
+  const { copyClipboard, inputRef } = useCopyClipboard();
 
   // HACK: imagePathList が取得できているのにも関わらずレンダリングがされないので、仕方なく wait をかけてレンダリングを遅らせている
   useEffect(() => {
