@@ -66,7 +66,6 @@ const useEditPost = (props: Post | undefined) => {
       release: draftPost.release,
     });
 
-    // TODO: STG環境で確認する。もしかしたら、Reload する必要があるかもしれない
     router.push('/edit');
   }, [draftPost, router]);
 
@@ -85,7 +84,6 @@ const useEditPost = (props: Post | undefined) => {
 
     await deletePostService(id, idToken);
 
-    // TODO: STG環境で確認する。もしかしたら、Reload する必要があるかもしれない
     router.push('/edit');
   }, [draftPost, router]);
 
