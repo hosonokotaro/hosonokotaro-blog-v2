@@ -2,14 +2,17 @@ import { ReactNode, VFC } from 'react';
 
 import { MarginTopSize, StyledContentBox, TextAlign } from './styledIndex';
 
-interface Props {
+type TagName = 'div' | 'article' | 'section';
+
+type Props = {
   children: ReactNode;
   isBetween?: boolean;
   marginTopSize?: MarginTopSize;
   textAlign?: TextAlign;
   isBoxCenter?: boolean;
   isCard?: boolean;
-}
+  tagName?: TagName;
+};
 
 const ContentBox: VFC<Props> = ({
   children,
@@ -18,6 +21,7 @@ const ContentBox: VFC<Props> = ({
   textAlign = 'left',
   isBoxCenter = false,
   isCard = false,
+  tagName = 'div',
 }) => {
   return (
     <StyledContentBox
@@ -26,6 +30,7 @@ const ContentBox: VFC<Props> = ({
       textAlign={textAlign}
       isBoxCenter={isBoxCenter}
       isCard={isCard}
+      as={tagName}
     >
       {children}
     </StyledContentBox>
