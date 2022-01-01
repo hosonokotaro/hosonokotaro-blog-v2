@@ -16,6 +16,13 @@ import formatDate from '~/utility/formatDate';
 export const getStaticPaths: GetStaticPaths = async () => {
   const titleList = await getTitleList();
 
+  if (!titleList) {
+    return {
+      paths: [],
+      fallback: false,
+    };
+  }
+
   return {
     paths: titleList.map(({ id }) => ({ params: { id } })),
     // TODO: ISR をするなら fallback の設定が必要
