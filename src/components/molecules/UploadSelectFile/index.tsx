@@ -2,6 +2,7 @@ import { ComponentProps, Dispatch, SetStateAction, VFC } from 'react';
 
 import Button from '@/atoms/Button';
 import ContentBox from '@/atoms/ContentBox';
+import InputFile from '@/atoms/InputFile';
 import TextBox from '@/atoms/TextBox';
 import WrappedImage from '@/atoms/WrappedImage';
 
@@ -24,11 +25,10 @@ const UploadSelectFile: VFC<Props> = ({
 }) => {
   return (
     <ContentBox marginTopSize={wrappedMarginTopSize}>
-      <input
-        type="file"
-        onChange={(e) => {
-          if (e.target.files === null) return;
-          callbackSetImage(e.target.files[0]);
+      <InputFile
+        handleChange={(event) => {
+          if (event.target.files === null) return;
+          callbackSetImage(event.target.files[0]);
         }}
       />
       <ContentBox marginTopSize={marginTopSize}>

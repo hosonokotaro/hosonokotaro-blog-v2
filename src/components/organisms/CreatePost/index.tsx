@@ -7,14 +7,12 @@ import InputTextInline from '@/atoms/InputTextInline';
 import TextLabel from '@/atoms/TextLabel';
 import Title from '@/atoms/Title';
 
-interface Props {
+type Props = {
   title: string;
   handleSubmit: () => void;
   onTitleChanged: (e: ChangeEvent<HTMLInputElement>) => void;
   canSaveNewPost: boolean;
-}
-
-const groupName = 'postTitle';
+};
 
 const CreatePost: VFC<Props> = ({
   title,
@@ -22,6 +20,8 @@ const CreatePost: VFC<Props> = ({
   onTitleChanged,
   canSaveNewPost,
 }) => {
+  const groupName = 'postTitle';
+
   return (
     <section>
       <Title text="記事の新規作成" />
