@@ -25,8 +25,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths: titleList.map(({ id }) => ({ params: { id } })),
-    // TODO: ISR をするなら fallback の設定が必要
-    fallback: false,
+    fallback: 'blocking',
   };
 };
 
@@ -35,16 +34,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const { id } = context.params as unknown as PostType;
   const post = await getPost(id);
 
-  if (!post) {
-    return {
-      props: {},
-    };
-  }
-
   return {
     props: {
       ...post,
     },
+    revalidate: 10,
   };
 };
 
