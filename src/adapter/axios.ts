@@ -8,4 +8,8 @@ const axiosInstance = axios.create({
   responseType: 'json',
 });
 
+export const isAxiosError = (error: unknown) => {
+  return axios.isAxiosError(error);
+};
+
 export default axiosInstance;

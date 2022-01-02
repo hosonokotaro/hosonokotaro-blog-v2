@@ -19,7 +19,7 @@ const InputCheckBox: VFC<Partial<Props>> = ({
     <StyledInputCheckBox
       id={id}
       name={name}
-      checked={checked}
+      defaultChecked={checked}
       onChange={handleChange}
     />
   );

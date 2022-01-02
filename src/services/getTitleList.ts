@@ -1,8 +1,8 @@
-import axios from '~/adapter/axios';
+import axios, { isAxiosError } from '~/adapter/axios';
 
 const endpoint = {
-  default: `/get/titlelist`,
-  private: `/get/titlelist?private=enabled`,
+  default: `/get/titlelist?is_unixtime_format=enabled`,
+  private: `/get/titlelist?is_unixtime_format=enabled&private=enabled`,
 };
 
 export type TitleDate = {
@@ -14,21 +14,21 @@ export type TitleDate = {
 
 export type Target = keyof typeof endpoint;
 
-const getTitleList = async (target: Target = 'default', idToken?: string) => {
-  let headers: { Authorization?: string } = {};
-
-  if (target === 'private' && idToken) {
-    headers = { Authorization: `Bearer ${idToken}` };
-  }
-
+const getTitleList = async (idToken?: string) => {
   try {
-    const { data } = await axios.get<TitleDate[]>(endpoint[target], {
-      headers,
-    });
+    const { data } = await axios.get<TitleDate[]>(
+      endpoint[idToken ? 'private' : 'default'],
+      idToken ? { headers: { Authorization: `Bearer ${idToken}` } } : {}
+    );
 
     return data;
   } catch (error) {
-    console.log(error);
+    if (isAxiosError(error)) {
+      console.log(error);
+      return;
+    }
+
+    // NOTE: このエラーが発生する状況が想定できない
     throw error;
   }
 };

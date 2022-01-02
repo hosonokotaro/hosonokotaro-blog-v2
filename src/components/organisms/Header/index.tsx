@@ -1,6 +1,5 @@
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { useEffect, VFC } from 'react';
+import { VFC } from 'react';
 
 import SiteTitle from '@/atoms/SiteTitle';
 
@@ -11,12 +10,6 @@ interface Props {
 }
 
 const Header: VFC<Props> = ({ linkPath = '/' }) => {
-  const router = useRouter();
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [router.pathname]);
-
   return (
     <StyledHeaderWrapper>
       <StyledHeader>

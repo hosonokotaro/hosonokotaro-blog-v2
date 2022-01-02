@@ -9,7 +9,14 @@ interface Props {
 }
 
 const WrappedImage: VFC<Props> = ({ src, alt = 'image', handleLoad }) => {
-  return <StyledWrappedImage src={src} alt={alt} onLoad={handleLoad} />;
+  return (
+    <StyledWrappedImage
+      src={src}
+      alt={alt}
+      loading="lazy"
+      onLoad={handleLoad}
+    />
+  );
 };
 
 export default WrappedImage;

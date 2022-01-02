@@ -6,11 +6,20 @@ type TagName = 'div' | 'article' | 'section';
 
 interface Props {
   tagName?: TagName;
+  isMinHeight?: boolean;
   children: ReactNode;
 }
 
-const PageLayout: VFC<Props> = ({ tagName = 'div', children }) => {
-  return <StyledPageLayout as={tagName}>{children}</StyledPageLayout>;
+const PageLayout: VFC<Props> = ({
+  tagName = 'div',
+  isMinHeight = true,
+  children,
+}) => {
+  return (
+    <StyledPageLayout as={tagName} isMinHeight={isMinHeight}>
+      {children}
+    </StyledPageLayout>
+  );
 };
 
 export default PageLayout;

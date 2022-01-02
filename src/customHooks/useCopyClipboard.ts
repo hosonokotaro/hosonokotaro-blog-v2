@@ -1,6 +1,6 @@
 import { useCallback, useRef } from 'react';
 
-const useUploadFileItem = () => {
+const useCopyClipboard = () => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const copyClipboard = useCallback(() => {
@@ -15,4 +15,4 @@ const useUploadFileItem = () => {
   return { copyClipboard, inputRef };
 };
 
-export default useUploadFileItem;
+export default useCopyClipboard;

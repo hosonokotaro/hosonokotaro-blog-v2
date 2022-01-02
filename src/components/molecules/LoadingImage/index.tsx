@@ -23,14 +23,14 @@ const LoadingImage: VFC<Props> = ({ src, alt = 'image' }) => {
   }, []);
 
   return (
-    <>
+    <div>
       {isLoading && <Spinner />}
       <WrappedImage
         src={src}
         alt={alt}
         handleLoad={() => setIsLoading(false)}
       />
-    </>
+    </div>
   );
 };
 

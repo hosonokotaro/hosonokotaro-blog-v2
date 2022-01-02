@@ -10,15 +10,22 @@ import Layout from '@/layout';
 import Markdown from '@/organisms/Markdown';
 import getPost, { Post as PostType } from '~/services/getPost';
 import getTitleList from '~/services/getTitleList';
+import formatDate from '~/utility/formatDate';
 
 // NOTE: Page list を取得して、build 時に静的ファイルを生成する
 export const getStaticPaths: GetStaticPaths = async () => {
   const titleList = await getTitleList();
 
+  if (!titleList) {
+    return {
+      paths: [],
+      fallback: false,
+    };
+  }
+
   return {
     paths: titleList.map(({ id }) => ({ params: { id } })),
-    // TODO: ISR をするなら fallback の設定が必要
-    fallback: false,
+    fallback: 'blocking',
   };
 };
 
@@ -31,6 +38,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     props: {
       ...post,
     },
+    revalidate: 10,
   };
 };
 
@@ -71,7 +79,7 @@ const Post: VFC<PostType> = ({ id, title, createDate, content }) => {
       <Layout title={title}>
         <PageLayout tagName="section">
           <Title text={title} />
-          <ContentBox marginTopSize="20px">{createDate}</ContentBox>
+          <ContentBox marginTopSize="20px">{formatDate(createDate)}</ContentBox>
           <ContentBox marginTopSize="80px">
             <Markdown content={content} />
           </ContentBox>

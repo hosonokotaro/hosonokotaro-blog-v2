@@ -38,6 +38,7 @@ export const getUid = () => {
   }
 };
 
+// NOTE: useSession で利用する
 export const stateChanged = (event: () => void) => {
   onAuthStateChanged(auth, () => event());
 };

@@ -8,6 +8,10 @@ export default {
   title: 'components/molecules/UploadFileList',
   argTypes: {
     deleteImage: { action: 'deleteImage' },
+    marginTopSize: {
+      options: ['0px', '10px', '20px', '40px', '80px'],
+      control: { type: 'radio' },
+    },
   },
 } as Meta;
 
@@ -32,4 +36,5 @@ Default.args = {
       fileName: '300/400',
     },
   ],
+  marginTopSize: '20px',
 };

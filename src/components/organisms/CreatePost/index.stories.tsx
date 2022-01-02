@@ -26,7 +26,7 @@ const Template: Story<Props> = () => {
       title={createTitle}
       handleSubmit={action(createTitle)}
       onTitleChanged={onTitleChanged}
-      canSaveNewPost={!!createTitle}
+      hasTitle={Boolean(createTitle)}
     />
   );
 };

@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction, VFC } from 'react';
 
+import ContentBox from '@/atoms/ContentBox';
 import Title from '@/atoms/Title';
 import UploadFileList from '@/molecules/UploadFileList';
 import UploadSelectFile from '@/molecules/UploadSelectFile';
@@ -25,15 +26,21 @@ const UploadImage: VFC<Props> = ({
   handleUpload,
 }) => {
   return (
-    <>
+    <ContentBox marginTopSize="40px">
       <Title text="画像" rank="h3" />
       <UploadSelectFile
         image={image}
+        wrappedMarginTopSize="20px"
+        marginTopSize="10px"
         callbackSetImage={callbackSetImage}
         handleUpload={handleUpload}
       />
-      <UploadFileList imagePathList={imagePathList} deleteImage={deleteImage} />
-    </>
+      <UploadFileList
+        imagePathList={imagePathList}
+        marginTopSize="20px"
+        deleteImage={deleteImage}
+      />
+    </ContentBox>
   );
 };
 
