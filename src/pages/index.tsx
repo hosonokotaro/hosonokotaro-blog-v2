@@ -13,6 +13,7 @@ export const getStaticProps = async () => {
     props: {
       titleList,
     },
+    revalidate: 10,
   };
 };
 
