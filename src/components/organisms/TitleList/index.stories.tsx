@@ -6,6 +6,16 @@ import TitleList from './';
 export default {
   component: TitleList,
   title: 'components/organisms/TitleList',
+  argTypes: {
+    contentMarginTop: {
+      options: ['0px', '10px', '20px', '40px', '80px'],
+      control: { type: 'select' },
+    },
+    listMarginTop: {
+      options: ['0px', '10px', '20px', '40px', '80px'],
+      control: { type: 'select' },
+    },
+  },
 } as Meta;
 
 type Props = ComponentProps<typeof TitleList>;
@@ -38,4 +48,6 @@ Default.args = {
     },
   ],
   isEditPost: false,
+  contentMarginTop: '0px',
+  listMarginTop: '0px',
 };
