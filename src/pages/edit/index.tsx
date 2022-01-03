@@ -27,7 +27,7 @@ const Edit: VFC = () => {
             onTitleChanged={onTitleChanged}
             handleSubmit={handleSubmit}
           />
-          <TitleList titleList={titleList} isEditPost />
+          <TitleList titleList={titleList} contentMarginTop="80px" isEditPost />
           {isLoading && (
             <ContentBox marginTopSize="40px">
               <Spinner />

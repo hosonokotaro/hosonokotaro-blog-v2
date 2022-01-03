@@ -23,7 +23,7 @@ const Top: VFC<InferGetStaticPropsType<typeof getStaticProps>> = ({
   return (
     <Layout>
       <PageLayout tagName="article">
-        <TitleList titleList={titleList} />
+        <TitleList titleList={titleList} listMarginTop="80px" />
       </PageLayout>
     </Layout>
   );
