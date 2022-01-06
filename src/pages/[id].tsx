@@ -76,7 +76,7 @@ const Post: VFC<PostType> = ({ id, title, createDate, content }) => {
       <Script id="json-ld" type="application/ld+json">
         {JSON.stringify(jsonLd)}
       </Script>
-      <Layout title={title}>
+      <Layout title={title} pagePath={`/${id}`}>
         <PageLayout tagName="section">
           <Title text={title} />
           <ContentBox marginTopSize="20px">{formatDate(createDate)}</ContentBox>

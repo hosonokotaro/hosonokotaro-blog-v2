@@ -9,6 +9,7 @@ type Props = {
   title?: string;
   isPrivate?: boolean;
   linkPath?: string;
+  pagePath?: string;
   children: ReactNode;
 };
 
@@ -21,6 +22,7 @@ const Layout: VFC<Props> = ({
   title = '',
   isPrivate = false,
   linkPath = '/',
+  pagePath = '',
   children,
 }) => {
   return (
@@ -41,6 +43,7 @@ const Layout: VFC<Props> = ({
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
         {isPrivate && <meta name="robots" content="noindex" />}
+        {!isPrivate && <link rel="canonical" href={domain + pagePath} />}
 
         <title>
           {title && `${title} | `}
