@@ -25,11 +25,13 @@ const Layout: VFC<Props> = ({
   pagePath = '',
   children,
 }) => {
+  const fixDescription = pagePath ? title : description;
+
   return (
     <>
       <Head>
         <meta charSet="UTF-8" />
-        <meta content={description} name="description" />
+        <meta content={fixDescription} name="description" />
         <meta content="summary_large_image" name="twitter:card" />
         <meta content="@hosono_fe" name="twitter:site" />
         <meta
@@ -39,7 +41,7 @@ const Layout: VFC<Props> = ({
         <meta content="website" property="og:type" />
         <meta content={domain} property="og:url" />
         <meta content={`${domain}/static/media/og.png`} property="og:image" />
-        <meta content={description} property="og:description" />
+        <meta content={fixDescription} property="og:description" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
         {isPrivate && <meta name="robots" content="noindex" />}
