@@ -8,6 +8,12 @@ export const handlers = [
   rest.get(`${baseURL}/get/titlelist`, (req, res, ctx) => {
     const data = [
       {
+        id: 'D10nUA0mnIUnzRNAL9tx',
+        title: '画像投稿テスト',
+        release: false,
+        createDate: '1641771785795',
+      },
+      {
         id: 'PrivatePostData',
         title: '準備中の記事',
         release: false,
@@ -37,6 +43,19 @@ export const handlers = [
   // FIXME: /get/post って変な名前なので直すべき、言葉の使い方が曖昧。今後、API をバージョニングする時に名前を変更する
   rest.get(`${baseURL}/get/post/:postId`, (req, res, ctx) => {
     const { postId } = req.params;
+
+    if (postId === 'D10nUA0mnIUnzRNAL9tx') {
+      return res(
+        ctx.status(200),
+        ctx.json({
+          id: 'D10nUA0mnIUnzRNAL9tx',
+          title: '【テスト】画像投稿テスト',
+          content: 'a',
+          release: false,
+          createDate: '1641771785795',
+        })
+      );
+    }
 
     if (postId === 'PrivatePostData') {
       return res(
