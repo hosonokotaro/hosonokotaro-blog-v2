@@ -45,6 +45,7 @@ const UploadFileList: VFC<Props> = ({
           {uploadImageList.map((item, index) => {
             return (
               <ItemWrapper key={index}>
+                {/* FIXME: item.fullPath が食い違ってしまうことがあるので原因を追求したい */}
                 <InputTextInline
                   refObject={inputRef}
                   defaultValue={`![alt](${item.fullPath})`}
