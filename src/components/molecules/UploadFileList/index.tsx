@@ -25,7 +25,7 @@ const UploadFileList: VFC<Props> = ({
   const { copyClipboard, inputRef } = useCopyClipboard();
 
   useEffect(() => {
-    if (!uploadImageList.length) {
+    if (!uploadImageList) {
       setIsLoaded(false);
       return;
     }

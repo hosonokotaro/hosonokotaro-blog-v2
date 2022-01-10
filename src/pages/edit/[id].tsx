@@ -26,8 +26,13 @@ const EditPost: VFC = () => {
 
   const { idToken, login, logout, userId } = useSession();
   const { post, isLoading, isError } = usePost(id, idToken);
-  const { imagePathList, deleteImage, imageFile, setImageFile, handleUpload } =
-    useUploadFileList(id);
+  const {
+    uploadImageList,
+    deleteImage,
+    imageFile,
+    setImageFile,
+    handleUpload,
+  } = useUploadFileList(id);
 
   const {
     draftPost,
@@ -79,7 +84,7 @@ const EditPost: VFC = () => {
               />
             </ContentBox>
             <UploadImage
-              uploadImageList={imagePathList}
+              uploadImageList={uploadImageList}
               deleteImage={deleteImage}
               image={imageFile}
               callbackSetImage={setImageFile}
