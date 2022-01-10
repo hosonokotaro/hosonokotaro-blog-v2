@@ -3,7 +3,6 @@ import { ComponentProps, Dispatch, SetStateAction, VFC } from 'react';
 import Button from '@/atoms/Button';
 import ContentBox from '@/atoms/ContentBox';
 import InputFile from '@/atoms/InputFile';
-import TextBox from '@/atoms/TextBox';
 import WrappedImage from '@/atoms/WrappedImage';
 
 type MarginTopSize = ComponentProps<typeof ContentBox>['marginTopSize'];
@@ -33,11 +32,6 @@ const UploadSelectFile: VFC<Props> = ({
       />
       <ContentBox marginTopSize={marginTopSize}>
         {image && <WrappedImage src={window.URL.createObjectURL(image)} />}
-        {!image && (
-          <TextBox>
-            画像を選択してください ※アップロードするとページがリロードされます
-          </TextBox>
-        )}
       </ContentBox>
       <ContentBox marginTopSize={marginTopSize}>
         <Button

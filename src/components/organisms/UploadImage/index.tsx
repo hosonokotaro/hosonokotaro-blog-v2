@@ -1,17 +1,12 @@
-import { Dispatch, SetStateAction, VFC } from 'react';
+import { ComponentProps, Dispatch, SetStateAction, VFC } from 'react';
 
 import ContentBox from '@/atoms/ContentBox';
 import Title from '@/atoms/Title';
 import UploadFileList from '@/molecules/UploadFileList';
 import UploadSelectFile from '@/molecules/UploadSelectFile';
 
-type ImagePath = {
-  fullPath: string;
-  fileName: string;
-};
-
 interface Props {
-  imagePathList: ImagePath[];
+  uploadImageList: ComponentProps<typeof UploadFileList>['uploadImageList'];
   deleteImage: (fileName: string) => void;
   image: File | null;
   callbackSetImage: Dispatch<SetStateAction<File | null>>;
@@ -19,7 +14,7 @@ interface Props {
 }
 
 const UploadImage: VFC<Props> = ({
-  imagePathList,
+  uploadImageList,
   deleteImage,
   image,
   callbackSetImage,
@@ -36,7 +31,7 @@ const UploadImage: VFC<Props> = ({
         handleUpload={handleUpload}
       />
       <UploadFileList
-        imagePathList={imagePathList}
+        uploadImageList={uploadImageList}
         marginTopSize="20px"
         deleteImage={deleteImage}
       />

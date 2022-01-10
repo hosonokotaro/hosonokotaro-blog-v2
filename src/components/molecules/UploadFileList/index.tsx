@@ -6,48 +6,46 @@ import InputTextInline from '@/atoms/InputTextInline';
 import Spinner from '@/atoms/Spinner';
 import LoadingImage from '@/molecules/LoadingImage';
 import useCopyClipboard from '~/customHooks/useCopyClipboard';
+import type { UploadImage } from '~/useCase/uploadImage';
 
 import { ItemWrapper } from './styledIndex';
 
-type ImagePath = {
-  fullPath: string;
-  fileName: string;
-};
-
 interface Props {
-  imagePathList: ImagePath[];
+  uploadImageList: UploadImage[];
   marginTopSize: ComponentProps<typeof ContentBox>['marginTopSize'];
   deleteImage: (fileName: string) => void;
 }
 
 const UploadFileList: VFC<Props> = ({
-  imagePathList,
+  uploadImageList,
   marginTopSize,
   deleteImage,
 }) => {
-  const [isShow, setIsShow] = useState(false);
-
+  const [isLoaded, setIsLoaded] = useState(false);
   const { copyClipboard, inputRef } = useCopyClipboard();
 
-  // HACK: imagePathList が取得できているのにも関わらずレンダリングがされないので、仕方なく wait をかけてレンダリングを遅らせている
   useEffect(() => {
-    setTimeout(() => {
-      setIsShow(true);
-    }, 1000);
-  }, []);
+    if (!uploadImageList) {
+      setIsLoaded(false);
+      return;
+    }
+
+    setIsLoaded(true);
+  }, [uploadImageList]);
 
   return (
     <div>
-      {!isShow && (
+      {!isLoaded && (
         <ContentBox textAlign="center">
           <Spinner />
         </ContentBox>
       )}
-      {isShow && (
+      {isLoaded && (
         <ContentBox isBetween>
-          {imagePathList.map((item, index) => {
+          {uploadImageList.map((item, index) => {
             return (
               <ItemWrapper key={index}>
+                {/* FIXME: item.fullPath が食い違ってしまうことがあるので原因を追求したい */}
                 <InputTextInline
                   refObject={inputRef}
                   defaultValue={`![alt](${item.fullPath})`}

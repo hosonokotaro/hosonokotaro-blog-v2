@@ -23,7 +23,7 @@ const Template: Story<Props> = (args) => {
 export const Default = Template.bind({});
 
 Default.args = {
-  imagePathList: [
+  uploadImageList: [
     {
       fullPath: 'https://picsum.photos/800/600',
       fileName: '800/600',
