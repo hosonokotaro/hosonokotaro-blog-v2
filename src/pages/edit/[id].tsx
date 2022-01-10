@@ -79,7 +79,7 @@ const EditPost: VFC = () => {
               />
             </ContentBox>
             <UploadImage
-              imagePathList={imagePathList}
+              uploadImageList={imagePathList}
               deleteImage={deleteImage}
               image={imageFile}
               callbackSetImage={setImageFile}

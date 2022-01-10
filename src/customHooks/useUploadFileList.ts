@@ -7,31 +7,27 @@ import {
   getReferenceList,
   uploadFile,
 } from '~/services/storage';
-
-type ImagePath = {
-  fullPath: string;
-  fileName: string;
-};
+import type { UploadImage } from '~/useCase/uploadImage';
 
 type PostId = string | string[] | undefined;
 
 const useUploadFileList = (postId: PostId) => {
-  const [imagePathList, setImagePathList] = useState<ImagePath[]>([]);
+  const [imagePathList, setImagePathList] = useState<UploadImage[]>([]);
   const [imageFile, setImageFile] = useState<File | null>(null);
 
   const getReferenceListCallback = useCallback(async () => {
     if (!postId || Array.isArray(postId)) return;
 
-    await getReferenceList(getReference(`${postId}`)).then(({ items }) => {
-      const tempImagePathList: ImagePath[] = [];
+    const { items } = await getReferenceList(getReference(`${postId}`));
+    let tempImagePathList: UploadImage[] = [];
 
-      items.map((referense) => {
-        getFileURL(referense).then((fullPath) => {
-          tempImagePathList.push({ fullPath, fileName: referense.name });
-        });
-
-        setImagePathList(tempImagePathList);
-      });
+    items.map(async (referense) => {
+      const fullPath = await getFileURL(referense);
+      tempImagePathList = [
+        ...tempImagePathList,
+        { fullPath, fileName: referense.name },
+      ];
+      setImagePathList(tempImagePathList);
     });
   }, [postId]);
 
@@ -51,9 +47,8 @@ const useUploadFileList = (postId: PostId) => {
     if (!imageFile || !postId || Array.isArray(postId)) return;
 
     await uploadFile(getReference(`${postId}/${imageFile.name}`), imageFile);
-    setImageFile(null);
-
     await getReferenceListCallback();
+    setImageFile(null);
   }, [getReferenceListCallback, imageFile, postId]);
 
   useEffect(() => {
