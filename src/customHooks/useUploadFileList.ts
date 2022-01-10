@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router';
 import { useCallback, useEffect, useState } from 'react';
 
 import {
@@ -20,32 +19,6 @@ const useUploadFileList = (postId: PostId) => {
   const [imagePathList, setImagePathList] = useState<ImagePath[]>([]);
   const [imageFile, setImageFile] = useState<File | null>(null);
 
-  // HACK: upload 動作が他のサーバーとの通信のため、page を reload しないといけない
-  const router = useRouter();
-
-  const deleteImage = useCallback(
-    (fileName: string) => {
-      if (!postId || Array.isArray(postId)) return;
-
-      if (!confirm(`${fileName}を削除します`)) return;
-
-      deleteFile(getReference(`${postId}/${fileName}`)).then(() => {
-        router.reload();
-      });
-    },
-    [postId, router]
-  );
-
-  const handleUpload = useCallback(() => {
-    if (!imageFile || !postId || Array.isArray(postId)) return;
-
-    uploadFile(getReference(`${postId}/${imageFile.name}`), imageFile).then(
-      () => {
-        router.reload();
-      }
-    );
-  }, [imageFile, postId, router]);
-
   const getReferenceListCallback = useCallback(async () => {
     if (!postId || Array.isArray(postId)) return;
 
@@ -61,6 +34,27 @@ const useUploadFileList = (postId: PostId) => {
       });
     });
   }, [postId]);
+
+  const deleteImage = useCallback(
+    async (fileName: string) => {
+      if (!postId || Array.isArray(postId)) return;
+
+      if (!confirm(`${fileName}を削除します`)) return;
+
+      await deleteFile(getReference(`${postId}/${fileName}`));
+      await getReferenceListCallback();
+    },
+    [getReferenceListCallback, postId]
+  );
+
+  const handleUpload = useCallback(async () => {
+    if (!imageFile || !postId || Array.isArray(postId)) return;
+
+    await uploadFile(getReference(`${postId}/${imageFile.name}`), imageFile);
+    setImageFile(null);
+
+    await getReferenceListCallback();
+  }, [getReferenceListCallback, imageFile, postId]);
 
   useEffect(() => {
     getReferenceListCallback();
