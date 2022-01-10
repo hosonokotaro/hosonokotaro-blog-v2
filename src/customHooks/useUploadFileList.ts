@@ -12,22 +12,29 @@ import type { UploadImage } from '~/useCase/uploadImage';
 type PostId = string | string[] | undefined;
 
 const useUploadFileList = (postId: PostId) => {
-  const [imagePathList, setImagePathList] = useState<UploadImage[]>([]);
+  const [uploadImageList, setUploadImageList] = useState<UploadImage[]>([]);
   const [imageFile, setImageFile] = useState<File | null>(null);
 
   const getReferenceListCallback = useCallback(async () => {
     if (!postId || Array.isArray(postId)) return;
 
     const { items } = await getReferenceList(getReference(`${postId}`));
-    let tempImagePathList: UploadImage[] = [];
+    let tempUploadImageList: UploadImage[] = [];
+
+    if (!items.length) {
+      setUploadImageList([]);
+      return;
+    }
 
     items.map(async (referense) => {
       const fullPath = await getFileURL(referense);
-      tempImagePathList = [
-        ...tempImagePathList,
+
+      tempUploadImageList = [
+        ...tempUploadImageList,
         { fullPath, fileName: referense.name },
       ];
-      setImagePathList(tempImagePathList);
+
+      setUploadImageList(tempUploadImageList);
     });
   }, [postId]);
 
@@ -55,7 +62,13 @@ const useUploadFileList = (postId: PostId) => {
     getReferenceListCallback();
   }, [getReferenceListCallback]);
 
-  return { imagePathList, deleteImage, imageFile, setImageFile, handleUpload };
+  return {
+    uploadImageList,
+    deleteImage,
+    imageFile,
+    setImageFile,
+    handleUpload,
+  };
 };
 
 export default useUploadFileList;
