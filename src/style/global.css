@@ -1,10 +1,12 @@
+/* NOTE: Next.js の場合、/public/aaa ではなく、/aaa から path を指定する */
+
 /* roboto-regular - latin */
 @font-face {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
   src: local(''),
-    url('/public/static/fonts/roboto-v29-latin-regular.woff2') format('woff2');
+    url('/static/fonts/roboto-v29-latin-regular.woff2') format('woff2');
 }
 
 /* noto-sans-jp-regular - latin_japanese */
@@ -13,7 +15,7 @@
   font-style: normal;
   font-weight: 400;
   src: local(''),
-    url('/public/static/fonts/noto-sans-jp-v36-latin_japanese-regular.woff2')
+    url('/static/fonts/noto-sans-jp-v36-latin_japanese-regular.woff2')
       format('woff2');
 }
 
