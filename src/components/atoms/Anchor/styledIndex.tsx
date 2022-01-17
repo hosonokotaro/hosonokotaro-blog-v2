@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledAnchor = styled.a`
-  color: #f33;
+  color: #d33;
 
   &:after {
     font-size: 0.8rem;
@@ -10,5 +10,5 @@ export const StyledAnchor = styled.a`
 `;
 
 export const StyledLink = styled.a`
-  color: #f33;
+  color: #d33;
 `;

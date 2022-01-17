@@ -14,6 +14,8 @@ const WrappedImage: VFC<Props> = ({ src, alt = 'image', handleLoad }) => {
       src={src}
       alt={alt}
       loading="lazy"
+      width="1000"
+      height="1000"
       onLoad={handleLoad}
     />
   );
