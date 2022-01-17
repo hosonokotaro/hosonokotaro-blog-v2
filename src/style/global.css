@@ -7,6 +7,7 @@
   font-weight: 400;
   src: local(''),
     url('/static/fonts/roboto-v29-latin-regular.woff2') format('woff2');
+  font-display: swap;
 }
 
 /* noto-sans-jp-regular - latin_japanese */
@@ -17,6 +18,7 @@
   src: local(''),
     url('/static/fonts/noto-sans-jp-v36-latin_japanese-regular.woff2')
       format('woff2');
+  font-display: swap;
 }
 
 *,
