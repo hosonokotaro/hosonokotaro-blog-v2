@@ -45,6 +45,7 @@ const Layout: VFC<Props> = ({
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
         {isPrivate && <meta name="robots" content="noindex" />}
+        <link rel="icon" href="static/media/favicon.svg" type="image/svg+xml" />
         {!isPrivate && <link rel="canonical" href={domain + pagePath} />}
 
         <title>
