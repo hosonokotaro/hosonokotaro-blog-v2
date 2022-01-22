@@ -4,10 +4,10 @@ import { VFC } from 'react';
 import PageLayout from '@/atoms/PageLayout';
 import Layout from '@/layout';
 import TitleList from '@/organisms/TitleList';
-import getTitleList from '~/services/getTitleList';
+import getTitleList from '~/useCase/getTitleList';
 
 export const getStaticProps = async () => {
-  const titleList = await getTitleList();
+  const titleList = await getTitleList(false, false);
 
   return {
     props: {

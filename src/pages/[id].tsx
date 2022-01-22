@@ -9,7 +9,7 @@ import Title from '@/atoms/Title';
 import Layout from '@/layout';
 import Markdown from '@/organisms/Markdown';
 import getPost, { Post as PostType } from '~/services/getPost';
-import getTitleList from '~/services/getTitleList';
+import getTitleList from '~/useCase/getTitleList';
 import formatDate from '~/utility/formatDate';
 
 // NOTE: Page list を取得して、build 時に静的ファイルを生成する
