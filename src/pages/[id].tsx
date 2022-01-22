@@ -90,7 +90,7 @@ const Post: VFC<PostType> = ({ id, title, createDate, content }) => {
             <Markdown content={content} />
           </ContentBox>
           <ContentBox marginTopSize="80px">
-            <Anchor linkPath="/">記事一覧へ</Anchor>
+            <Anchor linkPath="/">新着記事一覧へ</Anchor>
           </ContentBox>
         </PageLayout>
       </Layout>

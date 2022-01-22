@@ -9,29 +9,33 @@ import TitleList from '@/organisms/TitleList';
 import getTitleList from '~/useCase/getTitleList';
 
 export const getStaticProps = async () => {
-  const titleList = await getTitleList(false, false);
+  const archiveTitleList = await getTitleList(false, true);
 
   return {
     props: {
-      titleList,
+      archiveTitleList,
     },
     revalidate: 10,
   };
 };
 
-const Top: VFC<InferGetStaticPropsType<typeof getStaticProps>> = ({
-  titleList,
+const Archive: VFC<InferGetStaticPropsType<typeof getStaticProps>> = ({
+  archiveTitleList,
 }) => {
   return (
-    <Layout>
+    <Layout title="過去の記事一覧" pagePath="/archive">
       <PageLayout tagName="article">
-        <TitleList titleList={titleList} listMarginTop="80px" />
+        <TitleList
+          titleName="過去の記事一覧"
+          titleList={archiveTitleList}
+          listMarginTop="80px"
+        />
         <ContentBox marginTopSize="80px">
-          <Anchor linkPath="/archive">過去の記事一覧へ</Anchor>
+          <Anchor linkPath="/">新着記事一覧へ</Anchor>
         </ContentBox>
       </PageLayout>
     </Layout>
   );
 };
 
-export default Top;
+export default Archive;
