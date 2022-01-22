@@ -1,7 +1,7 @@
 import useSWR from 'swr';
 
 import { IdToken } from '~/services/authentication';
-import getTitleList from '~/services/getTitleList';
+import getTitleList from '~/useCase/getTitleList';
 
 const useTitleList = (idToken: IdToken) => {
   const { data, error } = useSWR(idToken, getTitleList, {

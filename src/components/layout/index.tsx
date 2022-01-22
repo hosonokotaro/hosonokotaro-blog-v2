@@ -3,7 +3,7 @@ import { ReactNode, VFC } from 'react';
 
 import Footer from '@/atoms/Footer';
 import Header from '@/organisms/Header';
-import getDate from '~/utility/getDate';
+import getDateNow from '~/utility/getDate';
 
 type Props = {
   title?: string;
@@ -55,7 +55,7 @@ const Layout: VFC<Props> = ({
       </Head>
       <Header linkPath={linkPath} />
       {children}
-      <Footer year={getDate('year')} />
+      <Footer year={getDateNow('year')} />
     </>
   );
 };

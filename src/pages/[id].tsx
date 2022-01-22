@@ -9,7 +9,7 @@ import Title from '@/atoms/Title';
 import Layout from '@/layout';
 import Markdown from '@/organisms/Markdown';
 import getPost, { Post as PostType } from '~/services/getPost';
-import getTitleList from '~/services/getTitleList';
+import getTitleList from '~/useCase/getTitleList';
 import formatDate from '~/utility/formatDate';
 
 // NOTE: Page list を取得して、build 時に静的ファイルを生成する
@@ -90,7 +90,7 @@ const Post: VFC<PostType> = ({ id, title, createDate, content }) => {
             <Markdown content={content} />
           </ContentBox>
           <ContentBox marginTopSize="80px">
-            <Anchor linkPath="/">記事一覧へ</Anchor>
+            <Anchor linkPath="/">新着記事一覧へ</Anchor>
           </ContentBox>
         </PageLayout>
       </Layout>

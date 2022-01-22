@@ -8,6 +8,12 @@ export const handlers = [
   rest.get(`${baseURL}/get/titlelist`, (req, res, ctx) => {
     const data = [
       {
+        id: 'TestPostData2',
+        title: '2022年のテスト投稿',
+        release: true,
+        createDate: '1641320641000',
+      },
+      {
         id: 'D10nUA0mnIUnzRNAL9tx',
         title: '画像投稿テスト',
         release: false,
@@ -24,6 +30,12 @@ export const handlers = [
         title: 'SWR の useSWRImmutable を使う',
         release: true,
         createDate: '1634656164684',
+      },
+      {
+        id: 'TestPostData1',
+        title: '2020年のテスト投稿',
+        release: true,
+        createDate: '1604203113000',
       },
       {
         id: 'YrtBam2iH0XUNB4ucQVU',
