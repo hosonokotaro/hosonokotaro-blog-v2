@@ -1,7 +1,6 @@
 import { VFC } from 'react';
 import ReactMarkdown from 'react-markdown';
 
-import Anchor from '@/atoms/Anchor';
 import CodeBlock from '@/atoms/CodeBlock';
 import ContentBox from '@/atoms/ContentBox';
 import InlineCode from '@/atoms/InlineCode';
@@ -10,6 +9,7 @@ import TextItem from '@/atoms/TextItem';
 import TextList from '@/atoms/TextList';
 import Title from '@/atoms/Title';
 import LoadingImage from '@/molecules/LoadingImage';
+import MarkdownLink from '@/molecules/MarkdownLink';
 
 interface Props {
   content: string;
@@ -82,7 +82,18 @@ const Markdown: VFC<Props> = ({ content }) => {
           );
         },
         a({ href = '/', children }) {
-          return <Anchor linkPath={href}>{children}</Anchor>;
+          const icon = {
+            fileName: 'open_in_new_red_24dp.svg',
+            alt: '外部リンク',
+            size: '16',
+            sideMargin: '4',
+          } as const;
+
+          return (
+            <MarkdownLink linkPath={href} icon={icon}>
+              {children}
+            </MarkdownLink>
+          );
         },
       }}
     >

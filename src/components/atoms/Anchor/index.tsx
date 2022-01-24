@@ -1,19 +1,20 @@
 import Link from 'next/link';
 import { ReactNode, VFC } from 'react';
 
-import { StyledAnchor, StyledLink } from './styledIndex';
+import { StyledLink } from './styledIndex';
 
 interface Props {
   children: ReactNode;
   linkPath: string;
+  isExternalLink?: boolean;
 }
 
-const Anchor: VFC<Props> = ({ children, linkPath }) => {
-  if (linkPath.match(/^(http|https):\/\//)) {
+const Anchor: VFC<Props> = ({ children, linkPath, isExternalLink = false }) => {
+  if (isExternalLink) {
     return (
-      <StyledAnchor href={linkPath} target="_blank" rel="noopener noreferrer">
+      <StyledLink href={linkPath} target="_blank" rel="noopener noreferrer">
         {children}
-      </StyledAnchor>
+      </StyledLink>
     );
   }
 
