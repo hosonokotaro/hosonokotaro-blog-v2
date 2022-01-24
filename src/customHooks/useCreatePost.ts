@@ -26,7 +26,7 @@ const useCreatePost = () => {
 
     setTitle('');
 
-    // FIXME: 記事作成日時が API で生成されるため、ここで再検証せずには記事一覧を更新できない
+    // FIXME: 記事作成日時が API で生成されるため、ここで再検証せずには記事を更新できない
     mutate(idToken);
   }, [hasTitle, title, mutate]);
 
