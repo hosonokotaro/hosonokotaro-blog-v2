@@ -27,7 +27,7 @@ const Top: VFC<InferGetStaticPropsType<typeof getStaticProps>> = ({
       <PageLayout tagName="article">
         <TitleList titleList={titleList} listMarginTop="80px" />
         <ContentBox marginTopSize="80px">
-          <Anchor linkPath="/archive">過去の記事一覧へ</Anchor>
+          <Anchor linkPath="/archive">過去の記事へ</Anchor>
         </ContentBox>
       </PageLayout>
     </Layout>

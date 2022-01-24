@@ -23,15 +23,15 @@ const Archive: VFC<InferGetStaticPropsType<typeof getStaticProps>> = ({
   archiveTitleList,
 }) => {
   return (
-    <Layout title="過去の記事一覧" pagePath="/archive">
+    <Layout title="過去の記事" pagePath="/archive">
       <PageLayout tagName="article">
         <TitleList
-          titleName="過去の記事一覧"
+          titleName="過去の記事"
           titleList={archiveTitleList}
           listMarginTop="80px"
         />
         <ContentBox marginTopSize="80px">
-          <Anchor linkPath="/">新着記事一覧へ</Anchor>
+          <Anchor linkPath="/">新着記事へ</Anchor>
         </ContentBox>
       </PageLayout>
     </Layout>

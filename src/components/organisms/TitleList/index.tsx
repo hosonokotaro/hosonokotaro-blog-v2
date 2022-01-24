@@ -16,7 +16,7 @@ type Props = {
 };
 
 const TitleList: VFC<Props> = ({
-  titleName = '新着記事一覧',
+  titleName = '新着記事',
   titleList,
   isEditPost = false,
   contentMarginTop = '0px',
