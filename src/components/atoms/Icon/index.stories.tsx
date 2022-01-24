@@ -21,7 +21,7 @@ const Template: Story<Props> = (args) => <Icon {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
-  src: '/static/media/icons/open_in_new_red_24dp.svg',
+  fileName: 'open_in_new_red_24dp.svg',
   alt: 'icon',
   size: '16',
 };
