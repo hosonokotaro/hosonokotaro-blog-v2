@@ -19,7 +19,7 @@ const Edit: VFC = () => {
 
   return (
     <>
-      <Layout title="全記事一覧" linkPath="/edit" isPrivate>
+      <Layout title="全記事" linkPath="/edit" isPrivate>
         <PageLayout tagName="article">
           <CreatePost
             title={title}
@@ -35,7 +35,7 @@ const Edit: VFC = () => {
           )}
           {isError && (
             <ContentBox marginTopSize="40px">
-              <ErrorMessage text="記事一覧が取得できません" />
+              <ErrorMessage text="記事が取得できません" />
             </ContentBox>
           )}
         </PageLayout>
