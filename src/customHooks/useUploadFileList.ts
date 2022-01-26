@@ -26,12 +26,12 @@ const useUploadFileList = (postId: PostId) => {
       return;
     }
 
-    items.map(async (referense) => {
-      const fullPath = await getFileURL(referense);
+    items.map(async (reference) => {
+      const fullPath = await getFileURL(reference);
 
       tempUploadImageList = [
         ...tempUploadImageList,
-        { fullPath, fileName: referense.name },
+        { fullPath, fileName: reference.name },
       ];
 
       setUploadImageList(tempUploadImageList);
