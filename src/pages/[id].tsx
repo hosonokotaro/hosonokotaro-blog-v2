@@ -14,7 +14,7 @@ import formatDate from '~/utility/formatDate';
 
 // NOTE: Page list を取得して、build 時に静的ファイルを生成する
 export const getStaticPaths: GetStaticPaths = async () => {
-  const titleList = await getTitleList();
+  const titleList = await getTitleList(true, false, '');
 
   if (!titleList) {
     return {
