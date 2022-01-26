@@ -15,3 +15,5 @@ storybook-static
 npm-debug.log*
 
 public/mockServiceWorker.js
+public/robots.txt
+public/sitemap.xml
