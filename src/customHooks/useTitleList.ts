@@ -4,7 +4,7 @@ import { IdToken } from '~/services/authentication';
 import getTitleList from '~/useCase/getTitleList';
 
 const useTitleList = (idToken: IdToken) => {
-  const { data, error } = useSWR(idToken, getTitleList, {
+  const { data, error } = useSWR([true, false, idToken], getTitleList, {
     revalidateOnFocus: false,
   });
 

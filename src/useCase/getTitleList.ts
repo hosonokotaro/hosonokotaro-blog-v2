@@ -2,8 +2,12 @@ import dayjs from 'dayjs';
 
 import serviceGetTitleList from '~/services/getTitleList';
 
-const getTitleList = async (isAllTitleList = true, isArchive = false) => {
-  const titleList = await serviceGetTitleList();
+const getTitleList = async (
+  isAllTitleList = true,
+  isArchive = false,
+  idToken = ''
+) => {
+  const titleList = await serviceGetTitleList(idToken);
   const nowYear = dayjs().year();
 
   if (isAllTitleList) {
