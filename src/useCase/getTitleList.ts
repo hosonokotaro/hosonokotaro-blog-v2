@@ -7,20 +7,32 @@ const getTitleList = async (
   isArchive = false,
   idToken = ''
 ) => {
-  const titleList = await serviceGetTitleList(idToken);
-  const nowYear = dayjs().year();
+  const responseWithStatus = await serviceGetTitleList(idToken);
 
-  if (isAllTitleList) {
-    return titleList;
+  if (responseWithStatus.status === 'success') {
+    if (isAllTitleList) {
+      return responseWithStatus.data;
+    }
+
+    const nowYear = dayjs().year();
+    const { data } = responseWithStatus;
+
+    const filteredTitleList = data.filter((titleDate) => {
+      const { createDate } = titleDate;
+      const createYear = dayjs(parseInt(createDate)).year();
+
+      return isArchive ? createYear <= nowYear - 2 : createYear > nowYear - 2;
+    });
+
+    return filteredTitleList;
   }
 
-  return (
-    titleList &&
-    titleList.filter((item) => {
-      const createYear = dayjs(parseInt(item.createDate)).year();
-      return isArchive ? createYear <= nowYear - 2 : createYear > nowYear - 2;
-    })
-  );
+  if (
+    responseWithStatus.status === 'fail' ||
+    responseWithStatus.status === 'error'
+  ) {
+    return;
+  }
 };
 
 export default getTitleList;

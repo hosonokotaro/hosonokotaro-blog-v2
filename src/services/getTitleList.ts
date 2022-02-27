@@ -1,8 +1,8 @@
 import axios, { isAxiosError } from '~/adapter/axios';
 
 const endpoint = {
-  default: `/get/titlelist?is_unixtime_format=enabled`,
-  private: `/get/titlelist?is_unixtime_format=enabled&private=enabled`,
+  default: `/v2/titlelist`,
+  private: `/v2/titlelist?private=enabled`,
 };
 
 export type TitleDate = {
@@ -12,11 +12,21 @@ export type TitleDate = {
   createDate: string;
 };
 
+type ResponseWithStatus = {
+  status: 'success' | 'fail';
+  data: TitleDate[];
+};
+
+type Error = {
+  status: 'error';
+  message: string;
+};
+
 export type Target = keyof typeof endpoint;
 
 const getTitleList = async (idToken?: string) => {
   try {
-    const { data } = await axios.get<TitleDate[]>(
+    const { data } = await axios.get<ResponseWithStatus | Error>(
       endpoint[idToken ? 'private' : 'default'],
       idToken ? { headers: { Authorization: `Bearer ${idToken}` } } : {}
     );
@@ -25,7 +35,6 @@ const getTitleList = async (idToken?: string) => {
   } catch (error) {
     if (isAxiosError(error)) {
       console.log(error);
-      return;
     }
 
     // NOTE: このエラーが発生する状況が想定できない

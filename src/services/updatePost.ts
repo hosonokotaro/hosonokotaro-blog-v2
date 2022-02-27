@@ -8,7 +8,7 @@ type Post = {
 
 const updatePost = async (postId: string, idToken: string, post: Post) => {
   try {
-    await axios.post(`/post/updatepost/${postId}`, post, {
+    await axios.post(`/v2/post/updatepost/${postId}`, post, {
       headers: {
         Authorization: `Bearer ${idToken}`,
       },

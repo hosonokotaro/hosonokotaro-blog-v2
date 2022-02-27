@@ -8,7 +8,7 @@ import PageLayout from '@/atoms/PageLayout';
 import Title from '@/atoms/Title';
 import Layout from '@/layout';
 import Markdown from '@/organisms/Markdown';
-import getPost, { Post as PostType } from '~/services/getPost';
+import getPost, { Post as PostType } from '~/useCase/getPost';
 import getTitleList from '~/useCase/getTitleList';
 import formatDate from '~/utility/formatDate';
 
