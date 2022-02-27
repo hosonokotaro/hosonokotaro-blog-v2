@@ -6,15 +6,16 @@ import { VFC } from 'react';
 
 const setup = async () => {
   if (typeof window === 'undefined') {
-    const { server } = await import('~/mocks/server');
+    const { server } = await import('mocks/server');
     server.listen();
   } else {
-    const { worker } = await import('~/mocks/browser');
+    const { worker } = await import('mocks/browser');
     worker.start();
   }
 };
 
 if (process.env.NODE_ENV === 'development' && process.env.USE_MSW === 'true') {
+  console.log('[mocks] setup');
   setup();
 }
 
