@@ -9,6 +9,8 @@ const getTitleList = async (
 ) => {
   const responseWithStatus = await serviceGetTitleList(idToken);
 
+  if (!responseWithStatus) return;
+
   if (responseWithStatus.status === 'success') {
     if (isAllTitleList) {
       return responseWithStatus.data;

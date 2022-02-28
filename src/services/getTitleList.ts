@@ -35,6 +35,7 @@ const getTitleList = async (idToken?: string) => {
   } catch (error) {
     if (isAxiosError(error)) {
       console.log(error);
+      return;
     }
 
     // NOTE: このエラーが発生する状況が想定できない
