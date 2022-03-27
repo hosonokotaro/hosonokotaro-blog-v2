@@ -3,8 +3,8 @@ import { IdToken } from '~/services/authentication';
 
 const endpoint = (id: string) => {
   return {
-    default: `/get/post/${id}?is_unixtime_format=enabled`,
-    private: `/get/post/${id}?is_unixtime_format=enabled&private=enabled`,
+    default: `/v2/post/${id}`,
+    private: `/v2/post/${id}?private=enabled`,
   };
 };
 
@@ -20,11 +20,21 @@ export type Post = {
   createDate: string;
 };
 
+type PostWithStatus = {
+  status: 'success' | 'fail';
+  data: Post;
+};
+
+type Error = {
+  status: 'error';
+  message: string;
+};
+
 const getPost = async (postId: PostId, idToken?: IdToken) => {
   if (!postId || Array.isArray(postId)) return;
 
   try {
-    const { data } = await axios.get<Post>(
+    const { data } = await axios.get<PostWithStatus | Error>(
       endpoint(postId)[idToken ? 'private' : 'default'],
       idToken ? { headers: { Authorization: `Bearer ${idToken}` } } : {}
     );

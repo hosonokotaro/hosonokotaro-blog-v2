@@ -8,7 +8,7 @@ interface Post {
 
 const createPost = async (idToken: string, post: Post) => {
   try {
-    await axios.post('/post/createpost', post, {
+    await axios.post('/v2/post/createpost', post, {
       headers: {
         Authorization: `Bearer ${idToken}`,
       },

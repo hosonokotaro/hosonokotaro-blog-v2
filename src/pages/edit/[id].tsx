@@ -43,8 +43,6 @@ const EditPost: VFC = () => {
     deletePost,
   } = useEditPost(post);
 
-  const idFix = id && !Array.isArray(id) ? id : undefined;
-
   return (
     <>
       <Layout title={post && post.title} linkPath="/edit" isPrivate>
@@ -104,7 +102,7 @@ const EditPost: VFC = () => {
               </ContentBox>
             </ContentBox>
             <PostStatus
-              postId={idFix}
+              postId={post.id}
               createDate={post.createDate}
               released={post.release}
               releaseChanged={releaseChanged}

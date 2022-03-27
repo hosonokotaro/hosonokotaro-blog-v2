@@ -3,7 +3,7 @@ import axios, { isAxiosError } from '~/adapter/axios';
 const deletePost = async (postId: string, idToken: string) => {
   try {
     await axios.post(
-      `/post/deletepost/${postId}`,
+      `/v2/post/deletepost/${postId}`,
       {},
       {
         headers: {

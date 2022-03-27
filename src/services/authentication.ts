@@ -10,29 +10,45 @@ import { PromiseType } from 'utility-types';
 
 import firebaseApp from '~/adapter/firebase';
 
-const auth = getAuth(firebaseApp);
-
 export const login = () => {
-  const googleAuthProvider = new GoogleAuthProvider();
-  signInWithRedirect(auth, googleAuthProvider);
+  try {
+    const googleAuthProvider = new GoogleAuthProvider();
+    signInWithRedirect(getAuth(firebaseApp), googleAuthProvider);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const logout = () => {
-  signOut(auth);
+  try {
+    signOut(getAuth(firebaseApp));
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const getIdToken = async () => {
-  if (!auth.currentUser) return;
+  try {
+    const auth = getAuth(firebaseApp);
 
-  // NOTE: ここで言う idToken とは、Firebase クライアント SDK で取得できる ID トークンを指す
-  const idToken = await getIdTokenFromAuth(auth.currentUser);
+    if (!auth.currentUser) {
+      throw new Error('fail');
+    }
 
-  return idToken;
+    // NOTE: ここで言う idToken とは、Firebase クライアント SDK で取得できる ID トークンを指す
+    const idToken = await getIdTokenFromAuth(auth.currentUser);
+
+    return idToken;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export type IdToken = PromiseType<ReturnType<typeof getIdToken>>;
 
 export const getUid = () => {
+  const auth = getAuth(firebaseApp);
+
   if (auth.currentUser && auth.currentUser.uid) {
     return auth.currentUser.uid;
   }
@@ -40,5 +56,5 @@ export const getUid = () => {
 
 // NOTE: useSession で利用する
 export const stateChanged = (event: () => void) => {
-  onAuthStateChanged(auth, () => event());
+  onAuthStateChanged(getAuth(firebaseApp), () => event());
 };

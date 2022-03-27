@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const withPlugins = require('next-compose-plugins');
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
@@ -7,9 +8,9 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
  * @type { import('next').NextConfig }
  **/
 const nextConfig = {
+  // NOTE: browser 側に渡せる環境変数
   env: {
-    // NOTE: browser 側に渡せる環境変数
-    // API_URL: process.env.API_URL,
+    USE_MSW: process.env.USE_MSW,
   },
 };
 
