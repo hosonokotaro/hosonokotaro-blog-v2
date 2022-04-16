@@ -10,6 +10,8 @@ import {
 
 import firebaseApp from '~/adapter/firebase';
 
+// TODO: try catch を実装する
+
 const storageFix = getStorage(firebaseApp);
 
 // NOTE: image に関しては固定のルートパスのようなものを設定している
