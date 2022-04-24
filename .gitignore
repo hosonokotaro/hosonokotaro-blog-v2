@@ -5,6 +5,7 @@
 .vscode
 
 .next
+.env.local
 
 node_modules
 out
