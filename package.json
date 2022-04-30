@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "next",
-    "dev:msw": "cross-env USE_MSW=true next",
+    "dev": "cross-env USE_MSW=true next",
+    "dev:no-msw": "next",
     "build": "next build",
     "postbuild": "next-sitemap",
     "export": "next build && next export",
