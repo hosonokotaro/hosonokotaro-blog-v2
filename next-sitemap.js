@@ -1,5 +1,5 @@
 module.exports = {
-  siteUrl: 'https://techblog.hosonokotaro.jp',
+  siteUrl: process.env.NEXT_PUBLIC_BASE_URL,
   generateRobotsTxt: true,
   exclude: ['/edit', '/edit/*'],
 };

@@ -54,12 +54,12 @@ const Post: VFC<PostType> = ({ id, title, createDate, content }) => {
     '@type': 'BlogPosting',
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://techblog.hosonokotaro.jp/${id}`,
+      '@id': `${process.env.NEXT_PUBLIC_BASE_URL}/${id}`,
     },
     headline: `${title}`,
     image: {
       '@type': 'ImageObject',
-      url: 'https://techblog.hosonokotaro.jp/static/media/og.png',
+      url: `${process.env.NEXT_PUBLIC_BASE_URL}/static/media/og.png`,
     },
     author: {
       '@type': 'Person',
