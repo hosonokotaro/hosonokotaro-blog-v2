@@ -13,7 +13,6 @@ type Props = {
   children: ReactNode;
 };
 
-const domain = 'https://techblog.hosonokotaro.jp';
 const siteName = 'Tech Blog | WEB DEVELOPER HOSONO KOTARO';
 const description =
   '都内で活動するフロントエンドエンジニア。技術の知見を掲載しています';
@@ -39,14 +38,22 @@ const Layout: VFC<Props> = ({
           property="og:title"
         />
         <meta content="website" property="og:type" />
-        <meta content={domain} property="og:url" />
-        <meta content={`${domain}/static/media/og.png`} property="og:image" />
+        <meta content={process.env.NEXT_PUBLIC_BASE_URL} property="og:url" />
+        <meta
+          content={`${process.env.NEXT_PUBLIC_BASE_URL}/static/media/og.png`}
+          property="og:image"
+        />
         <meta content={fixDescription} property="og:description" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
         {isPrivate && <meta name="robots" content="noindex" />}
         <link rel="icon" href="static/media/favicon.svg" type="image/svg+xml" />
-        {!isPrivate && <link rel="canonical" href={domain + pagePath} />}
+        {!isPrivate && (
+          <link
+            rel="canonical"
+            href={process.env.NEXT_PUBLIC_BASE_URL + pagePath}
+          />
+        )}
 
         <title>
           {title && `${title} | `}
