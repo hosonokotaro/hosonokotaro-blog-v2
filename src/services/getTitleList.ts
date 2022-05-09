@@ -1,7 +1,7 @@
 import axios, { isAxiosError } from '~/adapter/axios';
 
 const endpoint = {
-  default: `/v2/titlelist`,
+  default: `/article`,
   private: `/v2/titlelist?private=enabled`,
 };
 
@@ -9,7 +9,7 @@ export type TitleDate = {
   id: string;
   title: string;
   release: boolean;
-  createDate: string;
+  createDate: number;
 };
 
 type ResponseWithStatus = {

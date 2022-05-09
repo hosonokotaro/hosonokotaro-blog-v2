@@ -24,6 +24,7 @@
     "axios": "^0.24.0",
     "dayjs": "^1.10.7",
     "firebase": "^9.5.0",
+    "gray-matter": "^4.0.3",
     "next": "^11.1.2",
     "normalize.css": "^8.0.1",
     "react": "^17.0.2",
