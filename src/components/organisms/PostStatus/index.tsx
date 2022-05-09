@@ -9,7 +9,7 @@ import formatDate from '~/utility/formatDate';
 
 type Props = {
   postId: string | undefined;
-  createDate: string;
+  createDate: number;
   released: boolean;
   releaseChanged: (event: ChangeEvent<HTMLInputElement>) => void;
   updatePost: () => Promise<void>;

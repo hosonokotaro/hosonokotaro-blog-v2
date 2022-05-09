@@ -10,7 +10,7 @@ type Props = {
   postId: string;
   title: string;
   released: boolean;
-  createDate: string;
+  createDate: number;
   isEditPost?: boolean;
   marginTopSize: ComponentProps<typeof ContentBox>['marginTopSize'];
 };

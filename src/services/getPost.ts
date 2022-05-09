@@ -3,7 +3,7 @@ import { IdToken } from '~/services/authentication';
 
 const endpoint = (id: string) => {
   return {
-    default: `/v2/post/${id}`,
+    default: `/article/${id}`,
     private: `/v2/post/${id}?private=enabled`,
   };
 };
@@ -17,7 +17,7 @@ export type Post = {
   title: string;
   content: string;
   release: boolean;
-  createDate: string;
+  createDate: number;
 };
 
 type PostWithStatus = {

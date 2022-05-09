@@ -26,6 +26,6 @@ Default.args = {
   postId: 'testid',
   title: 'testtitle',
   released: true,
-  createDate: '1634656164684',
+  createDate: 1634656164684,
   marginTopSize: '40px',
 };

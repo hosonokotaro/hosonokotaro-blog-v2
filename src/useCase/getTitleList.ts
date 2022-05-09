@@ -21,7 +21,7 @@ const getTitleList = async (
 
     const filteredTitleList = data.filter((titleDate) => {
       const { createDate } = titleDate;
-      const createYear = dayjs(parseInt(createDate)).year();
+      const createYear = dayjs(createDate).year();
 
       return isArchive ? createYear <= nowYear - 2 : createYear > nowYear - 2;
     });

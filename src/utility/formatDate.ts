@@ -8,10 +8,10 @@ const dateFormat = {
 type DateFormat = keyof typeof dateFormat;
 
 const formatDate = (
-  createDate: string,
+  createDate: number,
   dateFormatProps: DateFormat = 'full'
 ) => {
-  return dayjs(parseInt(createDate)).format(dateFormat[dateFormatProps]);
+  return dayjs(createDate).format(dateFormat[dateFormatProps]);
 };
 
 export default formatDate;

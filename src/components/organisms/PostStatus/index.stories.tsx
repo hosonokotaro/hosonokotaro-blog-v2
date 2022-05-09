@@ -22,6 +22,6 @@ export const Default = Template.bind({});
 
 Default.args = {
   postId: 'testid',
-  createDate: '1634656164684',
+  createDate: 1634656164684,
   released: false,
 };
