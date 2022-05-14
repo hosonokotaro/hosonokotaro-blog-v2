@@ -8,13 +8,14 @@ import PageLayout from '@/atoms/PageLayout';
 import Title from '@/atoms/Title';
 import Layout from '@/layout';
 import Markdown from '@/organisms/Markdown';
-import getPost, { Post as PostType } from '~/useCase/getPost';
+import { Article } from '~/entity/api';
+import getPost from '~/useCase/getPost';
 import getTitleList from '~/useCase/getTitleList';
 import formatDate from '~/utility/formatDate';
 
 // NOTE: Page list を取得して、build 時に静的ファイルを生成する
 export const getStaticPaths: GetStaticPaths = async () => {
-  const titleList = await getTitleList(true, false, '');
+  const titleList = await getTitleList(false);
 
   if (!titleList) {
     return {
@@ -31,7 +32,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 // NOTE: Page を取得して、build 時に静的ファイルを生成する
 export const getStaticProps: GetStaticProps = async (context) => {
-  const { id } = context.params as unknown as PostType;
+  const { id } = context.params as unknown as Article;
   const post = await getPost(id);
 
   if (!post) {
@@ -48,7 +49,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   };
 };
 
-const Post: VFC<PostType> = ({ id, title, createDate, content }) => {
+const Post: VFC<Article> = ({ id, title, createDate, content }) => {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',

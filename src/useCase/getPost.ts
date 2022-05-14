@@ -1,8 +1,7 @@
-import serviceGetPost, { Post, PostId } from '~/services/getPost';
-export type { Post, PostId };
+import articleById from '~/services/readMarkdown/articleById';
 
-const getPost = async (postId: Post['id'], idToken = '') => {
-  const responseWithStatus = await serviceGetPost(postId, idToken);
+const getPost = async (postId: string) => {
+  const responseWithStatus = articleById(postId);
 
   if (!responseWithStatus) return;
 
@@ -10,12 +9,7 @@ const getPost = async (postId: Post['id'], idToken = '') => {
     return responseWithStatus.data;
   }
 
-  if (
-    responseWithStatus.status === 'fail' ||
-    responseWithStatus.status === 'error'
-  ) {
-    return;
-  }
+  if (responseWithStatus.status === 'error') return;
 };
 
 export default getPost;
