@@ -1,23 +1,17 @@
 import dayjs from 'dayjs';
 
-import serviceGetTitleList from '~/services/getTitleList';
+import articleList from '~/services/readMarkdown/articleList';
 
-const getTitleList = async (
-  isAllTitleList = true,
-  isArchive = false,
-  idToken = ''
-) => {
-  const responseWithStatus = await serviceGetTitleList(idToken);
+const getTitleList = async (isArchive = false) => {
+  const responseWithStatus = articleList();
 
   if (!responseWithStatus) return;
 
   if (responseWithStatus.status === 'success') {
-    if (isAllTitleList) {
-      return responseWithStatus.data;
-    }
-
     const nowYear = dayjs().year();
     const { data } = responseWithStatus;
+
+    if (!Array.isArray(data)) return;
 
     const filteredTitleList = data.filter((titleDate) => {
       const { createDate } = titleDate;
@@ -29,12 +23,7 @@ const getTitleList = async (
     return filteredTitleList;
   }
 
-  if (
-    responseWithStatus.status === 'fail' ||
-    responseWithStatus.status === 'error'
-  ) {
-    return;
-  }
+  if (responseWithStatus.status === 'error') return;
 };
 
 export default getTitleList;

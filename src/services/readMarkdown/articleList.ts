@@ -1,6 +1,5 @@
 import fs from 'fs';
 import matter from 'gray-matter';
-import type { NextApiRequest, NextApiResponse } from 'next';
 
 import type {
   ArticleList,
@@ -8,7 +7,7 @@ import type {
   ResponseWithStatus,
 } from '~/entity/api';
 
-const articleList = (req: NextApiRequest, res: NextApiResponse) => {
+const articleList = (): ResponseWithStatus | ErrorResponse => {
   const path = `${process.cwd()}/articles`;
   let articleList: ArticleList = [];
 
@@ -38,24 +37,19 @@ const articleList = (req: NextApiRequest, res: NextApiResponse) => {
     articleList = [...tempArticleList];
   } catch (error) {
     if (error instanceof Error) {
-      const errorResponse: ErrorResponse = {
+      return {
         status: 'error',
         message: error.message,
       };
-
-      return res.status(404).json(errorResponse);
     }
 
     console.log(error);
-    return;
   }
 
-  const responseWithStatus: ResponseWithStatus = {
+  return {
     status: 'success',
     data: articleList,
   };
-
-  res.status(200).json(responseWithStatus);
 };
 
 export default articleList;

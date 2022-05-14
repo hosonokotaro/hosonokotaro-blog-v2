@@ -9,7 +9,7 @@ import TitleList from '@/organisms/TitleList';
 import getTitleList from '~/useCase/getTitleList';
 
 export const getStaticProps = async () => {
-  const archiveTitleList = await getTitleList(false, true, '');
+  const archiveTitleList = await getTitleList(true);
 
   return {
     props: {
