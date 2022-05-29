@@ -3,7 +3,7 @@ import { ComponentProps, VFC } from 'react';
 import ContentBox from '@/atoms/ContentBox';
 import Title from '@/atoms/Title';
 import TitleLink from '@/molecules/TitleLink';
-import type { TitleDate } from '~/services/getTitleList';
+import { TitleDate } from '~/entity/api';
 
 type MarginTop = ComponentProps<typeof ContentBox>['marginTopSize'];
 
