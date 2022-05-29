@@ -8,9 +8,9 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
  * @type { import('next').NextConfig }
  **/
 const nextConfig = {
-  // NOTE: browser 側に渡せる環境変数
+  // NOTE: client 側に渡せる環境変数
   env: {
-    USE_MSW: process.env.USE_MSW,
+    // USE_MSW: process.env.USE_MSW,
   },
 };
 

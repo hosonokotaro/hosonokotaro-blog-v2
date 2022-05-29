@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env USE_MSW=true next",
-    "dev:no-msw": "next",
+    "dev": "next",
     "build": "next build",
     "postbuild": "next-sitemap",
     "export": "next build && next export",
@@ -21,17 +20,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.24.0",
     "dayjs": "^1.10.7",
-    "firebase": "^9.5.0",
     "gray-matter": "^4.0.3",
     "next": "^11.1.2",
     "normalize.css": "^8.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-markdown": "^7.1.0",
-    "styled-components": "^5.3.3",
-    "swr": "^1.1.1"
+    "styled-components": "^5.3.3"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
@@ -55,15 +51,10 @@
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "eslint-plugin-storybook": "^0.5.5",
     "husky": "^7.0.4",
-    "msw": "^0.36.3",
     "next-compose-plugins": "^2.2.1",
     "next-sitemap": "^1.6.203",
     "prettier": "2.4.1",
     "pretty-quick": "^3.1.2",
-    "typescript": "^4.4.4",
-    "utility-types": "^3.10.0"
-  },
-  "msw": {
-    "workerDirectory": "public"
+    "typescript": "^4.4.4"
   }
 }
