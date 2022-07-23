@@ -1,12 +1,10 @@
-import { VFC } from 'react';
-
 import { Li } from './styledIndex';
 
-interface Props {
+type Props = {
   text: string;
-}
+};
 
-const TextItem: VFC<Props> = ({ text }) => {
+const TextItem = ({ text }: Props) => {
   return <Li>{text}</Li>;
 };
 

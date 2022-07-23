@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { ReactNode, VFC } from 'react';
+import { ReactNode } from 'react';
 
 import Footer from '@/atoms/Footer';
 import Header from '@/organisms/Header';
@@ -17,13 +17,13 @@ const siteName = 'Tech Blog | WEB DEVELOPER HOSONO KOTARO';
 const description =
   '都内で活動するフロントエンドエンジニア。技術の知見を掲載しています';
 
-const Layout: VFC<Props> = ({
+const Layout = ({
   title = '',
   isPrivate = false,
   linkPath = '/',
   pagePath = '',
   children,
-}) => {
+}: Props) => {
   const fixDescription = pagePath ? title : description;
 
   return (

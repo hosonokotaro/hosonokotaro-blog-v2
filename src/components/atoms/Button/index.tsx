@@ -1,20 +1,18 @@
-import { VFC } from 'react';
-
 import { StyledButton } from './styledIndex';
 
-interface Props {
+type Props = {
   text: string;
   handleClick: () => void;
   disabled?: boolean;
   attention?: boolean;
-}
+};
 
-const Button: VFC<Props> = ({
+const Button = ({
   text,
   handleClick,
   disabled = false,
   attention = false,
-}) => {
+}: Props) => {
   return (
     <StyledButton
       onClick={handleClick}

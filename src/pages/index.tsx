@@ -1,5 +1,4 @@
 import { InferGetStaticPropsType } from 'next';
-import { VFC } from 'react';
 
 import Anchor from '@/atoms/Anchor';
 import ContentBox from '@/atoms/ContentBox';
@@ -19,9 +18,7 @@ export const getStaticProps = async () => {
   };
 };
 
-const Top: VFC<InferGetStaticPropsType<typeof getStaticProps>> = ({
-  titleList,
-}) => {
+const Top = ({ titleList }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <Layout>
       <PageLayout tagName="article">

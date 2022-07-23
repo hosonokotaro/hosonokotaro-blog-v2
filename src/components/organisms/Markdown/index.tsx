@@ -1,4 +1,3 @@
-import { VFC } from 'react';
 import ReactMarkdown from 'react-markdown';
 
 import CodeBlock from '@/atoms/CodeBlock';
@@ -11,11 +10,11 @@ import Title from '@/atoms/Title';
 import LoadingImage from '@/molecules/LoadingImage';
 import MarkdownLink from '@/molecules/MarkdownLink';
 
-interface Props {
+type Props = {
   content: string;
-}
+};
 
-const Markdown: VFC<Props> = ({ content }) => {
+const Markdown = ({ content }: Props) => {
   return (
     <ReactMarkdown
       components={{

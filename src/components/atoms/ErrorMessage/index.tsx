@@ -1,14 +1,12 @@
-import { VFC } from 'react';
-
 import { StyledErrorMessage } from './styledIndex';
 
-interface Props {
-  text: string;
-}
+type Props = {
+  text?: string;
+};
 
-const ErrorMessage: VFC<Partial<Props>> = ({
+const ErrorMessage = ({
   text = 'Something went wrong. Please try again.',
-}) => {
+}: Props) => {
   return <StyledErrorMessage>{text}</StyledErrorMessage>;
 };
 

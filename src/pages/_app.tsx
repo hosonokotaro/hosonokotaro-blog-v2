@@ -2,7 +2,6 @@ import 'normalize.css';
 import '~/style/global.css';
 
 import { AppProps } from 'next/app';
-import { VFC } from 'react';
 
 const setup = async () => {
   if (typeof window === 'undefined') {
@@ -17,7 +16,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // NOTE: App 全体を拡張するために利用します。
-const App: VFC<AppProps> = ({ Component, pageProps }) => {
+const App = ({ Component, pageProps }: AppProps) => {
   return <Component {...pageProps} />;
 };
 

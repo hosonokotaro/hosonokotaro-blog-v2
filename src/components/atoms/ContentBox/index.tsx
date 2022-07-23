@@ -1,4 +1,4 @@
-import { ReactNode, VFC } from 'react';
+import { ReactNode } from 'react';
 
 import { MarginTopSize, StyledContentBox, TextAlign } from './styledIndex';
 
@@ -14,7 +14,7 @@ type Props = {
   tagName?: TagName;
 };
 
-const ContentBox: VFC<Props> = ({
+const ContentBox = ({
   children,
   isBetween = false,
   marginTopSize = '0px',
@@ -22,7 +22,7 @@ const ContentBox: VFC<Props> = ({
   isBoxCenter = false,
   isCard = false,
   tagName = 'div',
-}) => {
+}: Props) => {
   return (
     <StyledContentBox
       isBetween={isBetween}

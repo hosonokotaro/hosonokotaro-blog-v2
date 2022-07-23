@@ -1,15 +1,14 @@
 import Link from 'next/link';
-import { VFC } from 'react';
 
 import SiteTitle from '@/atoms/SiteTitle';
 
 import { StyledHeader, StyledHeaderWrapper, StyleLink } from './styledIndex';
 
-interface Props {
+type Props = {
   linkPath?: string;
-}
+};
 
-const Header: VFC<Props> = ({ linkPath = '/' }) => {
+const Header = ({ linkPath = '/' }: Props) => {
   return (
     <StyledHeaderWrapper>
       <StyledHeader>

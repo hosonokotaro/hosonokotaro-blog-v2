@@ -1,9 +1,7 @@
-import { VFC } from 'react';
-
 import { StyledSpinner, StyledSpinnerWrapper } from './styledIndex';
 
 // FIXME: 要望として出れば、サイズを指定しても良いかもしれない
-const Spinner: VFC = () => {
+const Spinner = () => {
   return (
     <StyledSpinnerWrapper role="alert" aria-busy="true">
       <StyledSpinner viewBox="0 0 50 50">

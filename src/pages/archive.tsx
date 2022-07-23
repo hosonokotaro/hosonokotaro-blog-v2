@@ -1,5 +1,4 @@
 import { InferGetStaticPropsType } from 'next';
-import { VFC } from 'react';
 
 import Anchor from '@/atoms/Anchor';
 import ContentBox from '@/atoms/ContentBox';
@@ -19,9 +18,9 @@ export const getStaticProps = async () => {
   };
 };
 
-const Archive: VFC<InferGetStaticPropsType<typeof getStaticProps>> = ({
+const Archive = ({
   archiveTitleList,
-}) => {
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <Layout title="過去の記事" pagePath="/archive">
       <PageLayout tagName="article">

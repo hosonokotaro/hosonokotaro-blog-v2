@@ -1,12 +1,10 @@
-import { VFC } from 'react';
-
 import { StyledInlineCode } from './styledIndex';
 
-interface Props {
+type Props = {
   text: string;
-}
+};
 
-const InlineCode: VFC<Props> = ({ text }) => {
+const InlineCode = ({ text }: Props) => {
   return <StyledInlineCode>{text}</StyledInlineCode>;
 };
 

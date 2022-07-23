@@ -1,14 +1,14 @@
-import { ReactEventHandler, VFC } from 'react';
+import { ReactEventHandler } from 'react';
 
 import { StyledWrappedImage } from './styledWrappedImage';
 
-interface Props {
+type Props = {
   src: string;
   alt?: string;
   handleLoad?: ReactEventHandler<HTMLImageElement>;
-}
+};
 
-const WrappedImage: VFC<Props> = ({ src, alt = 'image', handleLoad }) => {
+const WrappedImage = ({ src, alt = 'image', handleLoad }: Props) => {
   return (
     <StyledWrappedImage
       src={src}

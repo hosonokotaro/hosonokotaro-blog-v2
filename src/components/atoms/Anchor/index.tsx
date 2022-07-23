@@ -1,15 +1,15 @@
 import Link from 'next/link';
-import { ReactNode, VFC } from 'react';
+import { ReactNode } from 'react';
 
 import { StyledLink } from './styledIndex';
 
-interface Props {
+type Props = {
   children: ReactNode;
   linkPath: string;
   isExternalLink?: boolean;
-}
+};
 
-const Anchor: VFC<Props> = ({ children, linkPath, isExternalLink = false }) => {
+const Anchor = ({ children, linkPath, isExternalLink = false }: Props) => {
   if (isExternalLink) {
     return (
       <StyledLink href={linkPath} target="_blank" rel="noopener noreferrer">

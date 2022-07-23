@@ -1,10 +1,8 @@
-import { VFC } from 'react';
-
 import { StyledDate } from './StyledIndex';
 
 type Props = { text: string };
 
-const Date: VFC<Props> = ({ text }) => {
+const Date = ({ text }: Props) => {
   return <StyledDate>{text}</StyledDate>;
 };
 
