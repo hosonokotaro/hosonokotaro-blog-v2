@@ -1,6 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Script from 'next/script';
-import { VFC } from 'react';
 
 import Anchor from '@/atoms/Anchor';
 import ContentBox from '@/atoms/ContentBox';
@@ -8,7 +7,7 @@ import PageLayout from '@/atoms/PageLayout';
 import Title from '@/atoms/Title';
 import Layout from '@/layout';
 import Markdown from '@/organisms/Markdown';
-import { Article } from '~/entity/api';
+import { Article as Props } from '~/entity/api';
 import getPost from '~/useCase/getPost';
 import getTitleList from '~/useCase/getTitleList';
 import formatDate from '~/utility/formatDate';
@@ -32,7 +31,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 // NOTE: Page を取得して、build 時に静的ファイルを生成する
 export const getStaticProps: GetStaticProps = async (context) => {
-  const { id } = context.params as unknown as Article;
+  const { id } = context.params as unknown as Props;
   const post = await getPost(id);
 
   if (!post) {
@@ -49,7 +48,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   };
 };
 
-const Post: VFC<Article> = ({ id, title, createDate, content }) => {
+const Post = ({ id, title, createDate, content }: Props) => {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',

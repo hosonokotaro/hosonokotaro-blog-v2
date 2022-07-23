@@ -1,4 +1,4 @@
-import { ComponentProps, ReactNode, useState, VFC } from 'react';
+import { ComponentProps, ReactNode, useState } from 'react';
 
 import Anchor from '@/atoms/Anchor';
 import Icon from '@/atoms/Icon';
@@ -11,7 +11,7 @@ type Props = {
   icon?: IconProps;
 };
 
-const MarkdownLink: VFC<Props> = ({ children, linkPath, icon }) => {
+const MarkdownLink = ({ children, linkPath, icon }: Props) => {
   const [isExternalLink] = useState(!!linkPath.match(/^(http|https):\/\//));
 
   return (

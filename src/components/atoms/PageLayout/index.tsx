@@ -1,20 +1,20 @@
-import { ReactNode, VFC } from 'react';
+import { ReactNode } from 'react';
 
 import { StyledPageLayout } from './styledIndex';
 
 type TagName = 'div' | 'article' | 'section';
 
-interface Props {
+type Props = {
   tagName?: TagName;
   isMinHeight?: boolean;
   children: ReactNode;
-}
+};
 
-const PageLayout: VFC<Props> = ({
+const PageLayout = ({
   tagName = 'div',
   isMinHeight = true,
   children,
-}) => {
+}: Props) => {
   return (
     <StyledPageLayout as={tagName} isMinHeight={isMinHeight}>
       {children}

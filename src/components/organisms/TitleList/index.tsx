@@ -1,4 +1,4 @@
-import { ComponentProps, VFC } from 'react';
+import { ComponentProps } from 'react';
 
 import ContentBox from '@/atoms/ContentBox';
 import Title from '@/atoms/Title';
@@ -15,13 +15,13 @@ type Props = {
   listMarginTop?: MarginTop;
 };
 
-const TitleList: VFC<Props> = ({
+const TitleList = ({
   titleName = '新着記事',
   titleList,
   isEditPost = false,
   contentMarginTop = '0px',
   listMarginTop = '0px',
-}) => {
+}: Props) => {
   return (
     <ContentBox tagName="section" marginTopSize={contentMarginTop}>
       <Title text={titleName} />

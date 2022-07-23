@@ -1,4 +1,3 @@
-import { VFC } from 'react';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import tsx from 'react-syntax-highlighter/dist/cjs/languages/prism/tsx';
 import syntaxStyle from 'react-syntax-highlighter/dist/cjs/styles/prism/tomorrow';
@@ -6,12 +5,12 @@ import syntaxStyle from 'react-syntax-highlighter/dist/cjs/styles/prism/tomorrow
 SyntaxHighlighter.registerLanguage('tsx', tsx);
 
 // NOTE: Syntax highlighter は value という props が必須
-interface Props {
+type Props = {
   value: string;
   language: string;
-}
+};
 
-const CodeBlock: VFC<Props> = ({ value, language }) => {
+const CodeBlock = ({ value, language }: Props) => {
   return (
     <SyntaxHighlighter
       language={language}

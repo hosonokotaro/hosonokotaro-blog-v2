@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ComponentProps, VFC } from 'react';
+import { ComponentProps } from 'react';
 
 import ContentBox from '@/atoms/ContentBox';
 import Date from '@/atoms/Date';
@@ -15,14 +15,14 @@ type Props = {
   marginTopSize: ComponentProps<typeof ContentBox>['marginTopSize'];
 };
 
-const TitleLink: VFC<Props> = ({
+const TitleLink = ({
   postId,
   title,
   released,
   createDate,
   isEditPost = false,
   marginTopSize,
-}) => {
+}: Props) => {
   return (
     <>
       {released && !isEditPost && (

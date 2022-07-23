@@ -10,7 +10,7 @@ export default {
 
 type Props = ComponentProps<typeof Spinner>;
 
-const Template: Story<Props> = (args) => <Spinner {...args} />;
+const Template: Story<Props> = () => <Spinner />;
 
 export const Default = Template.bind({});
 

@@ -1,10 +1,10 @@
-import { ReactNode, VFC } from 'react';
+import { ReactNode } from 'react';
 
-interface Props {
+type Props = {
   children: ReactNode;
-}
+};
 
-const TextList: VFC<Props> = ({ children }) => {
+const TextList = ({ children }: Props) => {
   return <ul>{children}</ul>;
 };
 

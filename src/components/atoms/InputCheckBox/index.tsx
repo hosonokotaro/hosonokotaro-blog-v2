@@ -1,20 +1,20 @@
-import { ChangeEvent, VFC } from 'react';
+import { ChangeEvent } from 'react';
 
 import { StyledInputCheckBox } from './styledIndex';
 
-interface Props {
+type Props = {
   id: string;
   name: string;
   checked: boolean;
   handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
-}
+};
 
-const InputCheckBox: VFC<Partial<Props>> = ({
+const InputCheckBox = ({
   id = '',
   name = '',
   checked = false,
   handleChange,
-}) => {
+}: Partial<Props>) => {
   return (
     <StyledInputCheckBox
       id={id}

@@ -1,5 +1,3 @@
-import { VFC } from 'react';
-
 import { SideMargin, Size, StyledIcon } from './styledIcon';
 
 type Props = {
@@ -9,12 +7,12 @@ type Props = {
   sideMargin?: SideMargin;
 };
 
-const Icon: VFC<Props> = ({
+const Icon = ({
   fileName,
   alt = 'icon',
   size = '16',
   sideMargin = '0',
-}) => {
+}: Props) => {
   return (
     <StyledIcon
       src={`/static/media/icons/${fileName}`}
