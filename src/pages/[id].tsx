@@ -8,9 +8,9 @@ import Title from '@/atoms/Title';
 import Layout from '@/layout';
 import Markdown from '@/organisms/Markdown';
 import { Article as Props } from '~/entity/api';
+import { formatDate } from '~/useCase/createDateText';
 import getPost from '~/useCase/getPost';
 import getTitleList from '~/useCase/getTitleList';
-import formatDate from '~/utility/formatDate';
 
 // NOTE: Page list を取得して、build 時に静的ファイルを生成する
 export const getStaticPaths: GetStaticPaths = async () => {
