@@ -4,7 +4,7 @@ import { ComponentProps } from 'react';
 import ContentBox from '@/atoms/ContentBox';
 import Date from '@/atoms/Date';
 import Title from '@/atoms/Title';
-import formatDate from '~/utility/formatDate';
+import { formatDate } from '~/useCase/createDateText';
 
 type Props = {
   postId: string;

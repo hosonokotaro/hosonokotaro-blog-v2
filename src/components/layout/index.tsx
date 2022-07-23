@@ -3,7 +3,7 @@ import { ReactNode } from 'react';
 
 import Footer from '@/atoms/Footer';
 import Header from '@/organisms/Header';
-import getDateNow from '~/utility/getDate';
+import { getYearNow } from '~/useCase/createDateText';
 
 type Props = {
   title?: string;
@@ -62,7 +62,7 @@ const Layout = ({
       </Head>
       <Header linkPath={linkPath} />
       {children}
-      <Footer year={getDateNow('year')} />
+      <Footer year={getYearNow()} />
     </>
   );
 };
