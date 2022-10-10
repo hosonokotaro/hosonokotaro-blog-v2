@@ -45,3 +45,9 @@ resolve の alias に先ほどと似た設定をします。キー名には`@`�
 パスはルートパスからの記述であれば問題ありません。好みに応じて書き方は変えることが出来ます。
 
 きょうはここまで。ではでは〜 ﾉｼ
+
+### 参考文献
+
+[TypeScript: TSConfig Reference - Docs on every TSConfig option](https://www.typescriptlang.org/tsconfig#paths)
+
+[Resolve | webpack](https://webpack.js.org/configuration/resolve/#resolvealias)
