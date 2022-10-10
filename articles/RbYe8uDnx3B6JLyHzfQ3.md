@@ -24,9 +24,10 @@ import LoaingImage from '../../molecules/LoaingImage'
 これは、下記の記述のようになります。
 
 ```ts
-import Header from '@/organisms/Header';
-import Icon from '@/atoms/Icon';
-import LoaingImage from '@/molecules/LoaingImage';
+import Header from '@/organisms/Header'
+import Icon from '@/atoms/Icon'
+import LoaingImage from '@/molecules/LoaingImage'
+...
 ```
 
 `@/*`は`src/components/*`を指します、という設定です。アスタリスクを入れることで、配下のファイルすべてに一致することになります。値は配列なので、複数設定できます。キー名は自由につけられます。`@`ではなく`~`でも大丈夫です。
