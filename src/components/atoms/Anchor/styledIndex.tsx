@@ -1,5 +1,5 @@
 import styled from 'styled-components';
 
 export const StyledLink = styled.a`
-  color: #d33;
+  color: var(--text-color-link);
 `;

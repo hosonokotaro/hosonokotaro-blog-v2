@@ -4,5 +4,5 @@ export const StyledWrappedImage = styled.img`
   width: auto;
   height: auto;
   max-width: 100%;
-  box-shadow: 0px 0px 20px -5px #ddd;
+  box-shadow: 0px 0px 20px -5px var(--shadow-color-default);
 `;

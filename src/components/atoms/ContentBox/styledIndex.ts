@@ -48,7 +48,7 @@ export const StyledContentBox = styled.div<{
     if (isCard) {
       return `
         padding: 20px;
-        border: 2px solid #333;
+        border: 2px solid var(--border-color-default);
       `;
     }
   }}

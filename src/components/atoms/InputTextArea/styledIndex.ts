@@ -6,5 +6,5 @@ export const StyledInputTextArea = styled.textarea`
   min-height: 400px;
   margin: 10px 0;
   padding: 8px;
-  border: 2px solid #333;
+  border: 2px solid var(--border-color-default);
 `;
