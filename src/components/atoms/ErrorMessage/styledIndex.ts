@@ -1,5 +1,5 @@
 import styled from 'styled-components';
 
 export const StyledErrorMessage = styled.div`
-  color: #d33;
+  color: var(--text-color-error);
 `;

@@ -21,6 +21,21 @@
   font-display: swap;
 }
 
+/* Theme */
+:root {
+  /* color */
+  --background-color-code-inline: #e8e8e8;
+  --background-color-default: #fff;
+  --border-color-default: #333;
+  --shadow-color-default: #ddd;
+  --text-color-default: #333;
+  --text-color-link: #d33;
+  --text-color-attention: #d33;
+  --text-color-error: #d33;
+
+  /* FIXME: Size を Theme にしたい */
+}
+
 *,
 *:before,
 *:after {
@@ -126,7 +141,8 @@ ul {
 body {
   font-family: 'Roboto', 'Noto Sans JP', sans-serif;
   line-height: 1;
-  color: #333;
+  color: var(--text-color-default);
+  background: var(--background-color-default);
 }
 
 h1 {
@@ -180,5 +196,5 @@ input {
 }
 
 a {
-  color: #d33;
+  color: var(--text-color-link);
 }

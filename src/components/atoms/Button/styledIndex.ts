@@ -6,7 +6,7 @@ export const StyledButton = styled.button<{ attention: boolean }>`
   ${({ attention }) => {
     if (attention) {
       return `
-        color: #d33;
+        color: var(--text-color-attention);
       `;
     }
   }}

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledHeaderWrapper = styled.header`
-  border-bottom: 2px solid #333;
+  border-bottom: 2px solid var(--border-color-default);
 `;
 
 export const StyledHeader = styled.div`
