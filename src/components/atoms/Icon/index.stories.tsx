@@ -21,7 +21,8 @@ const Template: Story<Props> = (args) => <Icon {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
-  fileName: 'open_in_new_red_24dp.svg',
-  alt: 'icon',
+  fillColor: 'default',
+  iconName: 'OpenInNew',
+  sideMargin: '0',
   size: '16',
 };

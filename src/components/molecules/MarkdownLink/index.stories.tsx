@@ -18,8 +18,8 @@ Default.args = {
   children: '外部リンク',
   linkPath: 'https://picsum.photos/800/600',
   icon: {
-    fileName: 'open_in_new_red_24dp.svg',
-    alt: 'external-link',
+    iconName: 'OpenInNew',
+    fillColor: 'link',
     size: '16',
     sideMargin: '4',
   },

@@ -1,7 +1,9 @@
+import { ComponentProps } from 'react';
 import ReactMarkdown from 'react-markdown';
 
 import CodeBlock from '@/atoms/CodeBlock';
 import ContentBox from '@/atoms/ContentBox';
+import Icon from '@/atoms/Icon';
 import InlineCode from '@/atoms/InlineCode';
 import TextBox from '@/atoms/TextBox';
 import TextItem from '@/atoms/TextItem';
@@ -13,6 +15,8 @@ import MarkdownLink from '@/molecules/MarkdownLink';
 type Props = {
   content: string;
 };
+
+type IconProps = ComponentProps<typeof Icon>;
 
 const Markdown = ({ content }: Props) => {
   return (
@@ -81,12 +85,12 @@ const Markdown = ({ content }: Props) => {
           );
         },
         a({ href = '/', children }) {
-          const icon = {
-            fileName: 'open_in_new_red_24dp.svg',
-            alt: '外部リンク',
+          const icon: IconProps = {
+            iconName: 'OpenInNew',
+            fillColor: 'link',
             size: '16',
             sideMargin: '4',
-          } as const;
+          };
 
           return (
             <MarkdownLink linkPath={href} icon={icon}>
