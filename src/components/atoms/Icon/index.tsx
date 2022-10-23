@@ -1,28 +1,34 @@
-import { SideMargin, Size, StyledIcon } from './styledIcon';
+import { FillColor, SideMargin, StyledOpenInNew } from './styledIcon';
+
+type Size = '16' | '24' | '32' | '48';
 
 type Props = {
-  fileName: string;
-  alt?: string;
+  iconName: 'OpenInNew' | 'Test';
+  fillColor?: FillColor;
   size?: Size;
+  viewBox?: string;
   sideMargin?: SideMargin;
 };
 
 const Icon = ({
-  fileName,
-  alt = 'icon',
-  size = '16',
+  iconName,
+  fillColor = 'default',
+  size = '24',
   sideMargin = '0',
 }: Props) => {
-  return (
-    <StyledIcon
-      src={`/static/media/icons/${fileName}`}
-      alt={alt}
-      width={size}
-      height={size}
-      size={size}
-      sideMargin={sideMargin}
-    />
-  );
+  switch (iconName) {
+    case 'OpenInNew':
+      return (
+        <StyledOpenInNew
+          width={size}
+          height={size}
+          $fillColor={fillColor}
+          $sideMargin={sideMargin}
+        />
+      );
+    default:
+      return null;
+  }
 };
 
 export default Icon;

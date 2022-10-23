@@ -1,10 +1,15 @@
 import styled from 'styled-components';
 
-export type Size = '16' | '24' | '32' | '48';
-export type SideMargin = '0' | '4' | '8';
+import SvgOpenInNew from './svg/SvgOpenInNew';
 
-export const StyledIcon = styled.img<{ size: Size; sideMargin: SideMargin }>`
-  width: ${({ size }) => `${size}px`};
-  height: ${({ size }) => `${size}px`};
-  ${({ sideMargin }) => sideMargin && `margin: 0 ${sideMargin}px;`}
+export type SideMargin = '0' | '4' | '8';
+export type FillColor = 'default' | 'link' | 'attention' | 'error';
+
+export const StyledOpenInNew = styled(SvgOpenInNew)<{
+  $sideMargin: SideMargin;
+  $fillColor: FillColor;
+}>`
+  ${({ $sideMargin }) => $sideMargin && `margin: 0px ${$sideMargin}px;`}
+  vertical-align: middle;
+  ${({ $fillColor }) => `fill: var(--text-color-${$fillColor});`}
 `;

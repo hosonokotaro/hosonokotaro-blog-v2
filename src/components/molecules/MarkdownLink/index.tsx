@@ -19,9 +19,9 @@ const MarkdownLink = ({ children, linkPath, icon }: Props) => {
       {children}
       {isExternalLink && icon && (
         <Icon
-          fileName={icon.fileName}
-          alt={icon.alt}
+          iconName={icon.iconName}
           size={icon.size}
+          fillColor="link"
           sideMargin={icon.sideMargin}
         />
       )}
