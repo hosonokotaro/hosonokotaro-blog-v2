@@ -36,6 +36,19 @@
   /* FIXME: Size を Theme にしたい */
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color-code-inline: #444;
+    --background-color-default: #222;
+    --border-color-default: #444;
+    --shadow-color-default: #000;
+    --text-color-default: #bbb;
+    --text-color-link: #a55;
+    --text-color-attention: #a55;
+    --text-color-error: #a55;
+  }
+}
+
 *,
 *:before,
 *:after {
