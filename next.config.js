@@ -25,6 +25,12 @@ const nextConfig = {
 
     return config;
   },
+  compiler: {
+    styledComponents: {
+      displayName: true,
+      ssr: true,
+    },
+  },
 };
 
 module.exports = (_phase, { defaultConfig }) => {
