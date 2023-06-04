@@ -1,16 +1,15 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const withPlugins = require('next-compose-plugins');
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
 
 /**
- * @type { import('next').NextConfig }
- **/
+ * @type {import('next').NextConfig}
+ */
 const nextConfig = {
-  // NOTE: client 側に渡せる環境変数
-  env: {
-    // USE_MSW: process.env.USE_MSW,
+  reactStrictMode: true,
+  experimental: {
+    forceSwcTransforms: true,
   },
   webpack(config) {
     const fileLoaderRule = config.module.rules.find(
@@ -26,6 +25,18 @@ const nextConfig = {
 
     return config;
   },
+  compiler: {
+    styledComponents: {
+      displayName: true,
+      ssr: true,
+    },
+  },
 };
 
-module.exports = withPlugins([withBundleAnalyzer], nextConfig);
+module.exports = (_phase, { defaultConfig }) => {
+  const plugins = [withBundleAnalyzer];
+  return plugins.reduce((acc, plugin) => plugin(acc), {
+    ...defaultConfig,
+    ...nextConfig,
+  });
+};
