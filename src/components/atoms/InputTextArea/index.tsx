@@ -1,6 +1,6 @@
 import { ChangeEvent } from 'react';
 
-import { StyledInputTextArea } from './styledIndex';
+import * as Styles from './index.css';
 
 type Props = {
   id: string;
@@ -16,8 +16,9 @@ const InputTextArea = ({
   handleChange,
 }: Partial<Props>) => {
   return (
-    <StyledInputTextArea
+    <textarea
       id={id}
+      className={Styles.base}
       name={name}
       defaultValue={defaultValue}
       onChange={handleChange}

@@ -7,7 +7,7 @@ export default {
   component: TextBox,
   title: 'components/atoms/TextBox',
   argTypes: {
-    tagName: {
+    as: {
       options: ['div', 'p'],
       control: { type: 'radio' },
     },
@@ -21,7 +21,7 @@ const Template: Story<Props> = (args) => <TextBox {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
-  tagName: 'div',
+  as: 'div',
   children:
     'いろはにほへと ちりぬるを わかよたれそ つねならむ うゐのおくやま けふこえて あさきゆめみし ゑひもせすん',
 };

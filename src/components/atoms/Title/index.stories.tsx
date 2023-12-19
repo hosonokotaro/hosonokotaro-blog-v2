@@ -7,7 +7,7 @@ export default {
   component: Title,
   title: 'components/atoms/Title',
   argTypes: {
-    rank: {
+    as: {
       options: ['h2', 'h3', 'h4', 'span'],
       control: { type: 'radio' },
     },
@@ -22,5 +22,5 @@ export const Default = Template.bind({});
 
 Default.args = {
   text: 'title',
-  rank: 'h2',
+  as: 'h2',
 };

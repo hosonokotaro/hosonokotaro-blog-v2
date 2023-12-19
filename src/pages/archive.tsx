@@ -23,7 +23,7 @@ const Archive = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <Layout title="過去の記事" pagePath="/archive">
-      <PageLayout tagName="article">
+      <PageLayout as="article">
         <TitleList
           titleName="過去の記事"
           titleList={archiveTitleList}

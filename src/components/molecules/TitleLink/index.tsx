@@ -29,7 +29,7 @@ const TitleLink = ({
         <ContentBox marginTopSize={marginTopSize}>
           <Link href={`/${postId}`}>
             <a>
-              <Title rank="span" text={title} />
+              <Title as="span" text={title} />
             </a>
           </Link>
           <Date text={formatDate(createDate)} />
@@ -40,7 +40,7 @@ const TitleLink = ({
           <Link href={`/edit/${postId}`}>
             <a>
               <Title
-                rank="span"
+                as="span"
                 text={`${released ? '' : '【非公開】'}${title}`}
               />
             </a>

@@ -1,18 +1,18 @@
-type TagName = 'label' | 'span';
+type AllowTagName = 'label' | 'span';
 
 type Props = {
   text: string;
-  tagName?: TagName;
+  as?: AllowTagName & keyof JSX.IntrinsicElements;
   htmlFor?: string;
 };
 
-const TextLabel = ({ text, tagName = 'label', htmlFor = '' }: Props) => {
-  switch (tagName) {
-    case 'span':
-      return <span>{text}</span>;
+const TextLabel = ({ text, as: Tag = 'label', htmlFor = '' }: Props) => {
+  switch (Tag) {
     case 'label':
+      return <Tag htmlFor={htmlFor}>{text}</Tag>;
+    case 'span':
     default:
-      return <label htmlFor={htmlFor}>{text}</label>;
+      return <Tag>{text}</Tag>;
   }
 };
 

@@ -7,7 +7,7 @@ export default {
   component: TextLabel,
   title: 'components/atoms/TextLabel',
   argTypes: {
-    tagName: {
+    as: {
       options: ['label', 'span'],
       control: { type: 'radio' },
     },
@@ -23,5 +23,5 @@ export const Default = Template.bind({});
 Default.args = {
   text: 'label',
   htmlFor: '',
-  tagName: 'label',
+  as: 'label',
 };

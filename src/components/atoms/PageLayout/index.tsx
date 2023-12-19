@@ -1,24 +1,30 @@
+import { assignInlineVars } from '@vanilla-extract/dynamic';
 import { ReactNode } from 'react';
 
-import { StyledPageLayout } from './styledIndex';
+import * as Styles from './index.css';
 
-type TagName = 'div' | 'article' | 'section';
+type AllowTagName = 'div' | 'article' | 'section';
 
 type Props = {
-  tagName?: TagName;
+  as?: AllowTagName & keyof JSX.IntrinsicElements;
   isMinHeight?: boolean;
   children: ReactNode;
 };
 
 const PageLayout = ({
-  tagName = 'div',
+  as: Tag = 'div',
   isMinHeight = true,
   children,
 }: Props) => {
   return (
-    <StyledPageLayout as={tagName} isMinHeight={isMinHeight}>
+    <Tag
+      className={Styles.base}
+      style={assignInlineVars({
+        [Styles.minHeight]: isMinHeight ? 'calc(100vh - 280px - 98px)' : 'auto',
+      })}
+    >
       {children}
-    </StyledPageLayout>
+    </Tag>
   );
 };
 

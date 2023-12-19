@@ -1,4 +1,4 @@
-import { StyledButton } from './styledIndex';
+import * as Styles from './index.css';
 
 type Props = {
   text: string;
@@ -14,13 +14,13 @@ const Button = ({
   attention = false,
 }: Props) => {
   return (
-    <StyledButton
+    <button
+      className={attention ? Styles.primary : Styles.base}
       onClick={handleClick}
       disabled={disabled}
-      attention={attention}
     >
       {text}
-    </StyledButton>
+    </button>
   );
 };
 

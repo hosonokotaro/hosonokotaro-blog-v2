@@ -1,16 +1,16 @@
 import { ReactNode } from 'react';
 
-import { StyledTextBox } from './styledIndex';
+import * as Styles from './index.css';
 
-type TagName = 'div' | 'p';
+type AllowTagName = 'div' | 'p';
 
 type Props = {
-  tagName?: TagName;
+  as?: AllowTagName & keyof JSX.IntrinsicElements;
   children: ReactNode;
 };
 
-const TextBox = ({ tagName = 'div', children }: Props) => {
-  return <StyledTextBox as={tagName}>{children}</StyledTextBox>;
+const TextBox = ({ as: Tag = 'div', children }: Props) => {
+  return <Tag className={Styles.base}>{children}</Tag>;
 };
 
 export default TextBox;

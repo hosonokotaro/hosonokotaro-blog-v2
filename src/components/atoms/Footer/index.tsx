@@ -1,11 +1,15 @@
-import { StyledFooter } from './styledIndex';
+import * as Styles from './index.css';
 
 type Props = {
   year?: string;
 };
 
 const Footer = ({ year = '' }: Props) => {
-  return <StyledFooter>{`© ${year} HOSONOKOTARO Tech Blog`}</StyledFooter>;
+  return (
+    <footer
+      className={Styles.base}
+    >{`© ${year} HOSONOKOTARO Tech Blog`}</footer>
+  );
 };
 
 export default Footer;

@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import SiteTitle from '@/atoms/SiteTitle';
 
-import { StyledHeader, StyledHeaderWrapper, StyleLink } from './styledIndex';
+import * as Styles from './index.css';
 
 type Props = {
   linkPath?: string;
@@ -10,15 +10,15 @@ type Props = {
 
 const Header = ({ linkPath = '/' }: Props) => {
   return (
-    <StyledHeaderWrapper>
-      <StyledHeader>
+    <header className={Styles.baseWrapper}>
+      <div className={Styles.base}>
         <Link href={linkPath} passHref>
-          <StyleLink>
+          <a className={Styles.anchor}>
             <SiteTitle />
-          </StyleLink>
+          </a>
         </Link>
-      </StyledHeader>
-    </StyledHeaderWrapper>
+      </div>
+    </header>
   );
 };
 

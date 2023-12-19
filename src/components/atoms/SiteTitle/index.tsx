@@ -1,4 +1,4 @@
-import { StyledInlineBlock, StyledSiteTitle } from './styledIndex';
+import * as Styles from './index.css';
 
 type Props = {
   text1: string;
@@ -12,11 +12,11 @@ const SiteTitle = ({
   text3 = 'Tech Blog',
 }: Partial<Props>) => {
   return (
-    <StyledSiteTitle>
-      <StyledInlineBlock>{text1}</StyledInlineBlock>
-      <StyledInlineBlock>{text2}</StyledInlineBlock>
-      <StyledInlineBlock>{text3}</StyledInlineBlock>
-    </StyledSiteTitle>
+    <h1 className={Styles.baseWrapper}>
+      <span className={Styles.base}>{text1}</span>
+      <span className={Styles.base}>{text2}</span>
+      <span className={Styles.base}>{text3}</span>
+    </h1>
   );
 };
 

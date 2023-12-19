@@ -1,11 +1,11 @@
-import { StyledInlineCode } from './styledIndex';
+import * as Styles from './index.css';
 
 type Props = {
   text: string;
 };
 
 const InlineCode = ({ text }: Props) => {
-  return <StyledInlineCode>{text}</StyledInlineCode>;
+  return <code className={Styles.base}>{text}</code>;
 };
 
 export default InlineCode;
