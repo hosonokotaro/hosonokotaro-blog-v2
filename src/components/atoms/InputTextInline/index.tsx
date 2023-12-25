@@ -1,6 +1,6 @@
 import { ChangeEvent, RefObject } from 'react';
 
-import { StyledInputTextInline } from './styledIndex';
+import * as Styles from './index.css';
 
 type Props = {
   id: string;
@@ -19,8 +19,10 @@ const InputTextInline = ({
   refObject,
 }: Partial<Props>) => {
   return (
-    <StyledInputTextInline
+    <input
+      type="text"
       id={id}
+      className={Styles.base}
       name={name}
       defaultValue={defaultValue}
       onChange={handleChange}

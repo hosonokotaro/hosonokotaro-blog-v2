@@ -1,13 +1,16 @@
-import { FillColor, SideMargin, StyledOpenInNew } from './styledIcon';
+import { assignInlineVars } from '@vanilla-extract/dynamic';
+
+import * as Styles from './index.css';
+import OpenInNew from './svg/SvgOpenInNew';
 
 type Size = '16' | '24' | '32' | '48';
 
 type Props = {
   iconName: 'OpenInNew' | 'Test';
-  fillColor?: FillColor;
+  fillColor?: Styles.FillColor;
   size?: Size;
   viewBox?: string;
-  sideMargin?: SideMargin;
+  sideMargin?: Styles.SideMargin;
 };
 
 const Icon = ({
@@ -19,11 +22,17 @@ const Icon = ({
   switch (iconName) {
     case 'OpenInNew':
       return (
-        <StyledOpenInNew
+        <OpenInNew
+          className={Styles.base}
+          style={{
+            ...assignInlineVars({
+              [Styles.sideMargin]: `0px ${sideMargin}px`,
+            }),
+            // FIXME: vanilla-extract で CSS 変数の key name を変数として渡せないので根本的に修正したい
+            fill: `var(--text-color-${fillColor})`,
+          }}
           width={size}
           height={size}
-          $fillColor={fillColor}
-          $sideMargin={sideMargin}
         />
       );
     default:

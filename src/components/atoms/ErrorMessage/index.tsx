@@ -1,4 +1,4 @@
-import { StyledErrorMessage } from './styledIndex';
+import * as Styles from './index.css';
 
 type Props = {
   text?: string;
@@ -7,7 +7,7 @@ type Props = {
 const ErrorMessage = ({
   text = 'Something went wrong. Please try again.',
 }: Props) => {
-  return <StyledErrorMessage>{text}</StyledErrorMessage>;
+  return <div className={Styles.base}>{text}</div>;
 };
 
 export default ErrorMessage;

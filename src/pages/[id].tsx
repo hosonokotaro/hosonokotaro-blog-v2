@@ -83,7 +83,7 @@ const Post = ({ id, title, createDate, content }: Props) => {
         {JSON.stringify(jsonLd)}
       </Script>
       <Layout title={title} pagePath={`/${id}`}>
-        <PageLayout tagName="section">
+        <PageLayout as="section">
           <Title text={title} />
           <ContentBox marginTopSize="20px">{formatDate(createDate)}</ContentBox>
           <ContentBox marginTopSize="80px">

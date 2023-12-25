@@ -55,10 +55,7 @@ const Layout = ({
           />
         )}
 
-        <title>
-          {title && `${title} | `}
-          {siteName}
-        </title>
+        <title>{title ? `${title} | ${siteName}` : siteName}</title>
       </Head>
       <Header linkPath={linkPath} />
       {children}

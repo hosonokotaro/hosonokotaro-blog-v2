@@ -10,7 +10,13 @@ export default {
 
 type Props = ComponentProps<typeof TextItem>;
 
-const Template: Story<Props> = (args) => <TextItem {...args} />;
+const Template: Story<Props> = (args) => (
+  <ul>
+    <TextItem {...args} />
+    <TextItem {...args} />
+    <TextItem {...args} />
+  </ul>
+);
 
 export const Default = Template.bind({});
 

@@ -7,7 +7,7 @@ export default {
   component: PageLayout,
   title: 'components/atoms/PageLayout',
   argTypes: {
-    tagName: {
+    as: {
       options: ['div', 'article', 'section'],
       control: { type: 'radio' },
     },
@@ -21,6 +21,6 @@ const Template: Story<Props> = (args) => <PageLayout {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
-  tagName: 'div',
+  as: 'div',
   children: 'Content',
 };

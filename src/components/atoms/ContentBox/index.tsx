@@ -1,39 +1,33 @@
+import { assignInlineVars } from '@vanilla-extract/dynamic';
 import { ReactNode } from 'react';
 
-import { MarginTopSize, StyledContentBox, TextAlign } from './styledIndex';
+import * as Styles from './index.css';
 
-type TagName = 'div' | 'article' | 'section';
+type AllowTagName = 'div' | 'article' | 'section';
 
 type Props = {
+  as?: AllowTagName & keyof JSX.IntrinsicElements;
   children: ReactNode;
-  isBetween?: boolean;
-  marginTopSize?: MarginTopSize;
-  textAlign?: TextAlign;
-  isBoxCenter?: boolean;
-  isCard?: boolean;
-  tagName?: TagName;
+  marginTopSize?: Styles.MarginTopSize;
+  textAlign?: Styles.TextAlign;
 };
 
 const ContentBox = ({
-  children,
-  isBetween = false,
+  as: Tag = 'div',
   marginTopSize = '0px',
   textAlign = 'left',
-  isBoxCenter = false,
-  isCard = false,
-  tagName = 'div',
+  children,
 }: Props) => {
   return (
-    <StyledContentBox
-      isBetween={isBetween}
-      marginTopSize={marginTopSize}
-      textAlign={textAlign}
-      isBoxCenter={isBoxCenter}
-      isCard={isCard}
-      as={tagName}
+    <Tag
+      className={Styles.base}
+      style={assignInlineVars({
+        [Styles.marginTopSize]: marginTopSize,
+        [Styles.textAlign]: textAlign,
+      })}
     >
       {children}
-    </StyledContentBox>
+    </Tag>
   );
 };
 

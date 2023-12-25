@@ -23,7 +23,7 @@ const TitleList = ({
   listMarginTop = '0px',
 }: Props) => {
   return (
-    <ContentBox tagName="section" marginTopSize={contentMarginTop}>
+    <ContentBox as="section" marginTopSize={contentMarginTop}>
       <Title text={titleName} />
       <ContentBox marginTopSize={listMarginTop}>
         {titleList &&

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { ReactNode } from 'react';
 
-import { StyledLink } from './styledIndex';
+import * as Styles from './index.css';
 
 type Props = {
   children: ReactNode;
@@ -12,15 +12,20 @@ type Props = {
 const Anchor = ({ children, linkPath, isExternalLink = false }: Props) => {
   if (isExternalLink) {
     return (
-      <StyledLink href={linkPath} target="_blank" rel="noopener noreferrer">
+      <a
+        className={Styles.base}
+        href={linkPath}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         {children}
-      </StyledLink>
+      </a>
     );
   }
 
   return (
     <Link href={linkPath} passHref>
-      <StyledLink>{children}</StyledLink>
+      <a className={Styles.base}>{children}</a>
     </Link>
   );
 };

@@ -1,6 +1,6 @@
 import { ChangeEvent } from 'react';
 
-import { StyledInputCheckBox } from './styledIndex';
+import * as Styles from './index.css';
 
 type Props = {
   id: string;
@@ -16,7 +16,9 @@ const InputCheckBox = ({
   handleChange,
 }: Partial<Props>) => {
   return (
-    <StyledInputCheckBox
+    <input
+      type="checkbox"
+      className={Styles.base}
       id={id}
       name={name}
       defaultChecked={checked}

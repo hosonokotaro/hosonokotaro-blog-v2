@@ -66,21 +66,21 @@ const Markdown = ({ content }: Props) => {
         h2({ children }) {
           return (
             <ContentBox marginTopSize="40px">
-              <Title text={String(children).replace(/\n$/, '')} rank="h2" />
+              <Title text={String(children).replace(/\n$/, '')} as="h2" />
             </ContentBox>
           );
         },
         h3({ children }) {
           return (
             <ContentBox marginTopSize="40px">
-              <Title text={String(children).replace(/\n$/, '')} rank="h3" />
+              <Title text={String(children).replace(/\n$/, '')} as="h3" />
             </ContentBox>
           );
         },
         h4({ children }) {
           return (
             <ContentBox marginTopSize="40px">
-              <Title text={String(children).replace(/\n$/, '')} rank="h4" />
+              <Title text={String(children).replace(/\n$/, '')} as="h4" />
             </ContentBox>
           );
         },

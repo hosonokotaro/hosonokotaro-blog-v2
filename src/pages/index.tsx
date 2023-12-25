@@ -21,7 +21,7 @@ export const getStaticProps = async () => {
 const Top = ({ titleList }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <Layout>
-      <PageLayout tagName="article">
+      <PageLayout as="article">
         <TitleList titleList={titleList} listMarginTop="80px" />
         <ContentBox marginTopSize="80px">
           <Anchor linkPath="/archive">過去の記事へ</Anchor>

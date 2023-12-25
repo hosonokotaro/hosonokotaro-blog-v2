@@ -25,10 +25,7 @@ const Template: Story<Props> = (args) => <ContentBox {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
-  isBetween: false,
+  children: '何らかの内容が入ります',
   marginTopSize: '0px',
   textAlign: 'left',
-  isBoxCenter: false,
-  isCard: false,
-  children: '何らかの内容が入ります',
 };

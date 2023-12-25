@@ -1,17 +1,37 @@
-import { StyledTitle } from './styledIndex';
+import { assignInlineVars } from '@vanilla-extract/dynamic';
 
-type TagName = 'h2' | 'h3' | 'h4' | 'span';
+import * as Styles from './index.css';
+type AllowTagName = 'h2' | 'h3' | 'h4' | 'span';
 
 type Props = {
   text: string;
-  rank?: TagName;
+  as?: AllowTagName & keyof JSX.IntrinsicElements;
 };
 
-const Title = ({ text, rank = 'h2' }: Props) => {
+const Title = ({ text, as: Tag = 'h2' }: Props) => {
+  let fontSize: Styles.FontSize;
+
+  switch (Tag) {
+    case 'h3':
+      fontSize = '1.6rem';
+      break;
+    case 'h4':
+    case 'span':
+      fontSize = '1.2rem';
+      break;
+    default:
+      fontSize = '2rem';
+  }
+
   return (
-    <StyledTitle rankStyle={rank} as={rank}>
+    <Tag
+      className={Styles.base}
+      style={assignInlineVars({
+        [Styles.fontSize]: fontSize,
+      })}
+    >
       {text}
-    </StyledTitle>
+    </Tag>
   );
 };
 
