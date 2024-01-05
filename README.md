@@ -10,9 +10,10 @@ https://techblog.hosonokotaro.jp/
 
 ### フロントエンド
 
-- Husky
 - Next.js
 - React Markdown
+- Husky
+- Storybook
 
 ### バックエンド
 
