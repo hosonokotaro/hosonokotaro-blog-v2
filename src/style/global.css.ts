@@ -1,6 +1,23 @@
-import { globalStyle } from '@vanilla-extract/css';
+import { globalFontFace, globalStyle } from '@vanilla-extract/css';
 
 import { defaultVars } from './theme.css';
+
+globalFontFace('Roboto', {
+  fontStyle: 'normal',
+  fontWeight: 400,
+  src: `local(''),
+      url('/static/fonts/roboto-v29-latin-regular.woff2') format('woff2')`,
+  fontDisplay: 'swap',
+});
+
+globalFontFace('Noto Sans JP', {
+  fontStyle: 'normal',
+  fontWeight: 400,
+  src: `local(''),
+      url('/static/fonts/noto-sans-jp-v36-latin_japanese-regular.woff2')
+        format('woff2')`,
+  fontDisplay: 'swap',
+});
 
 globalStyle('*, *:before, *:after', {
   boxSizing: 'border-box',
@@ -31,7 +48,6 @@ globalStyle(
   }
 );
 
-// TODO: CSS Variables を紐つけること
 globalStyle('menu, ol, ul', {
   listStyle: 'none',
 });
@@ -40,6 +56,7 @@ globalStyle('body', {
   fontFamily: "'Roboto', 'Noto Sans JP', sans-serif",
   lineHeight: 1,
   color: defaultVars.text.color.default,
+  background: defaultVars.background.color.default,
 });
 
 globalStyle('h1', {
