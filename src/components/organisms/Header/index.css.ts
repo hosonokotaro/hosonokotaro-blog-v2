@@ -1,7 +1,9 @@
 import { style } from '@vanilla-extract/css';
 
+import { defaultVars } from '~/style/theme.css';
+
 export const baseWrapper = style({
-  borderBottom: '2px solid var(--border-color-default)',
+  borderBottom: `2px solid ${defaultVars.border.color.default}`,
 });
 
 export const base = style({

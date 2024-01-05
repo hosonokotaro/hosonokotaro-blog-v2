@@ -1,5 +1,7 @@
 import { style } from '@vanilla-extract/css';
 
+import { defaultVars } from '~/style/theme.css';
+
 export const base = style({
-  color: 'var(--text-color-link)',
+  color: defaultVars.text.color.link,
 });
