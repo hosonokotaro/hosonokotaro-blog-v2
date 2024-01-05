@@ -1,5 +1,6 @@
 import 'normalize.css';
 import '~/style/global.css';
+import '~/style/theme.css';
 
 import type { Preview } from '@storybook/react';
 
