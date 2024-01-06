@@ -1,8 +1,5 @@
-import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
-import tsx from 'react-syntax-highlighter/dist/cjs/languages/prism/tsx';
-import syntaxStyle from 'react-syntax-highlighter/dist/cjs/styles/prism/tomorrow';
-
-SyntaxHighlighter.registerLanguage('tsx', tsx);
+import { PrismAsyncLight as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { tomorrow } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
 // NOTE: Syntax highlighter は value という props が必須
 type Props = {
@@ -14,7 +11,7 @@ const CodeBlock = ({ value, language }: Props) => {
   return (
     <SyntaxHighlighter
       language={language}
-      style={syntaxStyle}
+      style={tomorrow}
       role="img"
       aria-label="コードスニペットによる説明"
     >
