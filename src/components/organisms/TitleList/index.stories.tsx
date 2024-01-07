@@ -3,9 +3,8 @@ import { ComponentProps } from 'react';
 
 import TitleList from './';
 
-export default {
+const meta: Meta<typeof TitleList> = {
   component: TitleList,
-  title: 'components/organisms/TitleList',
   argTypes: {
     contentMarginTop: {
       options: ['0px', '10px', '20px', '40px', '80px'],
@@ -16,7 +15,9 @@ export default {
       control: { type: 'select' },
     },
   },
-} as Meta;
+};
+
+export default meta;
 
 type Props = ComponentProps<typeof TitleList>;
 

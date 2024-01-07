@@ -1,19 +1,17 @@
-import { Meta, Story } from '@storybook/react';
-import { ComponentProps } from 'react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import ErrorMessage from './';
 
-export default {
+const meta: Meta<typeof ErrorMessage> = {
   component: ErrorMessage,
-  title: 'components/atoms/ErrorMessage',
-} as Meta;
+};
 
-type Props = ComponentProps<typeof ErrorMessage>;
+export default meta;
 
-const Template: Story<Props> = (args) => <ErrorMessage {...args} />;
+type Story = StoryObj<typeof ErrorMessage>;
 
-export const Default = Template.bind({});
-
-Default.args = {
-  text: 'Something went wrong. Please try again.',
+export const Default: Story = {
+  args: {
+    text: 'Something went wrong. Please try again.',
+  },
 };

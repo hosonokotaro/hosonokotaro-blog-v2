@@ -1,19 +1,17 @@
-import { Meta, Story } from '@storybook/react';
-import { ComponentProps } from 'react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import InlineCode from './';
 
-export default {
+const meta: Meta<typeof InlineCode> = {
   component: InlineCode,
-  title: 'components/atoms/InlineCode',
-} as Meta;
+};
 
-type Props = ComponentProps<typeof InlineCode>;
+export default meta;
 
-const Template: Story<Props> = (args) => <InlineCode {...args} />;
+type Story = StoryObj<typeof InlineCode>;
 
-export const Default = Template.bind({});
-
-Default.args = {
-  text: 'inline code',
+export const Default: Story = {
+  args: {
+    text: 'inline code',
+  },
 };

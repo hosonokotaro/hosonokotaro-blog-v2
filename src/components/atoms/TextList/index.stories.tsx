@@ -1,27 +1,25 @@
-import { Meta, Story } from '@storybook/react';
-import { ComponentProps } from 'react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import TextItem from '@/atoms/TextItem';
 
 import TextList from './';
 
-export default {
+const meta: Meta<typeof TextList> = {
   component: TextList,
-  title: 'components/atoms/TextList',
-} as Meta;
+};
 
-type Props = ComponentProps<typeof TextList>;
+export default meta;
 
-const Template: Story<Props> = (args) => <TextList {...args} />;
+type Story = StoryObj<typeof TextList>;
 
-export const Default = Template.bind({});
-
-Default.args = {
-  children: (
-    <>
-      <TextItem text="hello" />
-      <TextItem text="goodbye" />
-      <TextItem text="thanks" />
-    </>
-  ),
+export const Default: Story = {
+  args: {
+    children: (
+      <>
+        <TextItem text="hello" />
+        <TextItem text="goodbye" />
+        <TextItem text="thanks" />
+      </>
+    ),
+  },
 };

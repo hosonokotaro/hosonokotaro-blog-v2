@@ -1,27 +1,25 @@
-import { Meta, Story } from '@storybook/react';
-import { ComponentProps } from 'react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import TextLabel from './';
 
-export default {
+const meta: Meta<typeof TextLabel> = {
   component: TextLabel,
-  title: 'components/atoms/TextLabel',
   argTypes: {
     as: {
       options: ['label', 'span'],
       control: { type: 'radio' },
     },
   },
-} as Meta;
+};
 
-type Props = ComponentProps<typeof TextLabel>;
+export default meta;
 
-const Template: Story<Props> = (args) => <TextLabel {...args} />;
+type Story = StoryObj<typeof TextLabel>;
 
-export const Default = Template.bind({});
-
-Default.args = {
-  text: 'label',
-  htmlFor: '',
-  as: 'label',
+export const Default: Story = {
+  args: {
+    text: 'label',
+    htmlFor: 'input',
+    as: 'label',
+  },
 };

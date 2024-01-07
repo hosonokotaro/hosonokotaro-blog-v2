@@ -1,21 +1,19 @@
-import { Meta, Story } from '@storybook/react';
-import { ComponentProps } from 'react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import SiteTitle from './';
 
-export default {
+const meta: Meta<typeof SiteTitle> = {
   component: SiteTitle,
-  title: 'components/atoms/SiteTitle',
-} as Meta;
+};
 
-type Props = ComponentProps<typeof SiteTitle>;
+export default meta;
 
-const Template: Story<Props> = (args) => <SiteTitle {...args} />;
+type Story = StoryObj<typeof SiteTitle>;
 
-export const Default = Template.bind({});
-
-Default.args = {
-  text1: 'HOSONO',
-  text2: 'KOTARO',
-  text3: 'Tech Blog',
+export const Default: Story = {
+  args: {
+    text1: 'HOSONO',
+    text2: 'KOTARO',
+    text3: 'Tech Blog',
+  },
 };

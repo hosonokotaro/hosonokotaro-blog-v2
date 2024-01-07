@@ -1,19 +1,17 @@
-import { Meta, Story } from '@storybook/react';
-import { ComponentProps } from 'react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import Date from './';
 
-export default {
+const meta: Meta<typeof Date> = {
   component: Date,
-  title: 'components/atoms/Date',
-} as Meta;
+};
 
-type Props = ComponentProps<typeof Date>;
+export default meta;
 
-const Template: Story<Props> = (args) => <Date {...args} />;
+type Story = StoryObj<typeof Date>;
 
-export const Default = Template.bind({});
-
-Default.args = {
-  text: '2021',
+export const Default: Story = {
+  args: {
+    text: '2021',
+  },
 };

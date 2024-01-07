@@ -1,20 +1,18 @@
-import { Meta, Story } from '@storybook/react';
-import { ComponentProps } from 'react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import CodeBlock from './';
 
-export default {
+const meta: Meta<typeof CodeBlock> = {
   component: CodeBlock,
-  title: 'components/atoms/CodeBlock',
-} as Meta;
+};
 
-type Props = ComponentProps<typeof CodeBlock>;
+export default meta;
 
-const Templates: Story<Props> = (args) => <CodeBlock {...args} />;
+type Story = StoryObj<typeof CodeBlock>;
 
-export const Default = Templates.bind({});
-
-Default.args = {
-  value: '<Sample prop1="text">Hello Storybook</Sample>',
-  language: 'tsx',
+export const Default: Story = {
+  args: {
+    value: '<Sample prop1="text">Hello Storybook</Sample>',
+    language: 'tsx',
+  },
 };
