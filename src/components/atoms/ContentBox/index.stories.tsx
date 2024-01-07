@@ -1,11 +1,9 @@
-import { Meta, Story } from '@storybook/react';
-import { ComponentProps } from 'react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import ContentBox from '@/atoms/ContentBox';
 
-export default {
+const meta: Meta<typeof ContentBox> = {
   component: ContentBox,
-  title: 'components/atoms/ContentBox',
   argTypes: {
     marginTopSize: {
       options: ['0px', '10px', '20px', '40px', '80px'],
@@ -16,16 +14,16 @@ export default {
       control: { type: 'radio' },
     },
   },
-} as Meta;
+};
 
-type Props = ComponentProps<typeof ContentBox>;
+export default meta;
 
-const Template: Story<Props> = (args) => <ContentBox {...args} />;
+type Story = StoryObj<typeof ContentBox>;
 
-export const Default = Template.bind({});
-
-Default.args = {
-  children: '何らかの内容が入ります',
-  marginTopSize: '0px',
-  textAlign: 'left',
+export const Default: Story = {
+  args: {
+    children: '何らかの内容が入ります',
+    marginTopSize: '0px',
+    textAlign: 'left',
+  },
 };

@@ -1,23 +1,21 @@
-import { Meta, Story } from '@storybook/react';
-import { ComponentProps } from 'react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import WrappedImage from './';
 
-export default {
+const meta: Meta<typeof WrappedImage> = {
   component: WrappedImage,
-  title: 'components/atoms/WrappedImage',
   argTypes: {
     handleLoad: { action: 'loaded' },
   },
-} as Meta;
+};
 
-type Props = ComponentProps<typeof WrappedImage>;
+export default meta;
 
-const Template: Story<Props> = (args) => <WrappedImage {...args} />;
+type Story = StoryObj<typeof WrappedImage>;
 
-export const Default = Template.bind({});
-
-Default.args = {
-  src: 'https://picsum.photos/800/600',
-  alt: 'WrappedImage',
+export const Default: Story = {
+  args: {
+    src: 'https://picsum.photos/800/600',
+    alt: 'WrappedImage',
+  },
 };

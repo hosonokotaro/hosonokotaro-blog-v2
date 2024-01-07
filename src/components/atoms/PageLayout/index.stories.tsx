@@ -1,26 +1,24 @@
-import { Meta, Story } from '@storybook/react';
-import { ComponentProps } from 'react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import PageLayout from './';
 
-export default {
+const meta: Meta<typeof PageLayout> = {
   component: PageLayout,
-  title: 'components/atoms/PageLayout',
   argTypes: {
     as: {
       options: ['div', 'article', 'section'],
       control: { type: 'radio' },
     },
   },
-} as Meta;
+};
 
-type Props = ComponentProps<typeof PageLayout>;
+export default meta;
 
-const Template: Story<Props> = (args) => <PageLayout {...args} />;
+type Story = StoryObj<typeof PageLayout>;
 
-export const Default = Template.bind({});
-
-Default.args = {
-  as: 'div',
-  children: 'Content',
+export const Default: Story = {
+  args: {
+    as: 'div',
+    children: 'Content',
+  },
 };

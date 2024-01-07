@@ -1,24 +1,22 @@
-import { Meta, Story } from '@storybook/react';
-import { ComponentProps } from 'react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import InputTextInline from './';
 
-export default {
+const meta: Meta<typeof InputTextInline> = {
   component: InputTextInline,
-  title: 'components/atoms/InputTextInline',
   argTypes: {
     handleChange: { action: 'state を更新する為に使う' },
   },
-} as Meta;
+};
 
-type Props = ComponentProps<typeof InputTextInline>;
+export default meta;
 
-const Template: Story<Props> = (args) => <InputTextInline {...args} />;
+type story = StoryObj<typeof InputTextInline>;
 
-export const Default = Template.bind({});
-
-Default.args = {
-  id: 'id',
-  name: 'name',
-  defaultValue: 'input text',
+export const Default: story = {
+  args: {
+    id: 'id',
+    name: 'name',
+    defaultValue: 'input text',
+  },
 };

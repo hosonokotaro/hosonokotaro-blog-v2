@@ -1,26 +1,24 @@
-import { Meta, Story } from '@storybook/react';
-import { ComponentProps } from 'react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import Title from './';
 
-export default {
+const meta: Meta<typeof Title> = {
   component: Title,
-  title: 'components/atoms/Title',
   argTypes: {
     as: {
       options: ['h2', 'h3', 'h4', 'span'],
       control: { type: 'radio' },
     },
   },
-} as Meta;
+};
 
-type Props = ComponentProps<typeof Title>;
+export default meta;
 
-const Template: Story<Props> = (args) => <Title {...args} />;
+type Story = StoryObj<typeof Title>;
 
-export const Default = Template.bind({});
-
-Default.args = {
-  text: 'title',
-  as: 'h2',
+export const Default: Story = {
+  args: {
+    text: 'title',
+    as: 'h2',
+  },
 };

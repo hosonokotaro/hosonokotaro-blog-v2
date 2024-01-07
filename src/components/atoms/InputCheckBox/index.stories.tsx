@@ -1,25 +1,21 @@
-import { Meta, Story } from '@storybook/react';
-import { ComponentProps } from 'react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import InputCheckBox from './';
 
-export default {
+const meta: Meta<typeof InputCheckBox> = {
   component: InputCheckBox,
-  title: 'components/atoms/InputCheckBox',
   argTypes: {
     handleChange: { action: 'state を更新する為に使う' },
   },
-} as Meta;
+};
 
-type Props = ComponentProps<typeof InputCheckBox>;
+export default meta;
 
-const Template: Story<Props> = (args) => <InputCheckBox {...args} />;
+type Story = StoryObj<typeof InputCheckBox>;
 
-export const Default = Template.bind({});
-
-// FIXME: checked をうまくテスト出来ないので、処理を見直したい
-Default.args = {
-  id: 'id',
-  name: 'name',
-  checked: false,
+export const Default: Story = {
+  args: {
+    id: 'id',
+    name: 'name',
+  },
 };

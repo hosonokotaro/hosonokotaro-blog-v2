@@ -1,21 +1,17 @@
-import { Meta, Story } from '@storybook/react';
-import { ComponentProps } from 'react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import Header from './';
 
-export default {
+const meta: Meta<typeof Header> = {
   component: Header,
-  title: 'components/organisms/Header',
-} as Meta;
-
-type Props = ComponentProps<typeof Header>;
-
-const Template: Story<Props> = (args) => {
-  return <Header {...args} />;
 };
 
-export const Default = Template.bind({});
+export default meta;
 
-Default.args = {
-  linkPath: '/',
+type Story = StoryObj<typeof Header>;
+
+export const Default: Story = {
+  args: {
+    linkPath: '/',
+  },
 };

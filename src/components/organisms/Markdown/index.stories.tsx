@@ -1,19 +1,17 @@
-import { Meta, Story } from '@storybook/react';
-import { ComponentProps } from 'react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import Markdown from './';
 
-export default {
+const meta: Meta<typeof Markdown> = {
   component: Markdown,
-  title: 'components/organisms/Markdown',
-} as Meta;
+};
 
-type Props = ComponentProps<typeof Markdown>;
+export default meta;
 
-const Template: Story<Props> = (args) => <Markdown {...args} />;
+type Story = StoryObj<typeof Markdown>;
 
-export const Default = Template.bind({});
-
-Default.args = {
-  content: '### Markdown をいれてください',
+export const Default: Story = {
+  args: {
+    content: '### Markdown をいれてください',
+  },
 };

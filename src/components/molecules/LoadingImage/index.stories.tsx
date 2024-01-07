@@ -1,20 +1,18 @@
-import { Meta, Story } from '@storybook/react';
-import { ComponentProps } from 'react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import LoadingImage from './';
 
-export default {
+const meta: Meta<typeof LoadingImage> = {
   component: LoadingImage,
-  title: 'components/molecules/LoadingImage',
-} as Meta;
+};
 
-type Props = ComponentProps<typeof LoadingImage>;
+export default meta;
 
-const Template: Story<Props> = (args) => <LoadingImage {...args} />;
+type Story = StoryObj<typeof LoadingImage>;
 
-export const Default = Template.bind({});
-
-Default.args = {
-  src: 'https://picsum.photos/800/600',
-  alt: 'image',
+export const Default: Story = {
+  args: {
+    src: 'https://picsum.photos/800/600',
+    alt: 'image',
+  },
 };

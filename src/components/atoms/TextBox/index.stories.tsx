@@ -1,27 +1,25 @@
-import { Meta, Story } from '@storybook/react';
-import { ComponentProps } from 'react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import TextBox from './';
 
-export default {
+const meta: Meta<typeof TextBox> = {
   component: TextBox,
-  title: 'components/atoms/TextBox',
   argTypes: {
     as: {
       options: ['div', 'p'],
       control: { type: 'radio' },
     },
   },
-} as Meta;
+};
 
-type Props = ComponentProps<typeof TextBox>;
+export default meta;
 
-const Template: Story<Props> = (args) => <TextBox {...args} />;
+type Story = StoryObj<typeof TextBox>;
 
-export const Default = Template.bind({});
-
-Default.args = {
-  as: 'div',
-  children:
-    'いろはにほへと ちりぬるを わかよたれそ つねならむ うゐのおくやま けふこえて あさきゆめみし ゑひもせすん',
+export const Default: Story = {
+  args: {
+    as: 'div',
+    children:
+      'いろはにほへと ちりぬるを わかよたれそ つねならむ うゐのおくやま けふこえて あさきゆめみし ゑひもせすん',
+  },
 };

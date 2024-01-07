@@ -1,20 +1,18 @@
-import { Meta, Story } from '@storybook/react';
-import { ComponentProps } from 'react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import Anchor from './';
 
-export default {
+const meta: Meta<typeof Anchor> = {
   component: Anchor,
-  title: 'components/atoms/Anchor',
-} as Meta;
+};
 
-type Props = ComponentProps<typeof Anchor>;
+export default meta;
 
-const Template: Story<Props> = (args) => <Anchor {...args} />;
+type Story = StoryObj<typeof Anchor>;
 
-export const Default = Template.bind({});
-
-Default.args = {
-  children: 'Anchor',
-  linkPath: 'https://www.google.com',
+export const Default: Story = {
+  args: {
+    children: 'Anchor',
+    linkPath: 'https://www.google.com',
+  },
 };

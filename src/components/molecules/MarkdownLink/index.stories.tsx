@@ -1,26 +1,26 @@
-import { Meta, Story } from '@storybook/react';
-import { ComponentProps } from 'react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import MarkdownLink from './';
 
-export default {
+const meta: Meta<typeof MarkdownLink> = {
   component: MarkdownLink,
-  title: 'components/molecules/MarkdownLink',
-} as Meta;
+};
 
-type Props = ComponentProps<typeof MarkdownLink>;
+export default meta;
 
-const Template: Story<Props> = (args) => <MarkdownLink {...args} />;
+type Story = StoryObj<typeof MarkdownLink>;
 
-export const Default = Template.bind({});
+const icon = {
+  iconName: 'OpenInNew',
+  fillColor: 'link',
+  size: '16',
+  sideMargin: '4',
+} as const;
 
-Default.args = {
-  children: '外部リンク',
-  linkPath: 'https://picsum.photos/800/600',
-  icon: {
-    iconName: 'OpenInNew',
-    fillColor: 'link',
-    size: '16',
-    sideMargin: '4',
+export const Default: Story = {
+  args: {
+    children: '外部リンク',
+    linkPath: 'https://picsum.photos/800/600',
+    icon,
   },
 };

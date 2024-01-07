@@ -1,24 +1,22 @@
-import { Meta, Story } from '@storybook/react';
-import { ComponentProps } from 'react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import Button from './';
 
-export default {
+const meta: Meta<typeof Button> = {
   component: Button,
-  title: 'components/atoms/Button',
   argTypes: {
     handleClick: { action: 'clicked' },
   },
-} as Meta;
+};
 
-type Props = ComponentProps<typeof Button>;
+export default meta;
 
-const Template: Story<Props> = (args) => <Button {...args} />;
+type Story = StoryObj<typeof Button>;
 
-export const Default = Template.bind({});
-
-Default.args = {
-  disabled: false,
-  text: 'button',
-  attention: false,
+export const Default: Story = {
+  args: {
+    disabled: false,
+    text: 'button',
+    attention: false,
+  },
 };

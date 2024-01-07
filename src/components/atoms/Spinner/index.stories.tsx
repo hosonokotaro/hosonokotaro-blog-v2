@@ -1,19 +1,13 @@
-import { Meta, Story } from '@storybook/react';
-import { ComponentProps } from 'react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import Spinner from './';
 
-export default {
+const meta: Meta<typeof Spinner> = {
   component: Spinner,
-  title: 'components/atoms/Spinner',
-} as Meta;
-
-type Props = ComponentProps<typeof Spinner>;
-
-const Template: Story<Props> = () => <Spinner />;
-
-export const Default = Template.bind({});
-
-Default.parameters = {
-  controls: { hideNoControlsWarning: true },
 };
+
+export default meta;
+
+type Story = StoryObj<typeof Spinner>;
+
+export const Default: Story = {};
