@@ -24,8 +24,8 @@ const Anchor = ({ children, linkPath, isExternalLink = false }: Props) => {
   }
 
   return (
-    <Link href={linkPath} passHref>
-      <a className={Styles.base}>{children}</a>
+    <Link href={linkPath} passHref className={Styles.base}>
+      {children}
     </Link>
   );
 };
