@@ -12,10 +12,8 @@ const Header = ({ linkPath = '/' }: Props) => {
   return (
     <header className={Styles.baseWrapper}>
       <div className={Styles.base}>
-        <Link href={linkPath} passHref>
-          <a className={Styles.anchor}>
-            <SiteTitle />
-          </a>
+        <Link href={linkPath} passHref className={Styles.anchor}>
+          <SiteTitle />
         </Link>
       </div>
     </header>

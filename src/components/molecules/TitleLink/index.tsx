@@ -28,9 +28,7 @@ const TitleLink = ({
       {released && !isEditPost && (
         <ContentBox marginTopSize={marginTopSize}>
           <Link href={`/${postId}`}>
-            <a>
-              <Title as="span" text={title} />
-            </a>
+            <Title as="span" text={title} />
           </Link>
           <Date text={formatDate(createDate)} />
         </ContentBox>
@@ -38,12 +36,7 @@ const TitleLink = ({
       {isEditPost && (
         <ContentBox marginTopSize={marginTopSize}>
           <Link href={`/edit/${postId}`}>
-            <a>
-              <Title
-                as="span"
-                text={`${released ? '' : '【非公開】'}${title}`}
-              />
-            </a>
+            <Title as="span" text={`${released ? '' : '【非公開】'}${title}`} />
           </Link>
           <Date text={formatDate(createDate)} />
         </ContentBox>
