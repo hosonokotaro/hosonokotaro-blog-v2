@@ -12,17 +12,7 @@ const nextConfig = {
     forceSwcTransforms: true,
   },
   webpack(config) {
-    const fileLoaderRule = config.module.rules.find(
-      (rule) => rule.test && rule.test.test('.svg')
-    );
-
-    fileLoaderRule.exclude = /\.svg$/;
-
-    config.module.rules.push({
-      test: /\.svg$/,
-      loader: require.resolve('@svgr/webpack'),
-    });
-
+    // NOTE: webpack での処理を変更する場合に利用する
     return config;
   },
   compiler: {
