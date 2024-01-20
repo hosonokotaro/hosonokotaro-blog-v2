@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Script from 'next/script';
 import { ReactNode } from 'react';
 
 import Footer from '@/atoms/Footer';
@@ -57,6 +58,17 @@ const Layout = ({
 
         <title>{title ? `${title} | ${siteName}` : siteName}</title>
       </Head>
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${
+          process.env.NEXT_PUBLIC_ANALYTICS_ID || ''
+        }`}
+        strategy="afterInteractive"
+      />
+      <Script id="gtag-init">
+        {`window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', '${
+          process.env.NEXT_PUBLIC_ANALYTICS_ID || ''
+        }');`}
+      </Script>
       <Header linkPath={linkPath} />
       {children}
       <Footer year={getYearNow()} />
