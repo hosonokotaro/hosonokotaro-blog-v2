@@ -11,6 +11,7 @@ import { Article as Props } from '~/entity/api';
 import { formatDate } from '~/useCase/createDateText';
 import getPost from '~/useCase/getPost';
 import getTitleList from '~/useCase/getTitleList';
+import useGoogleAnalytics from '~/useCase/useGoogleAnalytics';
 
 // NOTE: Page list を取得して、build 時に静的ファイルを生成する
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -76,6 +77,8 @@ const Post = ({ id, title, createDate, content }: Props) => {
     },
     datePublished: createDate,
   };
+
+  useGoogleAnalytics();
 
   return (
     <>
