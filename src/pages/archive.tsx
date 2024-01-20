@@ -6,6 +6,7 @@ import PageLayout from '@/atoms/PageLayout';
 import Layout from '@/layout';
 import TitleList from '@/organisms/TitleList';
 import getTitleList from '~/useCase/getTitleList';
+import useGoogleAnalytics from '~/useCase/useGoogleAnalytics';
 
 export const getStaticProps = async () => {
   const archiveTitleList = await getTitleList(true);
@@ -21,6 +22,8 @@ export const getStaticProps = async () => {
 const Archive = ({
   archiveTitleList,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  useGoogleAnalytics();
+
   return (
     <Layout title="過去の記事" pagePath="/archive">
       <PageLayout as="article">

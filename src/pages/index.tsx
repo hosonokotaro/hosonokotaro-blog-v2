@@ -6,6 +6,7 @@ import PageLayout from '@/atoms/PageLayout';
 import Layout from '@/layout';
 import TitleList from '@/organisms/TitleList';
 import getTitleList from '~/useCase/getTitleList';
+import useGoogleAnalytics from '~/useCase/useGoogleAnalytics';
 
 export const getStaticProps = async () => {
   const titleList = await getTitleList(false);
@@ -19,6 +20,8 @@ export const getStaticProps = async () => {
 };
 
 const Top = ({ titleList }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  useGoogleAnalytics();
+
   return (
     <Layout>
       <PageLayout as="article">
