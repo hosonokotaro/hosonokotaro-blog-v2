@@ -41,6 +41,7 @@
     "@storybook/react": "^7.6.7",
     "@storybook/testing-library": "^0.2.2",
     "@svgr/webpack": "^6.5.0",
+    "@types/gtag.js": "^0.0.18",
     "@types/react": "^17.0.33",
     "@types/react-syntax-highlighter": "^15.5.7",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
