@@ -7,7 +7,7 @@ import type {
   ResponseWithStatus,
 } from '~/entity/api';
 
-const articleList = (): ResponseWithStatus | ErrorResponse => {
+const articleList = () => {
   const path = `${process.cwd()}/articles`;
   let articleList: ArticleList = [];
 
@@ -37,19 +37,23 @@ const articleList = (): ResponseWithStatus | ErrorResponse => {
     articleList = [...tempArticleList];
   } catch (error) {
     if (error instanceof Error) {
-      return {
+      const errorResponse: ErrorResponse = {
         status: 'error',
         message: error.message,
       };
+
+      return errorResponse;
     }
 
     console.log(error);
   }
 
-  return {
+  const responseWithStatus: ResponseWithStatus = {
     status: 'success',
     data: articleList,
   };
+
+  return responseWithStatus;
 };
 
 export default articleList;
