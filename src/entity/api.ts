@@ -6,12 +6,10 @@ export type Article = {
   createDate: number;
 };
 
-export type TitleDate = {
-  id: string;
-  title: string;
-  release: boolean;
-  createDate: number;
-};
+export type TitleDate = Pick<
+  Article,
+  'id' | 'title' | 'release' | 'createDate'
+>;
 
 export type ArticleList = TitleDate[];
 
