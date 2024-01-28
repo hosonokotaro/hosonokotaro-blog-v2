@@ -1,41 +1,40 @@
 import Head from 'next/head';
+import { usePathname } from 'next/navigation';
 import Script from 'next/script';
 import { ReactNode } from 'react';
 
 import Footer from '@/atoms/Footer';
 import Header from '@/organisms/Header';
+import { useAppContext } from '~/useCase/appContext';
 import { getYearNow } from '~/useCase/createDateText';
 
 type Props = {
-  title?: string;
-  isPrivate?: boolean;
-  linkPath?: string;
-  pagePath?: string;
   children: ReactNode;
 };
 
 const siteName = 'Tech Blog | WEB DEVELOPER HOSONO KOTARO';
-const description =
-  '都内で活動するフロントエンドエンジニア。技術の知見を掲載しています';
 
-const Layout = ({
-  title = '',
-  isPrivate = false,
-  linkPath = '/',
-  pagePath = '',
-  children,
-}: Props) => {
-  const fixDescription = pagePath ? title : description;
+const Layout = ({ children }: Props) => {
+  const { pageTitle } = useAppContext();
+  const pathname = usePathname();
+  const isListPage = pathname === '/' || pathname === '/archive';
+
+  const description = isListPage
+    ? '都内で活動するフロントエンドエンジニア。技術の知見を掲載しています'
+    : pageTitle;
+
+  // FIXME: isPrivate 判定フラグは使っていないので削除したい
+  const isPrivate = false;
 
   return (
     <>
       <Head>
         <meta charSet="UTF-8" />
-        <meta content={fixDescription} name="description" />
+        <meta content={description} name="description" />
         <meta content="summary_large_image" name="twitter:card" />
         <meta content="@hosono_fe" name="twitter:site" />
         <meta
-          content={`${title && `${title} | `}${siteName}`}
+          content={`${pageTitle && `${pageTitle} | `}${siteName}`}
           property="og:title"
         />
         <meta content="website" property="og:type" />
@@ -44,7 +43,7 @@ const Layout = ({
           content={`${process.env.NEXT_PUBLIC_BASE_URL}/static/media/og.png`}
           property="og:image"
         />
-        <meta content={fixDescription} property="og:description" />
+        <meta content={description} property="og:description" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
         {isPrivate && <meta name="robots" content="noindex" />}
@@ -52,11 +51,11 @@ const Layout = ({
         {!isPrivate && (
           <link
             rel="canonical"
-            href={process.env.NEXT_PUBLIC_BASE_URL + pagePath}
+            href={process.env.NEXT_PUBLIC_BASE_URL + pathname}
           />
         )}
 
-        <title>{title ? `${title} | ${siteName}` : siteName}</title>
+        <title>{pageTitle ? `${pageTitle} | ${siteName}` : siteName}</title>
       </Head>
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${
@@ -69,7 +68,11 @@ const Layout = ({
           process.env.NEXT_PUBLIC_ANALYTICS_ID || ''
         }');`}
       </Script>
-      <Header linkPath={linkPath} />
+      <Script
+        src="https://platform.twitter.com/widgets.js"
+        strategy="lazyOnload"
+      />
+      <Header />
       {children}
       <Footer year={getYearNow()} />
     </>

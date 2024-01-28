@@ -3,6 +3,10 @@ import '~/style/global.css';
 import '~/style/theme.css';
 
 import { AppProps } from 'next/app';
+import { useState } from 'react';
+
+import Layout from '@/layout';
+import AppContext, { AppContextType } from '~/useCase/appContext';
 
 const setup = async () => {
   if (typeof window === 'undefined') {
@@ -18,7 +22,15 @@ if (process.env.NODE_ENV === 'development') {
 
 // NOTE: App 全体を拡張するために利用します。
 const App = ({ Component, pageProps }: AppProps) => {
-  return <Component {...pageProps} />;
+  const [pageTitle, setPageTitle] = useState<AppContextType['pageTitle']>('');
+
+  return (
+    <AppContext.Provider value={{ pageTitle, setPageTitle }}>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </AppContext.Provider>
+  );
 };
 
 export default App;

@@ -5,9 +5,9 @@ import Anchor from '@/atoms/Anchor';
 import ContentBox from '@/atoms/ContentBox';
 import PageLayout from '@/atoms/PageLayout';
 import Title from '@/atoms/Title';
-import Layout from '@/layout';
 import Markdown from '@/organisms/Markdown';
 import { Article as Props } from '~/entity/api';
+import { useAppContext } from '~/useCase/appContext';
 import { formatDate } from '~/useCase/createDateText';
 import getPost from '~/useCase/getPost';
 import getTitleList from '~/useCase/getTitleList';
@@ -50,6 +50,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 const Post = ({ id, title, createDate, content }: Props) => {
+  const { setPageTitle } = useAppContext();
+  setPageTitle(title);
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -85,18 +88,16 @@ const Post = ({ id, title, createDate, content }: Props) => {
       <Script id="json-ld" type="application/ld+json">
         {JSON.stringify(jsonLd)}
       </Script>
-      <Layout title={title} pagePath={`/${id}`}>
-        <PageLayout as="section">
-          <Title text={title} />
-          <ContentBox marginTopSize="20px">{formatDate(createDate)}</ContentBox>
-          <ContentBox marginTopSize="80px">
-            <Markdown content={content} />
-          </ContentBox>
-          <ContentBox marginTopSize="80px">
-            <Anchor linkPath="/">新着記事へ</Anchor>
-          </ContentBox>
-        </PageLayout>
-      </Layout>
+      <PageLayout as="section">
+        <Title text={title} />
+        <ContentBox marginTopSize="20px">{formatDate(createDate)}</ContentBox>
+        <ContentBox marginTopSize="80px">
+          <Markdown content={content} />
+        </ContentBox>
+        <ContentBox marginTopSize="80px">
+          <Anchor linkPath="/">新着記事へ</Anchor>
+        </ContentBox>
+      </PageLayout>
     </>
   );
 };
