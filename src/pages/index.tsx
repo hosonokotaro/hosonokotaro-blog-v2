@@ -3,8 +3,8 @@ import { InferGetStaticPropsType } from 'next';
 import Anchor from '@/atoms/Anchor';
 import ContentBox from '@/atoms/ContentBox';
 import PageLayout from '@/atoms/PageLayout';
-import Layout from '@/layout';
 import TitleList from '@/organisms/TitleList';
+import { useAppContext } from '~/useCase/appContext';
 import getTitleList from '~/useCase/getTitleList';
 import useGoogleAnalytics from '~/useCase/useGoogleAnalytics';
 
@@ -20,17 +20,18 @@ export const getStaticProps = async () => {
 };
 
 const Top = ({ titleList }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const { setPageTitle } = useAppContext();
+  setPageTitle('');
+
   useGoogleAnalytics();
 
   return (
-    <Layout>
-      <PageLayout as="article">
-        <TitleList titleList={titleList} listMarginTop="80px" />
-        <ContentBox marginTopSize="80px">
-          <Anchor linkPath="/archive">過去の記事へ</Anchor>
-        </ContentBox>
-      </PageLayout>
-    </Layout>
+    <PageLayout as="article">
+      <TitleList titleList={titleList} listMarginTop="80px" />
+      <ContentBox marginTopSize="80px">
+        <Anchor linkPath="/archive">過去の記事へ</Anchor>
+      </ContentBox>
+    </PageLayout>
   );
 };
 
