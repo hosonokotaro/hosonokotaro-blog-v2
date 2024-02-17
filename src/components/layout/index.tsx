@@ -8,6 +8,8 @@ import Header from '@/organisms/Header';
 import { useAppContext } from '~/useCase/appContext';
 import { getYearNow } from '~/useCase/createDateText';
 
+import * as Styles from './index.css';
+
 type Props = {
   children: ReactNode;
 };
@@ -72,9 +74,11 @@ const Layout = ({ children }: Props) => {
         src="https://platform.twitter.com/widgets.js"
         strategy="lazyOnload"
       />
-      <Header />
-      {children}
-      <Footer year={getYearNow()} />
+      <div className={Styles.base}>
+        <Header />
+        {children}
+        <Footer year={getYearNow()} />
+      </div>
     </>
   );
 };
