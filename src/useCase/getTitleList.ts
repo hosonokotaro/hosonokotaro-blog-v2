@@ -1,5 +1,3 @@
-import dayjs from 'dayjs';
-
 import articleList from '~/services/readMarkdown/articleList';
 
 const getTitleList = async (isArchive = false) => {
@@ -8,19 +6,18 @@ const getTitleList = async (isArchive = false) => {
   if (!responseWithStatus) return;
 
   if (responseWithStatus.status === 'success') {
-    const nowYear = dayjs().year();
     const { data } = responseWithStatus;
 
     if (!Array.isArray(data)) return;
 
-    const filteredTitleList = data.filter((titleDate) => {
-      const { createDate } = titleDate;
-      const createYear = dayjs(createDate).year();
+    // NOTE: 最新3件を新着記事、残りを過去記事として分類
+    const RECENT_ARTICLES_COUNT = 3;
 
-      return isArchive ? createYear <= nowYear - 2 : createYear > nowYear - 2;
-    });
+    if (isArchive) {
+      return data.slice(RECENT_ARTICLES_COUNT);
+    }
 
-    return filteredTitleList;
+    return data.slice(0, RECENT_ARTICLES_COUNT);
   }
 
   if (responseWithStatus.status === 'error') return;
