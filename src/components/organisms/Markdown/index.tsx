@@ -1,4 +1,4 @@
-import { ComponentProps } from 'react';
+import { ComponentProps, ReactNode } from 'react';
 import ReactMarkdown from 'react-markdown';
 
 import CodeBlock from '@/atoms/CodeBlock';
@@ -18,6 +18,26 @@ type Props = {
 
 type IconProps = ComponentProps<typeof Icon>;
 
+const extractTextFromChildren = (children: ReactNode): string => {
+  if (typeof children === 'string') {
+    return children;
+  }
+
+  if (typeof children === 'number') {
+    return String(children);
+  }
+
+  if (Array.isArray(children)) {
+    return children.map(extractTextFromChildren).join('');
+  }
+
+  if (children && typeof children === 'object' && 'props' in children) {
+    return extractTextFromChildren(children.props.children);
+  }
+
+  return '';
+};
+
 const Markdown = ({ content }: Props) => {
   return (
     <ReactMarkdown
@@ -28,14 +48,14 @@ const Markdown = ({ content }: Props) => {
           if (!inline && match) {
             return (
               <CodeBlock
-                value={String(children).replace(/\n$/, '')}
+                value={extractTextFromChildren(children)}
                 language={match[1]}
               />
             );
           }
 
           if (inline) {
-            return <InlineCode text={String(children).replace(/\n$/, '')} />;
+            return <InlineCode text={extractTextFromChildren(children)} />;
           }
 
           // NOTE: どの条件にも一致しない時に null を返さないとエラーを起こす
@@ -61,26 +81,26 @@ const Markdown = ({ content }: Props) => {
           );
         },
         li({ children }) {
-          return <TextItem text={String(children).replace(/\n$/, '')} />;
+          return <TextItem text={extractTextFromChildren(children)} />;
         },
         h2({ children }) {
           return (
             <ContentBox marginTopSize="40px">
-              <Title text={String(children).replace(/\n$/, '')} as="h2" />
+              <Title text={extractTextFromChildren(children)} as="h2" />
             </ContentBox>
           );
         },
         h3({ children }) {
           return (
             <ContentBox marginTopSize="40px">
-              <Title text={String(children).replace(/\n$/, '')} as="h3" />
+              <Title text={extractTextFromChildren(children)} as="h3" />
             </ContentBox>
           );
         },
         h4({ children }) {
           return (
             <ContentBox marginTopSize="40px">
-              <Title text={String(children).replace(/\n$/, '')} as="h4" />
+              <Title text={extractTextFromChildren(children)} as="h4" />
             </ContentBox>
           );
         },
