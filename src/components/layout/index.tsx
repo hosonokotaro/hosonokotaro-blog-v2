@@ -5,25 +5,27 @@ import { ReactNode } from 'react';
 
 import Footer from '@/atoms/Footer';
 import Header from '@/organisms/Header';
-import { useAppContext } from '~/useCase/appContext';
 import { getYearNow } from '~/useCase/createDateText';
 
 import * as Styles from './index.css';
 
 type Props = {
   children: ReactNode;
+  article?: {
+    title: string;
+    description?: string;
+  };
 };
 
 const siteName = 'Tech Blog | WEB DEVELOPER HOSONO KOTARO';
 
-const Layout = ({ children }: Props) => {
-  const { pageTitle } = useAppContext();
+const Layout = ({ children, article }: Props) => {
   const pathname = usePathname();
   const isListPage = pathname === '/' || pathname === '/archive';
 
   const description = isListPage
     ? '都内で活動するフロントエンドエンジニア。技術の知見を掲載しています'
-    : pageTitle;
+    : article?.title;
 
   // FIXME: isPrivate 判定フラグは使っていないので削除したい
   const isPrivate = false;
@@ -36,7 +38,9 @@ const Layout = ({ children }: Props) => {
         <meta content="summary_large_image" name="twitter:card" />
         <meta content="@hosono_fe" name="twitter:site" />
         <meta
-          content={`${pageTitle && `${pageTitle} | `}${siteName}`}
+          content={
+            article?.title ? `${article?.title} | ${siteName}` : siteName
+          }
           property="og:title"
         />
         <meta content="website" property="og:type" />
@@ -57,7 +61,9 @@ const Layout = ({ children }: Props) => {
           />
         )}
 
-        <title>{pageTitle ? `${pageTitle} | ${siteName}` : siteName}</title>
+        <title>
+          {article?.title ? `${article?.title} | ${siteName}` : siteName}
+        </title>
       </Head>
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${
