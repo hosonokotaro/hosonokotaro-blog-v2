@@ -7,7 +7,6 @@ import PageLayout from '@/atoms/PageLayout';
 import Title from '@/atoms/Title';
 import Markdown from '@/organisms/Markdown';
 import { Article } from '~/entity/api';
-import { useAppContext } from '~/useCase/appContext';
 import { formatDate } from '~/useCase/createDateText';
 import getPost from '~/useCase/getPost';
 import getTitleList from '~/useCase/getTitleList';
@@ -72,9 +71,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 const Post = ({ id, title, createDate, content }: Props) => {
-  const { setPageTitle } = useAppContext();
-  setPageTitle(title);
-
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',

@@ -4,7 +4,6 @@ import Anchor from '@/atoms/Anchor';
 import ContentBox from '@/atoms/ContentBox';
 import PageLayout from '@/atoms/PageLayout';
 import TitleList from '@/organisms/TitleList';
-import { useAppContext } from '~/useCase/appContext';
 import getTitleList from '~/useCase/getTitleList';
 import useGoogleAnalytics from '~/useCase/useGoogleAnalytics';
 
@@ -24,8 +23,6 @@ const pageTitle = '過去の記事';
 const Archive = ({
   archiveTitleList,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const { setPageTitle } = useAppContext();
-  setPageTitle(pageTitle);
   useGoogleAnalytics();
 
   return (

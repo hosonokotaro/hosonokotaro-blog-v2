@@ -4,7 +4,6 @@ import Anchor from '@/atoms/Anchor';
 import ContentBox from '@/atoms/ContentBox';
 import PageLayout from '@/atoms/PageLayout';
 import TitleList from '@/organisms/TitleList';
-import { useAppContext } from '~/useCase/appContext';
 import getTitleList from '~/useCase/getTitleList';
 import useGoogleAnalytics from '~/useCase/useGoogleAnalytics';
 
@@ -20,9 +19,6 @@ export const getStaticProps = async () => {
 };
 
 const Top = ({ titleList }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const { setPageTitle } = useAppContext();
-  setPageTitle('');
-
   useGoogleAnalytics();
 
   return (
