@@ -24,9 +24,12 @@ if (process.env.NODE_ENV === 'development') {
 const App = ({ Component, pageProps }: AppProps) => {
   const [pageTitle, setPageTitle] = useState<AppContextType['pageTitle']>('');
 
+  // 記事ページの場合はarticleMetaを取得
+  const articleMeta = pageProps.articleMeta || null;
+
   return (
     <AppContext.Provider value={{ pageTitle, setPageTitle }}>
-      <Layout>
+      <Layout article={articleMeta}>
         <Component {...pageProps} />
       </Layout>
     </AppContext.Provider>
