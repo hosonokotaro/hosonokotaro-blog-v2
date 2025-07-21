@@ -1,35 +1,28 @@
-import { InferGetStaticPropsType } from 'next';
+'use client';
 
 import Anchor from '@/atoms/Anchor';
 import ContentBox from '@/atoms/ContentBox';
 import PageLayout from '@/atoms/PageLayout';
 import TitleList from '@/organisms/TitleList';
-import getTitleList from '~/useCase/getTitleList';
+import { TitleDate } from '~/entity/api';
 import useGoogleAnalytics from '~/useCase/useGoogleAnalytics';
 
-export const getStaticProps = async () => {
-  const archiveTitleList = await getTitleList(true);
-
-  return {
-    props: {
-      archiveTitleList,
-    },
-    revalidate: 10,
-  };
-};
+interface ArchiveClientPageProps {
+  archiveTitleList: TitleDate[] | undefined;
+}
 
 const pageTitle = '過去の記事';
 
-const Archive = ({
+export default function ArchiveClientPage({
   archiveTitleList,
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
+}: ArchiveClientPageProps) {
   useGoogleAnalytics();
 
   return (
     <PageLayout as="article">
       <TitleList
         titleName={pageTitle}
-        titleList={archiveTitleList}
+        titleList={archiveTitleList || undefined}
         listMarginTop="80px"
       />
       <ContentBox marginTopSize="80px">
@@ -37,6 +30,4 @@ const Archive = ({
       </ContentBox>
     </PageLayout>
   );
-};
-
-export default Archive;
+}
