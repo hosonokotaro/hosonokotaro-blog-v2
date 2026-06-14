@@ -1,3 +1,5 @@
+'use client';
+
 import Head from 'next/head';
 import { usePathname } from 'next/navigation';
 import Script from 'next/script';
@@ -7,19 +9,19 @@ import Footer from '@/atoms/Footer';
 import Header from '@/organisms/Header';
 import { getYearNow } from '~/useCase/createDateText';
 
-import * as Styles from './index.css';
+import * as Styles from './layout-client.css';
 
-type Props = {
+interface LayoutClientProps {
   children: ReactNode;
   article?: {
     title: string;
     description?: string;
   };
-};
+}
 
 const siteName = 'Tech Blog | WEB DEVELOPER HOSONO KOTARO';
 
-const Layout = ({ children, article }: Props) => {
+export default function LayoutClient({ children, article }: LayoutClientProps) {
   const pathname = usePathname();
   const isListPage = pathname === '/' || pathname === '/archive';
 
@@ -29,7 +31,6 @@ const Layout = ({ children, article }: Props) => {
 
   // FIXME: isPrivate 判定フラグは使っていないので削除したい
   const isPrivate = false;
-
   return (
     <>
       <Head>
@@ -57,7 +58,7 @@ const Layout = ({ children, article }: Props) => {
         {!isPrivate && (
           <link
             rel="canonical"
-            href={process.env.NEXT_PUBLIC_BASE_URL + pathname}
+            href={(process.env.NEXT_PUBLIC_BASE_URL || '') + pathname}
           />
         )}
 
@@ -87,6 +88,4 @@ const Layout = ({ children, article }: Props) => {
       </div>
     </>
   );
-};
-
-export default Layout;
+}
