@@ -1,52 +1,37 @@
-# Repository Guidelines
+# AGENTS.md
 
-## プロジェクト構成 / モジュール配置
+## プロジェクト概要
 
-- ソース: `src/`
-  - `pages/` (Next.js ルーティング。記事は `[id].tsx`)
-  - `components/` (`atoms/`, `molecules/`, `organisms/`, `layout/`。多くのコンポーネントは `index.tsx` を入口にし、必要に応じて `index.css.ts` / `index.stories.tsx` を共置)
-  - `services/` (Markdown 読み込みや GA 連携)
-  - `useCase/` (ユースケース/ドメインロジック)
-  - `entity/` (型定義)
-  - `style/` (vanilla-extract のテーマ/グローバル)
-- コンテンツ: `articles/` (frontmatter は `title`, `release`, `createDate` を前提に読み込む)
-- パスエイリアス: `~/*` → `src/*`, `@/*` → `src/components/*`
+- Next.js 14 の Pages Router 構成の単一アプリ。実ページは `src/pages/index.tsx`, `src/pages/archive.tsx`, `src/pages/[id].tsx` が中心。
+- コンポーネントは `src/components/{atoms,molecules,organisms,layout}` 配下。import alias は `~/*` が `src/*`, `@/*` が `src/components/*`。
+- スタイルは vanilla-extract の `*.css.ts` を使う。グローバルスタイルは `src/pages/_app.tsx` と `.storybook/preview.ts` で読み込まれる。
 
-## ビルド・実行・開発コマンド
+## コマンド
 
-- `npm run dev` 開発サーバ起動
-- `npm run build` 本番ビルド（`postbuild`でサイトマップ生成）
-- `npm start` 本番起動
-- `npm run export` 静的書き出し（`out/`）
-- `npm run lint` ESLint 実行
-- `npm run tsc` 型チェックのみ
-- `npm run prettier` コード整形（`src/**/*.ts{,x}`）
-- `npm run storybook` / `npm run build-storybook` UI ドキュメンテーション
-- `npm run find-deadcode` 未使用エクスポート検出
-- 任意: `npm run build-icon` SVGR で SVG→TSX 変換
+- 依存管理は `package-lock.json` 前提の npm。新規導入時は yarn/pnpm ではなく npm を使う。
+- 開発サーバー: `npm run dev`
+- 型チェック: `npm run tsc`
+- lint: `npm run lint`。現状 `no-console` の warning が既存で出るが、error ではない。
+- pre-commit と同じ順序: `npm run tsc` -> `npm run lint` -> `npx pretty-quick --staged`
+- テストスクリプトと `*.test.*` / `*.spec.*` は現状ない。コンポーネント確認は `npm run storybook`、静的 Storybook は `npm run build-storybook`。
+- `npm run prettier` は `./src/**/**.{ts,tsx}` だけを書き換える。Markdown、設定ファイル、Storybook 設定は対象外。
+- `npm run build` は npm lifecycle で `postbuild` の `next-sitemap` も実行される。サイトマップ生成には `NEXT_PUBLIC_BASE_URL` が必要。
+- 未使用 export の確認は `npm run find-deadcode`。`src/pages` と stories は除外される設定。
 
-## コーディング規約・命名
+## 記事データ
 
-- TypeScript（`strict: true`）。2 スペース、シングルクォート、セミコロン、Prettier 準拠。
-- import 並びは `eslint-plugin-simple-import-sort` を使用。
-- コンポーネント/ディレクトリは PascalCase、エントリは `index.tsx` を推奨。
-- ページは `src/pages/` に配置（Next.js 規約準拠）。
+- 記事は `articles/*.md` を `fs` と `gray-matter` で直接読む。ファイル名の拡張子抜きが記事 ID になり、`/[id]` のパスにも使われる。
+- frontmatter は `title`, `release`, `createDate` を使う。`createDate` は `dayjs(createDate)` に渡すミリ秒 timestamp 形式。
+- 記事一覧は `createDate` 降順で並ぶ。トップは「現在年と前年」、`/archive` は「現在年の 2 年前以前」に `getTitleList` で分かれる。
+- `release` は型と frontmatter にはあるが、現在の一覧・詳細表示では公開判定に使われていない。
+- 詳細ページは通常 `getStaticPaths` が `fallback: 'blocking'`、記事一覧取得に失敗した場合のみ `fallback: false`。各ページの `getStaticProps` は `revalidate: 10` の ISR。
 
-## テスト方針
+## 環境変数
 
-- 専用テストランナー未導入。代替として以下を徹底:
-  - Storybook の `*.stories.tsx`
-  - `npm run tsc` と `npm run lint` の無欠実行
-- 追加の単体テスト提案は PR で相談（候補: Jest + Testing Library、`__tests__/`）。
+- `NEXT_PUBLIC_BASE_URL` は canonical、OG URL/image、JSON-LD、`next-sitemap` に使われる。
+- `NEXT_PUBLIC_ANALYTICS_ID` は `src/components/layout/index.tsx` と `src/services/googleAnalytics.ts` の gtag 設定に使われる。未設定時は空文字で script が出る。
 
-## コミット/PR ガイドライン
+## 補足
 
-- コミットは Conventional Commits 風を推奨: `feat:`, `fix:`, `chore:`, `docs:`, `refactor:` など（履歴に準拠）。
-- PR には目的・変更概要、関連 Issue、UI 変更のスクリーンショット、Storybook 影響を記載。
-- 申請前チェック: `lint`/`tsc`/`prettier` を通過させること。
-
-## セキュリティ/設定の注意
-
-- `.env.local` に `NEXT_PUBLIC_ANALYTICS_ID`, `NEXT_PUBLIC_BASE_URL` を設定。秘匿情報はコミットしない。
-- GA はレイアウトでスクリプトを読み込む実装で、`googleAnalytics` 呼び出し時は本番のみ計測 ID を利用する。環境差異に注意。
-- 記事の frontmatter には明示的なバリデーションがないため、`title`, `release`, `createDate` の欠落は一覧表示・記事表示・並び順・SEO メタの不整合につながる。追加時は必須項目を守る。
+- CI workflow と既存の AI 向け指示ファイルは現状ない。
+- SVG 変換用に `npm run build-icon` がある。SVGR の出力先は `create_svg_to_tsx/` で、実際に使うアイコンは `src/components/atoms/Icon/svg/` 側へ反映する。
