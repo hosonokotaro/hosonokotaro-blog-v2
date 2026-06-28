@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 import PostClientPage from '~/app/[id]/post-client-page';
@@ -6,6 +7,19 @@ import getPost from '~/useCase/getPost';
 import getTitleList from '~/useCase/getTitleList';
 
 export const revalidate = 10;
+
+const authorName = 'Hosono Kotaro';
+const ogImagePath = '/static/media/og.png';
+
+const isArticle = (data: unknown): data is Article => {
+  return !!(
+    data &&
+    typeof data === 'object' &&
+    data !== null &&
+    'title' in data &&
+    'content' in data
+  );
+};
 
 export async function generateStaticParams() {
   const titleList = await getTitleList(false);
@@ -17,7 +31,11 @@ export async function generateStaticParams() {
   return titleList.map(({ id }) => ({ id }));
 }
 
-export async function generateMetadata({ params }: { params: { id: string } }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: { id: string };
+}): Promise<Metadata> {
   const post = await getPost(params.id);
 
   if (!post) {
@@ -26,39 +44,43 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
     };
   }
 
-  const isArticle = (data: unknown): data is Article => {
-    return !!(
-      data &&
-      typeof data === 'object' &&
-      data !== null &&
-      'title' in data &&
-      'content' in data
-    );
-  };
-
   if (!isArticle(post)) {
     return {
       title: 'Not Found',
     };
   }
 
+  const description = post.title;
+  const path = `/${params.id}`;
+
   return {
     title: post.title,
+    description,
+    alternates: {
+      canonical: path,
+    },
     openGraph: {
       title: post.title,
-      description: '技術系の記事を投稿するブログです。',
+      description,
       type: 'article',
-      publishedTime: post.createDate,
-      authors: ['Hosono Kotaro'],
-      url: `${process.env.NEXT_PUBLIC_BASE_URL}/${params.id}`,
+      publishedTime: new Date(post.createDate).toISOString(),
+      authors: [authorName],
+      url: path,
       images: [
         {
-          url: `${process.env.NEXT_PUBLIC_BASE_URL}/static/media/og.png`,
+          url: ogImagePath,
           width: 1200,
           height: 630,
           alt: post.title,
         },
       ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      site: '@hosono_fe',
+      title: post.title,
+      description,
+      images: [ogImagePath],
     },
   };
 }
@@ -73,16 +95,6 @@ export default async function PostPage({ params }: PostPageProps) {
   if (!post) {
     notFound();
   }
-
-  const isArticle = (data: unknown): data is Article => {
-    return !!(
-      data &&
-      typeof data === 'object' &&
-      data !== null &&
-      'title' in data &&
-      'content' in data
-    );
-  };
 
   if (!isArticle(post)) {
     notFound();
