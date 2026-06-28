@@ -1,24 +1,17 @@
-import { InferGetStaticPropsType } from 'next';
+'use client';
 
 import Anchor from '@/atoms/Anchor';
 import ContentBox from '@/atoms/ContentBox';
 import PageLayout from '@/atoms/PageLayout';
 import TitleList from '@/organisms/TitleList';
-import getTitleList from '~/useCase/getTitleList';
+import { TitleDate } from '~/entity/api';
 import useGoogleAnalytics from '~/useCase/useGoogleAnalytics';
 
-export const getStaticProps = async () => {
-  const titleList = await getTitleList(false);
+interface ClientPageProps {
+  titleList: TitleDate[] | undefined;
+}
 
-  return {
-    props: {
-      titleList,
-    },
-    revalidate: 10,
-  };
-};
-
-const Top = ({ titleList }: InferGetStaticPropsType<typeof getStaticProps>) => {
+export default function ClientPage({ titleList }: ClientPageProps) {
   useGoogleAnalytics();
 
   return (
@@ -29,6 +22,4 @@ const Top = ({ titleList }: InferGetStaticPropsType<typeof getStaticProps>) => {
       </ContentBox>
     </PageLayout>
   );
-};
-
-export default Top;
+}
