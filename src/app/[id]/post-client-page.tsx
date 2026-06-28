@@ -42,7 +42,7 @@ export default function PostClientPage({
         url: '',
       },
     },
-    datePublished: createDate,
+    datePublished: new Date(createDate).toISOString(),
   };
 
   useGoogleAnalytics();
