@@ -22,7 +22,7 @@
 
 - 記事は `articles/*.md` を `fs` と `gray-matter` で直接読む。ファイル名の拡張子抜きが記事 ID になり、`/[id]` のパスにも使われる。
 - frontmatter は `title`, `release`, `createDate` を使う。`createDate` は `dayjs(createDate)` に渡すミリ秒 timestamp 形式。
-- 記事一覧は `createDate` 降順で並ぶ。トップは「現在年と前年」、`/archive` は「現在年の 2 年前以前」に `getTitleList` で分かれる。
+- 記事一覧は `createDate` 降順で並ぶ。トップは最新 3 件、`/archive` は残りの記事に `getTitleList` で分かれる。
 - `release` は型と frontmatter にはあるが、現在の一覧・詳細表示では公開判定に使われていない。
 - 詳細ページは通常 `getStaticPaths` が `fallback: 'blocking'`、記事一覧取得に失敗した場合のみ `fallback: false`。各ページの `getStaticProps` は `revalidate: 10` の ISR。
 
@@ -33,5 +33,5 @@
 
 ## 補足
 
-- CI workflow と既存の AI 向け指示ファイルは現状ない。
+- CI workflow は現状ない。Claude Code 向けの `CLAUDE.md` はあるが、OpenCode セッションではこの `AGENTS.md` を優先する。
 - SVG 変換用に `npm run build-icon` がある。SVGR の出力先は `create_svg_to_tsx/` で、実際に使うアイコンは `src/components/atoms/Icon/svg/` 側へ反映する。
