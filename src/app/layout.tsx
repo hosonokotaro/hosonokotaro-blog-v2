@@ -2,50 +2,57 @@ import 'normalize.css';
 import '~/style/global.css';
 import '~/style/theme.css';
 
+import { Metadata } from 'next';
 import { ReactNode } from 'react';
 
 import LayoutClient from '~/app/layout-client';
 
-export const metadata = {
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://hosonokotaro.jp';
+const siteName = 'HOSONOKOTARO Tech Blog';
+const description =
+  '都内で活動するフロントエンドエンジニア。技術の知見を掲載しています';
+
+export const metadata: Metadata = {
+  metadataBase: new URL(baseUrl),
   title: {
-    default: 'HOSONOKOTARO Tech Blog',
-    template: '%s | HOSONOKOTARO Tech Blog',
+    default: siteName,
+    template: `%s | ${siteName}`,
   },
-  description: '技術系の記事を投稿するブログです。',
+  description,
+  alternates: {
+    canonical: '/',
+  },
+  icons: {
+    icon: [
+      {
+        url: '/static/media/favicon.svg',
+        type: 'image/svg+xml',
+      },
+    ],
+  },
   openGraph: {
-    title: 'HOSONOKOTARO Tech Blog',
-    description: '技術系の記事を投稿するブログです。',
+    title: siteName,
+    description,
     type: 'website',
     locale: 'ja_JP',
-    url: process.env.NEXT_PUBLIC_BASE_URL,
+    url: '/',
     images: [
       {
-        url: `${process.env.NEXT_PUBLIC_BASE_URL}/static/media/og.png`,
+        url: '/static/media/og.png',
         width: 1200,
         height: 630,
-        alt: 'HOSONOKOTARO Tech Blog',
+        alt: siteName,
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
+    site: '@hosono_fe',
   },
 };
 
 interface RootLayoutProps {
   children: ReactNode;
-}
-
-const setup = async () => {
-  if (typeof window === 'undefined') {
-    console.log('server');
-  } else {
-    console.log('client');
-  }
-};
-
-if (process.env.NODE_ENV === 'development') {
-  setup();
 }
 
 export default function RootLayout({ children }: RootLayoutProps) {
