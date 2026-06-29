@@ -16,9 +16,9 @@ export const Default: Story = {
   args: {
     children: (
       <>
-        <TextItem text="hello" />
-        <TextItem text="goodbye" />
-        <TextItem text="thanks" />
+        <TextItem>hello</TextItem>
+        <TextItem>goodbye</TextItem>
+        <TextItem>thanks</TextItem>
       </>
     ),
   },
