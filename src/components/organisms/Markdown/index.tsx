@@ -45,11 +45,11 @@ const Markdown = ({ content }: Props) => {
         code({ inline, className, children }) {
           const match = /language-(\w+)/.exec(className || '');
 
-          if (!inline && match) {
+          if (!inline) {
             return (
               <CodeBlock
                 value={extractTextFromChildren(children)}
-                language={match[1]}
+                language={match?.[1]}
               />
             );
           }
@@ -58,7 +58,6 @@ const Markdown = ({ content }: Props) => {
             return <InlineCode text={extractTextFromChildren(children)} />;
           }
 
-          // NOTE: どの条件にも一致しない時に null を返さないとエラーを起こす
           return null;
         },
         img({ src, alt }) {
@@ -81,7 +80,7 @@ const Markdown = ({ content }: Props) => {
           );
         },
         li({ children }) {
-          return <TextItem text={extractTextFromChildren(children)} />;
+          return <TextItem>{children}</TextItem>;
         },
         h2({ children }) {
           return (

@@ -1,11 +1,13 @@
+import { ReactNode } from 'react';
+
 import * as Styles from './index.css';
 
 type Props = {
-  text: string;
+  children: ReactNode;
 };
 
-const TextItem = ({ text }: Props) => {
-  return <li className={Styles.base}>{text}</li>;
+const TextItem = ({ children }: Props) => {
+  return <li className={Styles.base}>{children}</li>;
 };
 
 export default TextItem;

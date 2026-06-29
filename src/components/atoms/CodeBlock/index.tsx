@@ -4,10 +4,10 @@ import { tomorrow } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 // NOTE: Syntax highlighter は value という props が必須
 type Props = {
   value: string;
-  language: string;
+  language?: string;
 };
 
-const CodeBlock = ({ value, language }: Props) => {
+const CodeBlock = ({ value, language = '' }: Props) => {
   return (
     <SyntaxHighlighter
       language={language}

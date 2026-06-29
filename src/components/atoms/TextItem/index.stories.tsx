@@ -21,6 +21,6 @@ type Story = StoryObj<typeof TextItem>;
 
 export const Default: Story = {
   args: {
-    text: 'list item',
+    children: 'list item',
   },
 };
