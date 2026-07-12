@@ -6,7 +6,7 @@ createDate: 1632367519246
 
 Atomic design について色々調べていたのですが、なんとなく曖昧なままだったのでメモ書きとしてまとめてみました。ここでは、Atomic design が何者なのかの詳細は説明しませんが、React でコンポーネントを設計する際に各要素をどのように考えていけばよいかを手短に考察します。
 
-![atomic design](https://firebasestorage.googleapis.com/v0/b/hosonokotaro-blog.appspot.com/o/public%2Fimages%2FTyGYxlI036FvQE9Oo1Un%2Fatomic-design.png?alt=media&token=ab9e8277-6046-4b08-949d-b89664eb06f0)
+![atomic design](/images/TyGYxlI036FvQE9Oo1Un/atomic-design.png)
 
 コンポーネントを設計する時に、どのようにファイル構造を構成するかは大事です。ルールが無いと、どこで何をしているかが分からなくなります。また、不適切な場所で実装を入れてしまい、すぐにプロジェクトが破綻してしまうからです。
 

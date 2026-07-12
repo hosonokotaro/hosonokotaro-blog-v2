@@ -10,7 +10,7 @@ createDate: 1610240237541
 
 自分のサイトでも入れようと思い、インストールしました。ところが、導入まではうまくいったものの、Jest（Testing Library を使ってます）が通らなくなりました。なんでやねん。
 
-![alt](https://firebasestorage.googleapis.com/v0/b/hosonokotaro-blog.appspot.com/o/public%2Fimages%2FwquzQz1bXSe1s7Vy6lTG%2F01.jpg?alt=media&token=b0eb4434-6b13-4fe1-9867-6c25d959bbd4)
+![alt](/images/wquzQz1bXSe1s7Vy6lTG/01.jpg)
 
 `Using the "styled" tag in runtime is not supported.`...などというエラーが出ました。調べてみるとどうも根が深そう。
 
@@ -95,6 +95,6 @@ it('it should render: Footer', () => {
 
 これでタグ名が取得できるので`jest.fn()`でタグ名を return します。すると、次のようにタグ名が正しく取得できます。
 
-![alt](https://firebasestorage.googleapis.com/v0/b/hosonokotaro-blog.appspot.com/o/public%2Fimages%2FwquzQz1bXSe1s7Vy6lTG%2F02.jpg?alt=media&token=d1f59f7b-ae6f-43bf-b6de-429cd1c766c4)
+![alt](/images/wquzQz1bXSe1s7Vy6lTG/02.jpg)
 
 footer の Role は contentinfo なので、それも正しく認識していますね。あとはテストしていくだけ。
