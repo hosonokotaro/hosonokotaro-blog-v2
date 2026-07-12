@@ -108,7 +108,7 @@ const titleDateList = topResponse?.titleDateList;
 
 上記のように実装すると、下記のような記事一覧を取得できます。
 
-![タイトル一覧のキャプチャ](https://firebasestorage.googleapis.com/v0/b/hosonokotaro-blog.appspot.com/o/public%2Fimages%2Fm4ZjnMrixax3nQzQOYIq%2F%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202021-10-16%2022.05.10.png?alt=media&token=f10aef0e-da94-43bd-8448-c38870556944)
+![タイトル一覧のキャプチャ](/images/m4ZjnMrixax3nQzQOYIq/screenshot-2021-10-16-22-05-10.png)
 
 コードの解説は以上になります。
 

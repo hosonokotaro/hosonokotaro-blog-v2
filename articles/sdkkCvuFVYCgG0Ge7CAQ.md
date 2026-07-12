@@ -34,7 +34,7 @@ const storageRef = storage.ref();
 
 また、今回の例では下記の場所に格納されている画像を取得します。
 
-![alt](https://firebasestorage.googleapis.com/v0/b/hosonokotaro-blog.appspot.com/o/public%2Fimages%2FsdkkCvuFVYCgG0Ge7CAQ%2Fsample.png?alt=media&token=b9cfd067-059b-4f4b-bf1e-23f2dcb7e58f)
+![alt](/images/sdkkCvuFVYCgG0Ge7CAQ/sample.png)
 
 画像の参照を取得します。Cloud Storage では、参照を取得して、実際の利用時に参照からダウンロードして利用する形になります。
 

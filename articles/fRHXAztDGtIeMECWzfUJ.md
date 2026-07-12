@@ -98,11 +98,11 @@ const Index: VFC<InferGetStaticPropsType<typeof getStaticProps>> = ({
 
 ・画面
 
-![alt](https://firebasestorage.googleapis.com/v0/b/hosonokotaro-blog.appspot.com/o/public%2Fimages%2FfRHXAztDGtIeMECWzfUJ%2F%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202022-01-03%209.55.05.png?alt=media&token=af1e04d9-c6d3-46d7-9ac6-2eb599cc40ca)
+![alt](/images/fRHXAztDGtIeMECWzfUJ/screenshot-2022-01-03-9-55-05.png)
 
 ・ソースコード
 
-![alt](https://firebasestorage.googleapis.com/v0/b/hosonokotaro-blog.appspot.com/o/public%2Fimages%2FfRHXAztDGtIeMECWzfUJ%2F%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202022-01-03%2011.19.23.png?alt=media&token=5c5e0537-e48f-433e-9656-a5eb3c16f75b)
+![alt](/images/fRHXAztDGtIeMECWzfUJ/screenshot-2022-01-03-11-19-23.png)
 
 今回は記事の詳細ページへのリンクは解説していませんが、別の機会に詳細な解説を書こうと思います。
 
